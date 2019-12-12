@@ -364,7 +364,7 @@
           
             <p>java默认排序算法问题</p>
 <p>在对数据进行排序时，出现一个问题，如图所示:</p>
-<p><img src="/Users/crystal/blog/source/images/comparable.png" alt="comparable"></p>
+<p><img src="/images/comparable.png" alt="comparable"></p>
 <p>经过搜索得知，在JDK7以后，实现Comparable接口后，要满足一下三个特性：</p>
 <p>1） 自反性：x，y 的比较结果和 y，x 的比较结果相反。</p>
 <p>2） 传递性：x&gt;y,y&gt;z,则 x&gt;z。</p>
@@ -372,7 +372,7 @@
 <p>可以通过在代码中，System.setProperty(“java.util.Arrays.useLegacyMergeSort”, “true”);  </p>
 <p>或者设置JVM参数-Djava.util.Arrays.useLegacyMergeSort=true来兼容JDK6的代码。</p>
 <p>这是因为JDK在函数Arrays.sort中，使用了一个if判断来决定使用什么排序算法来对数组进行排序。</p>
-<p><img src="/Users/crystal/blog/source/images/array.sort.png" alt="array.sort"></p>
+<p><img src="/images/array.sort.png" alt="array.sort"></p>
 <p>不设置就使用ComparableTimSort实现的TimSort算法来进行排序。</p>
 
           
