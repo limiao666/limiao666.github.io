@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="java,Comparable," />
 
 
 
@@ -79,12 +79,19 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="LiMiao&#39;s blog">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;archives&#x2F;2019&#x2F;11&#x2F;index.html">
+<meta name="description" content="java默认排序算法问题 在对数据进行排序时，出现一个问题，如图所示:  经过搜索得知，在JDK7以后，实现Comparable接口后，要满足一下三个特性： 1） 自反性：x，y 的比较结果和 y，x 的比较结果相反。 2） 传递性：x&amp;gt;y,y&amp;gt;z,则 x&amp;gt;z。 3） 对称性：x&#x3D;y,则 x,z 比较结果和 y，z 比较结果相同。 可以通过在代码中，System.setPrope">
+<meta name="keywords" content="java,Comparable">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java Comparable接口不严谨导致Comparison method violates its general contract">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;12&#x2F;java%20Comparable%E6%8E%A5%E5%8F%A3%E4%B8%8D%E4%B8%A5%E8%B0%A8%E5%AF%BC%E8%87%B4Comparison%20method%20violates%20its%20general%20contract&#x2F;index.html">
 <meta property="og:site_name" content="LiMiao&#39;s blog">
+<meta property="og:description" content="java默认排序算法问题 在对数据进行排序时，出现一个问题，如图所示:  经过搜索得知，在JDK7以后，实现Comparable接口后，要满足一下三个特性： 1） 自反性：x，y 的比较结果和 y，x 的比较结果相反。 2） 传递性：x&amp;gt;y,y&amp;gt;z,则 x&amp;gt;z。 3） 对称性：x&#x3D;y,则 x,z 比较结果和 y，z 比较结果相同。 可以通过在代码中，System.setPrope">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;Users&#x2F;crystal&#x2F;blog&#x2F;source&#x2F;images&#x2F;comparable.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;Users&#x2F;crystal&#x2F;blog&#x2F;source&#x2F;images&#x2F;array.sort.png">
+<meta property="og:updated_time" content="2019-12-12T03:05:03.235Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;Users&#x2F;crystal&#x2F;blog&#x2F;source&#x2F;images&#x2F;comparable.png">
 
 
 
@@ -114,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/2019/11/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/12/12/java Comparable接口不严谨导致Comparison method violates its general contract/"/>
 
 
 
 
 
-  <title>Archive | LiMiao's blog</title>
+  <title>java Comparable接口不严谨导致Comparison method violates its general contract | LiMiao's blog</title>
   
 
 
@@ -139,7 +146,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
     <a href="https://github.com/limiao666" target="_blank" rel="noopener"><img style="position: absolute; top: 0; right: 0; border: 0;" width="149" height="149" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_gray_6d6d6d.png?resize=149%2C149" class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -243,111 +250,193 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
-
-      <span class="archive-page-counter">
-        
-        
-        
-          
-        
-        Um..! 7 posts in total. Keep on posting.
-      </span>
-
-      
-
-        
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
-
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/12/java%20Comparable%E6%8E%A5%E5%8F%A3%E4%B8%8D%E4%B8%A5%E8%B0%A8%E5%AF%BC%E8%87%B4Comparison%20method%20violates%20its%20general%20contract/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Li Miao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LiMiao's blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/11/28/hexo%E9%85%8D%E7%BD%AE/" itemprop="url">
-              
-                <span itemprop="name">hexo配置</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">java Comparable接口不严谨导致Comparison method violates its general contract</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-11-28T15:48:11+08:00"
-              content="2019-11-28" >
-          11-28
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-12T10:54:41+08:00">
+                2019-12-12
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/Comparable/" itemprop="url" rel="index">
+                    <span itemprop="name">Comparable</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/11/28/%E6%96%87%E7%AB%A0%E6%A0%87%E9%A2%98/" itemprop="url">
-              
-                <span itemprop="name">小李的第一篇blog</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-11-28T08:30:54+08:00"
-              content="2019-11-28" >
-          11-28
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
+      
+        <p>java默认排序算法问题</p>
+<p>在对数据进行排序时，出现一个问题，如图所示:</p>
+<p><img src="/Users/crystal/blog/source/images/comparable.png" alt="comparable"></p>
+<p>经过搜索得知，在JDK7以后，实现Comparable接口后，要满足一下三个特性：</p>
+<p>1） 自反性：x，y 的比较结果和 y，x 的比较结果相反。</p>
+<p>2） 传递性：x&gt;y,y&gt;z,则 x&gt;z。</p>
+<p>3） 对称性：x=y,则 x,z 比较结果和 y，z 比较结果相同。</p>
+<p>可以通过在代码中，System.setProperty(“java.util.Arrays.useLegacyMergeSort”, “true”);  </p>
+<p>或者设置JVM参数-Djava.util.Arrays.useLegacyMergeSort=true来兼容JDK6的代码。</p>
+<p>这是因为JDK在函数Arrays.sort中，使用了一个if判断来决定使用什么排序算法来对数组进行排序。</p>
+<p><img src="/Users/crystal/blog/source/images/array.sort.png" alt="array.sort"></p>
+<p>不设置就使用ComparableTimSort实现的TimSort算法来进行排序。</p>
+
+      
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+            <a href="/tags/Comparable/" rel="tag"># Comparable</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/11/mac%E8%BF%9E%E6%8E%A5%E6%A0%A1%E5%9B%AD%E7%BD%91%E9%97%AE%E9%A2%98/" rel="next" title="mac连接校园网问题">
+                <i class="fa fa-chevron-left"></i> mac连接校园网问题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -355,6 +444,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -585,6 +678,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

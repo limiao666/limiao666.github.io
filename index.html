@@ -258,6 +258,170 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/12/java%20Comparable%E6%8E%A5%E5%8F%A3%E4%B8%8D%E4%B8%A5%E8%B0%A8%E5%AF%BC%E8%87%B4Comparison%20method%20violates%20its%20general%20contract/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Li Miao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LiMiao's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/12/java%20Comparable%E6%8E%A5%E5%8F%A3%E4%B8%8D%E4%B8%A5%E8%B0%A8%E5%AF%BC%E8%87%B4Comparison%20method%20violates%20its%20general%20contract/" itemprop="url">java Comparable接口不严谨导致Comparison method violates its general contract</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-12T10:54:41+08:00">
+                2019-12-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/Comparable/" itemprop="url" rel="index">
+                    <span itemprop="name">Comparable</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>java默认排序算法问题</p>
+<p>在对数据进行排序时，出现一个问题，如图所示:</p>
+<p><img src="/Users/crystal/blog/source/images/comparable.png" alt="comparable"></p>
+<p>经过搜索得知，在JDK7以后，实现Comparable接口后，要满足一下三个特性：</p>
+<p>1） 自反性：x，y 的比较结果和 y，x 的比较结果相反。</p>
+<p>2） 传递性：x&gt;y,y&gt;z,则 x&gt;z。</p>
+<p>3） 对称性：x=y,则 x,z 比较结果和 y，z 比较结果相同。</p>
+<p>可以通过在代码中，System.setProperty(“java.util.Arrays.useLegacyMergeSort”, “true”);  </p>
+<p>或者设置JVM参数-Djava.util.Arrays.useLegacyMergeSort=true来兼容JDK6的代码。</p>
+<p>这是因为JDK在函数Arrays.sort中，使用了一个if判断来决定使用什么排序算法来对数组进行排序。</p>
+<p><img src="/Users/crystal/blog/source/images/array.sort.png" alt="array.sort"></p>
+<p>不设置就使用ComparableTimSort实现的TimSort算法来进行排序。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/11/mac%E8%BF%9E%E6%8E%A5%E6%A0%A1%E5%9B%AD%E7%BD%91%E9%97%AE%E9%A2%98/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1143,7 +1307,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1154,7 +1318,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -1165,7 +1329,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
