@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Servlet," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Servlet - Servlet Applet - 小服务程序 用java语言编程的服务器端程序 如何实现自己的Servlet程序 在线API - https:&#x2F;&#x2F;docs.oracle.com&#x2F;javaee&#x2F;7&#x2F;api&#x2F;  所在的API - java.servlet.Servlet[i]  javax.servlet.Servlet接口定义一些方法，让我们自己写的servlet    程序必须">
+<meta name="keywords" content="Servlet">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Servlet">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;02&#x2F;22&#x2F;Servlet&#x2F;index.html">
+<meta property="og:site_name" content="LiMiao&#39;s blog">
+<meta property="og:description" content="Servlet - Servlet Applet - 小服务程序 用java语言编程的服务器端程序 如何实现自己的Servlet程序 在线API - https:&#x2F;&#x2F;docs.oracle.com&#x2F;javaee&#x2F;7&#x2F;api&#x2F;  所在的API - java.servlet.Servlet[i]  javax.servlet.Servlet接口定义一些方法，让我们自己写的servlet    程序必须">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-02-23T05:01:56.936Z">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/02/22/Servlet/"/>
+
+
+
+
+
+  <title>Servlet | LiMiao's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/limiao666" target="_blank" rel="noopener"><img style="position: absolute; top: 0; right: 0; border: 0;" width="149" height="149" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_gray_6d6d6d.png?resize=149%2C149" class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">LiMiao's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/22/Servlet/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Li Miao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LiMiao's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Servlet</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-22T00:00:00+08:00">
+                2020-02-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Servlet/" itemprop="url" rel="index">
+                    <span itemprop="name">Servlet</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Servlet - Servlet Applet - 小服务程序</p>
+<p>用java语言编程的服务器端程序</p>
+<h2 id="如何实现自己的Servlet程序"><a href="#如何实现自己的Servlet程序" class="headerlink" title="如何实现自己的Servlet程序"></a>如何实现自己的Servlet程序</h2><ul>
+<li><p>在线API - <a href="https://docs.oracle.com/javaee/7/api/" target="_blank" rel="noopener">https://docs.oracle.com/javaee/7/api/</a></p>
+</li>
+<li><p>所在的API - java.servlet.Servlet[i]</p>
+</li>
+<li><p>javax.servlet.Servlet接口定义一些方法，让我们自己写的servlet</p>
+<p>   程序必须要实现这个接口中的所有方法</p>
+<ul>
+<li><p>jdk8.0之前，接口只能定义抽象方法,jdk8及其以后的版本接口中</p>
+<p>​    是允许定义普通的方法，采取的是@default</p>
+</li>
+</ul>
+</li>
+<li><p>servlet是用java编写的程序，运行在web服务器端</p>
+</li>
+<li><p>servlet可以用来接收和响应来自于web客户端(浏览器)的请求</p>
+<p> 采取的协议是HTTP协议(超文本传输协议)</p>
+</li>
+</ul>
+<h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2><ul>
+<li><p>写一个类去实现javax.servlet.Servlet[i]这个接口</p>
+</li>
+<li><p>写一个类去继承javax.servlet.GenericServlet[C] –支持通用协议的</p>
+</li>
+<li><h5 id="写一个类去继承javax-servlet-http-HttpServlet-C-–-仅仅支持http协议"><a href="#写一个类去继承javax-servlet-http-HttpServlet-C-–-仅仅支持http协议" class="headerlink" title="写一个类去继承javax.servlet.http.HttpServlet[C] – 仅仅支持http协议"></a>写一个类去继承javax.servlet.http.HttpServlet[C] – 仅仅支持http协议</h5><h2 id="HelloServlet讲解的过程"><a href="#HelloServlet讲解的过程" class="headerlink" title="HelloServlet讲解的过程"></a>HelloServlet讲解的过程</h2><ul>
+<li><p>编码</p>
+<p>package tech.aistar.day01;</p>
+<p>//导包<br>//除了java.lang不需要手动导入，其余包中的类或者接口，都是需要导报<br>import javax.servlet.*;<br>import java.io.IOException;</p>
+<p>/**</p>
+<ul>
+<li><p>@Description 第一个servlet程序</p>
+</li>
+<li></li>
+<li><p>@Author Miao Li</p>
+</li>
+<li></li>
+<li><p>@Date 2020/2/22</p>
+</li>
+<li></li>
+<li><p>@Version 1.0</p>
+</li>
+<li><p>/<br>public class HelloServlet implements Servlet{<br>   /**</p>
+<pre><code>* 初始化方法
+* @param servletConfig
+* @throws ServletException
+   */</code></pre><p>   @Override<br>   public void init(ServletConfig servletConfig) throws ServletException {</p>
+<pre><code>//随便在控制台输出一句话 - 主要目的是为了进行测试的
+//看这个servlet程序是否启动成功，是否能够成功被执行
+
+//快速生成输出语句的快捷键 - sout
+System.out.println(&quot;init...&quot;);</code></pre><p>   }</p>
+<p>   /**</p>
+<pre><code>* service方法 - 核心的
+* @param servletRequest
+* @param servletResponse
+* @throws ServletException
+* @throws IOException
+   */
+ @Override
+ public void service(ServletRequest servletRequest, ServletResponse servletResponse) throws ServletException, IOException {
+   System.out.println(&quot;service...&quot;);
+ }</code></pre><p>   /**</p>
+<pre><code>* 销毁方法
+   */
+ @Override
+ public void destroy() {
+   System.out.println(&quot;destory...&quot;);
+ }</code></pre><p>   /**</p>
+<pre><code>* ServletConfig对象
+* @return
+   */
+ @Override
+ public ServletConfig getServletConfig() {
+   return null;
+ }</code></pre></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getServletInfo</span><span class="params">()</span> </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+
+}</code></pre><ul>
+<li><p>编辑web.xml</p>
+<p> web3.0之前只有xml配置方法，学完xml配置方式才能更好理解</p>
+<p>注解开发的方式</p>
+<?xml version="1.0" encoding="UTF-8"?>
+<p>&lt;web-app xmlns=”<a href="http://xmlns.jcp.org/xml/ns/javaee&quot;" target="_blank" rel="noopener">http://xmlns.jcp.org/xml/ns/javaee&quot;</a></p>
+<pre><code>xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+xsi:schemaLocation=&quot;http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd&quot;
+version=&quot;3.1&quot;&gt;</code></pre>  <!--传统的web3.0之前的配置方法，采用的是xml-->
+
+<!-- 每个servlet程序都是需要在xml中进行对应的配置-->
+
+<servlet>
+
+<p>​        <!--每个servlet标签都对应一个servlet程序，并且每个servlet程序在配置文件中--></p>
+<p>​       <!--都会拥有一个servlet-name,但是需要注意的是这个servlet-name在这个xml--></p>
+<p>​     <!--配置文件中必须要是唯一的，推荐采用servlet程序命名的小驼峰的命名方式，为了提高程序的可读性--></p>
+<p>​       <servlet-name>helloServlet</servlet-name></p>
+<p>​     &lt;!–对应的servlet的类的全限定名   =  包名+类名</p>
+<p>​           检测  =  ctrl按着不松+鼠标单击–&gt;</p>
+<p>​    <servlet-class>tech.aistar.day01.HelloServlet</servlet-class></p>
+   </servlet>
+
+<!--每个servlet都有对应的一个映射路径-->
+
+<!--配置servlet的映射路径-->
+
+<servlet-mapping>
+
+<p>​     <!--此处的servlet-name一定是和某个servlet标签中的servlet-name是匹配的--></p>
+<p>​     <servlet-name>helloServlet</servlet-name></p>
+<p>​    <!-- url -统一资源定位器 -我们的servlet程序 -HelloServlet程序 -服务器中的--></p>
+   <!--资源-->
+
+  <!---->
+
+  <!--url必须是唯一的，它是这个资源在服务器中的一定标志-->
+
+<p>​        <url-pattern>/day01/hello</url-pattern></p>
+   </servlet-mapping>
+
+
+
+<ul>
+<li><p>打开浏览器 - 来访问servlet程序</p>
+<p><code>http://localhost:8080/servlet-demos/day01/hello</code></p>
+<p>http - 超文本传输协议</p>
+<p>Localhost - 服务器所在主机的ip地址，服务器是在本地(也可以写成127.0.0.1)</p>
+<p>8080 - tomcat配置的端口号，应用程序和端口号之间是1:1的关系。</p>
+<p>/servlet-demos - 项目的上下文路径 -暂时理解成某个servlet项目的项目名称</p>
+<p>/day01/hello - 某个servlet程序的资源路径，某个servlet的唯一标志。</p>
+<ul>
+<li>具体的客户端访问 - 最终执行这个流程</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>  ​       </p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Servlet/" rel="tag"># Servlet</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/02/22/tomcat%E4%B8%BB%E8%A6%81%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/" rel="next" title="tomcat主要目录结构">
+                <i class="fa fa-chevron-left"></i> tomcat主要目录结构
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/02/23/servlet_2/" rel="prev" title="Servlet">
+                Servlet <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Li Miao</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#如何实现自己的Servlet程序"><span class="nav-number">1.</span> <span class="nav-text">如何实现自己的Servlet程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#具体实现"><span class="nav-number">2.</span> <span class="nav-text">具体实现</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#写一个类去继承javax-servlet-http-HttpServlet-C-–-仅仅支持http协议"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">写一个类去继承javax.servlet.http.HttpServlet[C] – 仅仅支持http协议</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HelloServlet讲解的过程"><span class="nav-number">3.</span> <span class="nav-text">HelloServlet讲解的过程</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Li Miao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/clicklove.js"></script>
+  
+</body>
+</html>
