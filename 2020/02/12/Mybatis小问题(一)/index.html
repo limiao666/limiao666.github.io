@@ -79,13 +79,13 @@
 
 
 
-<meta name="description" content="问题如下: Caused by: java.sql.SQLException: Unknown initial character set index ‘255’ received from server. 主要是因为mysql的版本问题。在问题出现之前我用的是 1&amp;lt;dependency&amp;gt;2    &amp;lt;groupId&amp;gt;mysql&amp;lt;&#x2F;groupId&amp;gt;3    &amp;lt">
+<meta name="description" content="问题如下: Caused by: java.sql.SQLException: Unknown initial character set index &amp;apos;255&amp;apos; received from server. 主要是因为mysql的版本问题。在问题出现之前我用的是 1&amp;lt;dependency&amp;gt;2    &amp;lt;groupId&amp;gt;mysql&amp;lt;&#x2F;groupId&amp;gt;3    &amp;lt">
 <meta name="keywords" content="mybatis">
 <meta property="og:type" content="article">
 <meta property="og:title" content="从服务器收到未知的初始字符集索引&quot;255&quot;">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;02&#x2F;12&#x2F;Mybatis%E5%B0%8F%E9%97%AE%E9%A2%98(%E4%B8%80)&#x2F;index.html">
 <meta property="og:site_name" content="LiMiao&#39;s blog">
-<meta property="og:description" content="问题如下: Caused by: java.sql.SQLException: Unknown initial character set index ‘255’ received from server. 主要是因为mysql的版本问题。在问题出现之前我用的是 1&amp;lt;dependency&amp;gt;2    &amp;lt;groupId&amp;gt;mysql&amp;lt;&#x2F;groupId&amp;gt;3    &amp;lt">
+<meta property="og:description" content="问题如下: Caused by: java.sql.SQLException: Unknown initial character set index &amp;apos;255&amp;apos; received from server. 主要是因为mysql的版本问题。在问题出现之前我用的是 1&amp;lt;dependency&amp;gt;2    &amp;lt;groupId&amp;gt;mysql&amp;lt;&#x2F;groupId&amp;gt;3    &amp;lt">
 <meta property="og:locale" content="en">
 <meta property="og:updated_time" content="2020-02-12T01:49:17.736Z">
 <meta name="twitter:card" content="summary">
@@ -351,10 +351,9 @@
 
       
         <p>问题如下:</p>
-<p>Caused by: java.sql.SQLException: Unknown initial character set index ‘255’ received from server.</p>
+<p>Caused by: java.sql.SQLException: Unknown initial character set index '255' received from server.</p>
 <p>主要是因为mysql的版本问题。在问题出现之前我用的是</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    &lt;groupId&gt;mysql&lt;/groupId&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    &lt;version&gt;5.1.6&lt;/version&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">&lt;/dependency&gt;</span></pre></td></tr></table></figure>
-
+<p><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    &lt;groupId&gt;mysql&lt;/groupId&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    &lt;version&gt;5.1.6&lt;/version&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">&lt;/dependency&gt;</span></pre></td></tr></table></figure></p>
 <p>问题出在MySQL v.8.0中所做的更改中：</p>
 <blockquote>
 <p>字符集支持</p>
@@ -363,8 +362,7 @@
 <p>在collation_server的和collation_database查看系统变量的缺省值已经从<strong>latin1_swedish_ci</strong> 到<strong>utf8mb4_0900_ai_ci</strong>。</p>
 </blockquote>
 <p>所有这些更改已在新版本的mysql-connector-java中处理，因此无需配置MySQL。因此，请从更改<code>5.1.6</code>为<code>5.1.44</code>解决此问题：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    &lt;groupId&gt;mysql&lt;/groupId&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    &lt;version&gt;5.1.44&lt;/version&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">&lt;/dependency&gt;</span></pre></td></tr></table></figure>
-
+<p><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    &lt;groupId&gt;mysql&lt;/groupId&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    &lt;version&gt;5.1.44&lt;/version&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">&lt;/dependency&gt;</span></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -477,7 +475,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -488,7 +486,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -499,7 +497,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
