@@ -79,13 +79,13 @@
 
 
 
-<meta name="description" content="在SqlMapConfig.xml文件中 1&amp;lt;mappers&amp;gt;2    &amp;lt;mapper resource&#x3D;&quot;com&#x2F;it&#x2F;dao&#x2F;IUserDao.xml&quot;&#x2F;&amp;gt;3&amp;lt;&#x2F;mappers&amp;gt; resource可以写成class,如果是resource则使用的是xml的配置，如果没有则是注解形式。 在自定义mybatis中，取出mappers中的所有mapper标签时,底">
+<meta name="description" content="在SqlMapConfig.xml文件中 1&amp;lt;mappers&amp;gt;2    &amp;lt;mapper resource&#x3D;&quot;com&#x2F;it&#x2F;dao&#x2F;IUserDao.xml&quot;&#x2F;&amp;gt;3&amp;lt;&#x2F;mappers&amp;gt;  resource可以写成class,如果是resource则使用的是xml的配置，如果没有则是注解形式。 在自定义mybatis中，取出mappers中的所有mapper标签时,">
 <meta name="keywords" content="mybatis">
 <meta property="og:type" content="article">
 <meta property="og:title" content="对于mapper&#x2F;mapper标签">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;02&#x2F;15&#x2F;mybatis%E5%B0%8F%E7%9F%A5%E8%AF%86(1)&#x2F;index.html">
 <meta property="og:site_name" content="LiMiao&#39;s blog">
-<meta property="og:description" content="在SqlMapConfig.xml文件中 1&amp;lt;mappers&amp;gt;2    &amp;lt;mapper resource&#x3D;&quot;com&#x2F;it&#x2F;dao&#x2F;IUserDao.xml&quot;&#x2F;&amp;gt;3&amp;lt;&#x2F;mappers&amp;gt; resource可以写成class,如果是resource则使用的是xml的配置，如果没有则是注解形式。 在自定义mybatis中，取出mappers中的所有mapper标签时,底">
+<meta property="og:description" content="在SqlMapConfig.xml文件中 1&amp;lt;mappers&amp;gt;2    &amp;lt;mapper resource&#x3D;&quot;com&#x2F;it&#x2F;dao&#x2F;IUserDao.xml&quot;&#x2F;&amp;gt;3&amp;lt;&#x2F;mappers&amp;gt;  resource可以写成class,如果是resource则使用的是xml的配置，如果没有则是注解形式。 在自定义mybatis中，取出mappers中的所有mapper标签时,">
 <meta property="og:locale" content="en">
 <meta property="og:updated_time" content="2020-02-15T14:48:33.770Z">
 <meta name="twitter:card" content="summary">
@@ -351,12 +351,15 @@
 
       
         <p>在SqlMapConfig.xml文件中</p>
-<p><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">&lt;mappers&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    &lt;mapper resource=<span class="string">"com/it/dao/IUserDao.xml"</span>/&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">&lt;/mappers&gt;</span></pre></td></tr></table></figure></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">&lt;mappers&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    &lt;mapper resource=<span class="string">"com/it/dao/IUserDao.xml"</span>/&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">&lt;/mappers&gt;</span></pre></td></tr></table></figure>
+
 <p>resource可以写成class,如果是resource则使用的是xml的配置，如果没有则是注解形式。</p>
 <p>在自定义mybatis中，取出mappers中的所有mapper标签时,底层类Configuration中，</p>
-<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> Map&lt;String, Mapper&gt; mappers;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Map&lt;String, Mapper&gt; <span class="title">getMappers</span><span class="params">()</span> </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">return</span> mappers;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setMappers</span><span class="params">(Map&lt;String, Mapper&gt; mappers)</span> </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">this</span>.mappers = mappers;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> Map&lt;String, Mapper&gt; mappers;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Map&lt;String, Mapper&gt; <span class="title">getMappers</span><span class="params">()</span> </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">return</span> mappers;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setMappers</span><span class="params">(Map&lt;String, Mapper&gt; mappers)</span> </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">this</span>.mappers = mappers;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+
 <p>setMappers方法不能用=因为这样在取出mappers中的mapper标签时，会覆盖前面的数据,不能使用直接赋值的方式。</p>
-<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setMappers</span><span class="params">(Map&lt;String, Mapper&gt; mappers)</span> </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">this</span>.mappers.putAll(mappers);<span class="comment">//此处应用追加的方式</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setMappers</span><span class="params">(Map&lt;String, Mapper&gt; mappers)</span> </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">this</span>.mappers.putAll(mappers);<span class="comment">//此处应用追加的方式</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -469,7 +472,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -480,7 +483,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -491,7 +494,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
