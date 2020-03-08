@@ -79,13 +79,13 @@
 
 
 
-<meta name="description" content="oracle安装配置 刚开始部署有点问题，搜索了半天也不知道怎么搞，最后决定移除oracle重新装。   首先停止oracle: docker stop oracle   移除oracle:  docker rm oracle   如果没有移除掉: dock  rmi (image id)   然后docker ps -a  和 docker images查看是否移除   以下是重新部署步骤:">
+<meta name="description" content="oracle安装配置刚开始部署有点问题，搜索了半天也不知道怎么搞，最后决定移除oracle重新装。  首先停止oracle: docker stop oracle  移除oracle:  docker rm oracle  如果没有移除掉: dock  rmi (image id)  然后docker ps -a  和 docker images查看是否移除  以下是重新部署步骤:  下载:  d">
 <meta name="keywords" content="oracle">
 <meta property="og:type" content="article">
 <meta property="og:title" content="oracle配置">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;02&#x2F;26&#x2F;oracle%E9%85%8D%E7%BD%AE&#x2F;index.html">
 <meta property="og:site_name" content="LiMiao&#39;s blog">
-<meta property="og:description" content="oracle安装配置 刚开始部署有点问题，搜索了半天也不知道怎么搞，最后决定移除oracle重新装。   首先停止oracle: docker stop oracle   移除oracle:  docker rm oracle   如果没有移除掉: dock  rmi (image id)   然后docker ps -a  和 docker images查看是否移除   以下是重新部署步骤:">
+<meta property="og:description" content="oracle安装配置刚开始部署有点问题，搜索了半天也不知道怎么搞，最后决定移除oracle重新装。  首先停止oracle: docker stop oracle  移除oracle:  docker rm oracle  如果没有移除掉: dock  rmi (image id)  然后docker ps -a  和 docker images查看是否移除  以下是重新部署步骤:  下载:  d">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;oracle_1.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;oracle_2.png">
@@ -356,101 +356,72 @@
       
 
       
-        <h2>oracle安装配置</h2>
-<p>刚开始部署有点问题，搜索了半天也不知道怎么搞，最后决定移除oracle重新装。</p>
+        <h2 id="oracle安装配置"><a href="#oracle安装配置" class="headerlink" title="oracle安装配置"></a>oracle安装配置</h2><p>刚开始部署有点问题，搜索了半天也不知道怎么搞，最后决定移除oracle重新装。</p>
 <ul>
-<li>
-<p>首先停止oracle: docker stop oracle</p>
+<li><p>首先停止oracle: docker stop oracle</p>
 </li>
-<li>
-<p>移除oracle:  docker rm oracle</p>
+<li><p>移除oracle:  docker rm oracle</p>
 </li>
-<li>
-<p>如果没有移除掉: dock  rmi (image id)</p>
+<li><p>如果没有移除掉: dock  rmi (image id)</p>
 </li>
-<li>
-<p>然后docker ps -a  和 docker images查看是否移除</p>
+<li><p>然后docker ps -a  和 docker images查看是否移除</p>
 </li>
-<li>
-<p>以下是重新部署步骤:</p>
+<li><p>以下是重新部署步骤:</p>
 </li>
-<li>
-<p>下载:  docker pull registry.cn-hangzhou.aliyuncs.com/helowin/oracle_11g</p>
+<li><p>下载:  docker pull registry.cn-hangzhou.aliyuncs.com/helowin/oracle_11g</p>
 </li>
-<li>
-<p>docker run -d -p 1521:1521 --name oracle registry.aliyuncs.com/helowin/oracle_11g</p>
+<li><p>docker run -d -p 1521:1521 –name oracle registry.aliyuncs.com/helowin/oracle_11g</p>
 </li>
-<li>
-<p>docker exec -it oracle bash</p>
+<li><p>docker exec -it oracle bash</p>
 </li>
-<li>
-<p>su root   password为: helowin</p>
+<li><p>su root   password为: helowin</p>
 </li>
-<li>
-<p>vi /etc/profile</p>
+<li><p>vi /etc/profile    </p>
 </li>
-<li>
-<p>将以下添加到profile最下面:</p>
+<li><p>将以下添加到profile最下面:</p>
 <p>export ORACLE_HOME=/home/oracle/app/oracle/product/11.2.0/dbhome_2</p>
 <p>export ORACLE_SID=helowin</p>
 <p>export PATH=$ORACLE_HOME/bin:$PATH</p>
 </li>
-<li>
-<p>保存退出后: source /etc/profile</p>
+<li><p>保存退出后: source /etc/profile</p>
 </li>
-<li>
-<p>su  oracle</p>
+<li><p>su  oracle</p>
 </li>
-<li>
-<p>qlplus /nolog</p>
+<li><p>qlplus /nolog</p>
 </li>
-<li>
-<p>su  oracle</p>
+<li><p>su  oracle</p>
 </li>
-<li>
-<p>sqlplus /nolog</p>
+<li><p>sqlplus /nolog</p>
 </li>
-<li>
-<p>进入sql以后:   conn /as sysdba</p>
+<li><p>进入sql以后:   conn /as sysdba</p>
 </li>
-<li>
-<p>alter user system identified by oracle;</p>
+<li><p>alter user system identified by oracle;</p>
 </li>
-<li>
-<p>alter user sys identified by oracle;</p>
+<li><p>alter user sys identified by oracle;</p>
 </li>
-<li>
-<p>ALTER PROFILE DEFAULT LIMIT PASSWORD_LIFE_TIME UNLIMITED;</p>
+<li><p>ALTER PROFILE DEFAULT LIMIT PASSWORD_LIFE_TIME UNLIMITED;</p>
 </li>
-<li>
-<p>select * from user  执行这个语句应该会有信息。</p>
+<li><p>select * from user  执行这个语句应该会有信息。</p>
 </li>
-<li>
-<p>退出：两次exit 退到root层</p>
+<li><p>退出：两次exit 退到root层</p>
 </li>
-<li>
-<p>打开navicat创建oracle连接</p>
+<li><p>打开navicat创建oracle连接</p>
 </li>
-<li>
-<p>ip为本机ip</p>
+<li><p>ip为本机ip</p>
 </li>
-<li>
-<p>Username：system</p>
+<li><p>Username：system</p>
 </li>
-<li>
-<p>Password: oracle</p>
+<li><p>Password: oracle</p>
 </li>
 </ul>
-<h2>如下图所示:</h2>
-<p><img src="/images/oracle_1.png" alt="oracle_1"></p>
+<h2 id="如下图所示"><a href="#如下图所示" class="headerlink" title="如下图所示:"></a>如下图所示:</h2><p><img src="/images/oracle_1.png" alt="oracle_1"></p>
 <p><img src="/images/oracle_2.png" alt="oracle_2"></p>
 <p>如果有问题解决不了，那就卸载干净再来一次</p>
 <p><img src="/images/oracle_3.png" alt="oracle_3"></p>
 <p>最后连接成功效果图:</p>
 <p><img src="/images/%E6%95%88%E6%9E%9C%E5%9B%BE1.png" alt="效果图1"></p>
 <p><img src="/images/%E6%95%88%E6%9E%9C%E5%9B%BE2.png" alt="效果图2"></p>
-<h4>安装docker地址:</h4>
-<p>https://www.cnblogs.com/yufeng218/p/8370670.html</p>
+<h4 id="安装docker地址"><a href="#安装docker地址" class="headerlink" title="安装docker地址:"></a>安装docker地址:</h4><p><a href="https://www.cnblogs.com/yufeng218/p/8370670.html" target="_blank" rel="noopener">https://www.cnblogs.com/yufeng218/p/8370670.html</a></p>
 
       
     </div>
@@ -572,7 +543,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-count">30</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -627,7 +598,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">oracle安装配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">2.</span> <span class="nav-text">如下图所示:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">2.0.1.</span> <span class="nav-text">安装docker地址:</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#oracle安装配置"><span class="nav-number">1.</span> <span class="nav-text">oracle安装配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如下图所示"><span class="nav-number">2.</span> <span class="nav-text">如下图所示:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装docker地址"><span class="nav-number">2.0.1.</span> <span class="nav-text">安装docker地址:</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
