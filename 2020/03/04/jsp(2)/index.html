@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1.JDBC:  Java DataBase  Connectivity   可以为多种关系型数据库DBMS 提供统一的访问方式  2.JDBC API功能:  三件事，具体是通过以下类&#x2F;接口实现: DriverManager: 管理jdbc驱动 Connection:连接 Connection产生操作数据库的对象:   Connection产生Statement对象   createStatem">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jsp(2)">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;04&#x2F;jsp(2)&#x2F;index.html">
+<meta property="og:site_name" content="LiMiao&#39;s blog">
+<meta property="og:description" content="1.JDBC:  Java DataBase  Connectivity   可以为多种关系型数据库DBMS 提供统一的访问方式  2.JDBC API功能:  三件事，具体是通过以下类&#x2F;接口实现: DriverManager: 管理jdbc驱动 Connection:连接 Connection产生操作数据库的对象:   Connection产生Statement对象   createStatem">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;18.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;19.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;21.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;22.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;images&#x2F;20.png">
+<meta property="og:updated_time" content="2020-03-05T15:01:44.274Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;18.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/03/04/jsp(2)/"/>
+
+
+
+
+
+  <title>jsp(2) | LiMiao's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/limiao666" target="_blank" rel="noopener"><img style="position: absolute; top: 0; right: 0; border: 0;" width="149" height="149" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_gray_6d6d6d.png?resize=149%2C149" class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">LiMiao's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/jsp(2)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Li Miao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LiMiao's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">jsp(2)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-04T22:08:33+08:00">
+                2020-03-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>1.JDBC:  Java DataBase  Connectivity   可以为多种关系型数据库DBMS 提供统一的访问方式</p>
+<p><img src="/images/18.png" alt="18"></p>
+<p>2.JDBC API功能:</p>
+<p><img src="/images/19.png" alt="19"></p>
+<p>三件事，具体是通过以下类/接口实现:</p>
+<p><strong>DriverManager: 管理jdbc驱动</strong></p>
+<p><strong>Connection:连接</strong></p>
+<p>Connection产生操作数据库的对象:</p>
+<ul>
+<li>
+<p>Connection产生Statement对象   createStatement()</p>
+</li>
+<li>
+<p>Connection产生PrepareStatement()</p>
+</li>
+<li>
+<p>Connection产生CallableStatement对象:preparCall();</p>
+</li>
+</ul>
+<p><strong>Statement(PreparedStatement):增删改查 (通过Connection产生)</strong></p>
+<p>Statement操作数据库:</p>
+<ul>
+<li>
+<p>增删改:executeUpdate();</p>
+</li>
+<li>
+<p>查询:executeQuery();</p>
+</li>
+</ul>
+<p><strong>PreparedStatement操作数据库:</strong></p>
+<ul>
+<li>
+<p>public interface PreparedStatement extends Statement</p>
+</li>
+<li>
+<p>增删改:executeUpdate();</p>
+</li>
+<li>
+<p>查询:executeQuery();</p>
+</li>
+<li>
+<p>赋值操作: setXxx(); 先用问号添加占位符，然后再用setXx(位置(1,2,3,4)|值)替代;</p>
+</li>
+</ul>
+<h4>Statement和PreparedStatement的区别:</h4>
+<p>1.Statement</p>
+<p>sql</p>
+<p>executeUpdate(sql)</p>
+<p>2.PreparedStatement</p>
+<p>sql(可能存在占位符?)</p>
+<p>在创建PreparedStatement对象时，将sql预编译 prepareStatement(sql)</p>
+<p>executeUpdate()执行</p>
+<p>setXxx():将占位符替换掉</p>
+<h5>推荐使用PreparedStatement原因如下:</h5>
+<h5>1.编码更加简单,避免字符串拼接</h5>
+<p>String name=&quot;zs&quot;;</p>
+<p>Int age=23;</p>
+<p>stmt:</p>
+<p>String sql=&quot;insert into student(stunt,stuname) values('&quot;+name+&quot;', &quot;+age+&quot;)&quot;;</p>
+<p>Stmt.executeUpdate(sql);</p>
+<p>pstmt:</p>
+<p>String sql=&quot;insert into student(stunt,stuname) values(?,?)&quot;;</p>
+<p>pstmt=connection.prepareStatement(sql); //预编译sql</p>
+<p>pstmt.setString(1,name);</p>
+<p>pstmt.setInt(2,age);</p>
+<p>pstmt.executeUpdate();</p>
+<h5>2.提高性能:(因为有预编译操作，预编译只需要执行一次)</h5>
+<p>需要重复增加100条数</p>
+<p>stmt:</p>
+<p>String sql=&quot;insert into student(stunt,stuname) values('&quot;+name+&quot;', &quot;+age+&quot;)&quot;;</p>
+<p>Stmt.executeUpdate(sql);  需要编译100次</p>
+<p>pstmt:</p>
+<p>String sql=&quot;insert into student(stunt,stuname) values(?,?)&quot;;</p>
+<p>pstmt=connection.prepareStatement(sql); //预编译sql</p>
+<p>pstmt.setString(1,name);</p>
+<p>pstmt.setInt(2,age);</p>
+<p>for(100){</p>
+<p>pstmt.executeUpdate();   省略了sql预编译的操作</p>
+<p>}</p>
+<h5>3.安全(可以有效防止sql注入)</h5>
+<p><strong>sql注入: 将客户输入的内容 和开发人员的sql语句 混为一体</strong></p>
+<ul>
+<li>stmt: 存在被sql注入的风险
+<ul>
+<li>(例如输入用户名:  任意值 ' or 1=1 --</li>
+</ul>
+</li>
+</ul>
+<p>​                                               密码:任意值)</p>
+<p><img src="/images/21.png" alt="21"></p>
+<ul>
+<li>
+<p>分析:</p>
+<ul>
+<li>select count(<em>) from login where name='任意值' or 1=1 -- ' and pwd='任意值'</em></li>
+<li><em>select count(</em>) from login where name='任意值' or 1=1</li>
+<li>select count(<em>) from login</em></li>
+<li><em>select count(</em>) from login where uname='&quot; +name +&quot;' and pwd=' &quot; +pwd+&quot;'</li>
+</ul>
+</li>
+<li>
+<p>pstmt:有效防止sql注入</p>
+<ul>
+<li>推荐使用pstmt</li>
+</ul>
+</li>
+</ul>
+<h4>(Oracle数据库)CallableStatement:调用数据库中的存储过程/存储函数(通过Connection产生)</h4>
+<p>connection.prepareCall(存储过程或存储函数名);</p>
+<p>参数格式:</p>
+<p>存储过程(无返回值):</p>
+<p>​              { call   存储过程名(参数列表)}</p>
+<p>存储函数(有返回值):</p>
+<p>​               { ? = call   存储函数名(参数列表) }</p>
+<p>Create or replace procedure addTwoNum (num1  in number,num2  in number, result out number) -- 1+2  -&gt;3</p>
+<p>as</p>
+<p>begin</p>
+<p>​           Result := num1+num2;</p>
+<p>end;</p>
+<p><img src="/images/22.png" alt="22"></p>
+<p>jdbc调用存储过程的步骤:</p>
+<p>a.产生调用存储过程的对象 (CallableStatement) cstmt = connection.prepareCall(&quot;.....&quot;);</p>
+<p>b.通过setXxx()处理 输出参数值  cstmt.setInt(1,30);</p>
+<p>c.通过registerOutParameter(...)处理输出参数类型</p>
+<p>d. cstmt.execute()执行</p>
+<p>e.接受 输出值(返回值)   getXxx();</p>
+<p>Result:返回的结果集(上面的Statement等产生) select * from xxx</p>
+<ul>
+<li>
+<p>next()：光标下移，判断是否有下一条数据; true/false</p>
+</li>
+<li>
+<p>previous():光标上移 true/false</p>
+</li>
+<li>
+<p>getXxx(字段名|位置): 获取具体的字段值</p>
+</li>
+</ul>
+<p><img src="//images/20.png" alt="20"></p>
+<p>3.jdbc访问数据库的具体步骤:</p>
+<p>a.导入驱动,加载具体的驱动类</p>
+<p>b.与数据库建立连接</p>
+<p>c.发送sql,执行</p>
+<p>d.处理结果集(查询)</p>
+<p>4.数据库驱动</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>驱动</th>
+<th>具体驱动类</th>
+<th>连接字符串</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Oracle</td>
+<td>Ojdbc-x.jar</td>
+<td>oracle.jdbc.OracleDriver</td>
+<td>Jdbc:oracle:thin:@localhost:1521:ORCL</td>
+</tr>
+<tr>
+<td>MySQL</td>
+<td>Mysql-connector-java-x.jar</td>
+<td>com.mysql.jdbc.Driver</td>
+<td>Jdbc:mysql://localhost:3306/数据库实例名</td>
+</tr>
+<tr>
+<td>SqlServer</td>
+<td>Sqljdbc-x.jar</td>
+<td>com.microsoft.sqlserver.jdbc.SQLServerDriver</td>
+<td>Jdbc:microsoft:sqlserver:localhost:1433;databasename=数据库实例名</td>
+</tr>
+</tbody>
+</table>
+<h4>jdbc总结(模板)</h4>
+<p>a.导入驱动包，加载具体驱动类Class.forName(&quot;具体驱动类&quot;);</p>
+<p>b.与数据库建立连接connection =DriverManager.getConnection(...);</p>
+<p>c.通过connection，获取操作数据库的对象(Statement\PreparedStatement\CallabeStatement);</p>
+<p>d.(查询)处理结果集 re=pstmt.executeQuery();</p>
+<p>​                                  while(rs.next()){      rs.getXxx(..);   }</p>
+<p>​                                  catch(ClassNotFoundException e){</p>
+<p>​                                   }catch(SQLException e){</p>
+<p>​                                   } catch(Exception e){</p>
+<p>​                                   }finally{</p>
+<p>​                                           //打开顺序与关闭顺序相反</p>
+<p>​                                         if(rs!=null)   rs.close();</p>
+<p>​                                          If(pstmt!=null)  pstmt.close();</p>
+<p>​                                          if(connection!=null)  connection.close();</p>
+<p>​                                    }</p>
+<p>jdbc中，除了Class.forName()抛出ClassNotFoundException  其余都抛出SQLException</p>
+<p>jsp访问数据库</p>
+<p>jsp就是html中嵌套的java代码,因此 java代码可以写在jsp中(&lt;%%&gt;)</p>
+<p>导包操作: java项目: 1.jar复制到工程  2.右键该jar：build path --&gt; add to bulid Path</p>
+<p>​                 web项目: jar复制到WEB-INF/lib里</p>
+<p>核心:  就是将 java中的jdbc代码，复制到jsp中的&lt;%%&gt;</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/03/03/jsp(1)/" rel="next" title="jsp(1)">
+                <i class="fa fa-chevron-left"></i> jsp(1)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/03/07/math(1)/" rel="prev" title="高数笔记">
+                高数笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Li Miao</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">Statement和PreparedStatement的区别:</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#null"><span class="nav-number">1.1.</span> <span class="nav-text">推荐使用PreparedStatement原因如下:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#null"><span class="nav-number">1.2.</span> <span class="nav-text">1.编码更加简单,避免字符串拼接</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#null"><span class="nav-number">1.3.</span> <span class="nav-text">2.提高性能:(因为有预编译操作，预编译只需要执行一次)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#null"><span class="nav-number">1.4.</span> <span class="nav-text">3.安全(可以有效防止sql注入)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">2.</span> <span class="nav-text">(Oracle数据库)CallableStatement:调用数据库中的存储过程/存储函数(通过Connection产生)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">3.</span> <span class="nav-text">jdbc总结(模板)</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Li Miao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/clicklove.js"></script>
+  
+</body>
+</html>
