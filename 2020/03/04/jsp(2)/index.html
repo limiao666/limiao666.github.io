@@ -79,12 +79,12 @@
 
 
 
-<meta name="description" content="1.JDBC:  Java DataBase  Connectivity   可以为多种关系型数据库DBMS 提供统一的访问方式  2.JDBC API功能:  三件事，具体是通过以下类&#x2F;接口实现: DriverManager: 管理jdbc驱动 Connection:连接 Connection产生操作数据库的对象:   Connection产生Statement对象   createStatem">
+<meta name="description" content="1.JDBC:  Java DataBase  Connectivity   可以为多种关系型数据库DBMS 提供统一的访问方式  2.JDBC API功能:  三件事，具体是通过以下类&#x2F;接口实现: DriverManager: 管理jdbc驱动 Connection:连接 Connection产生操作数据库的对象:  Connection产生Statement对象   createStateme">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jsp(2)">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;04&#x2F;jsp(2)&#x2F;index.html">
 <meta property="og:site_name" content="LiMiao&#39;s blog">
-<meta property="og:description" content="1.JDBC:  Java DataBase  Connectivity   可以为多种关系型数据库DBMS 提供统一的访问方式  2.JDBC API功能:  三件事，具体是通过以下类&#x2F;接口实现: DriverManager: 管理jdbc驱动 Connection:连接 Connection产生操作数据库的对象:   Connection产生Statement对象   createStatem">
+<meta property="og:description" content="1.JDBC:  Java DataBase  Connectivity   可以为多种关系型数据库DBMS 提供统一的访问方式  2.JDBC API功能:  三件事，具体是通过以下类&#x2F;接口实现: DriverManager: 管理jdbc驱动 Connection:连接 Connection产生操作数据库的对象:  Connection产生Statement对象   createStateme">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;18.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;19.png">
@@ -342,43 +342,33 @@
 <p><strong>Connection:连接</strong></p>
 <p>Connection产生操作数据库的对象:</p>
 <ul>
-<li>
-<p>Connection产生Statement对象   createStatement()</p>
+<li><p>Connection产生Statement对象   createStatement()</p>
 </li>
-<li>
-<p>Connection产生PrepareStatement()</p>
+<li><p>Connection产生PrepareStatement()</p>
 </li>
-<li>
-<p>Connection产生CallableStatement对象:preparCall();</p>
+<li><p>Connection产生CallableStatement对象:preparCall();</p>
 </li>
 </ul>
 <p><strong>Statement(PreparedStatement):增删改查 (通过Connection产生)</strong></p>
 <p>Statement操作数据库:</p>
 <ul>
-<li>
-<p>增删改:executeUpdate();</p>
+<li><p>增删改:executeUpdate();</p>
 </li>
-<li>
-<p>查询:executeQuery();</p>
+<li><p>查询:executeQuery();</p>
 </li>
 </ul>
 <p><strong>PreparedStatement操作数据库:</strong></p>
 <ul>
-<li>
-<p>public interface PreparedStatement extends Statement</p>
+<li><p>public interface PreparedStatement extends Statement</p>
 </li>
-<li>
-<p>增删改:executeUpdate();</p>
+<li><p>增删改:executeUpdate();</p>
 </li>
-<li>
-<p>查询:executeQuery();</p>
+<li><p>查询:executeQuery();</p>
 </li>
-<li>
-<p>赋值操作: setXxx(); 先用问号添加占位符，然后再用setXx(位置(1,2,3,4)|值)替代;</p>
+<li><p>赋值操作: setXxx(); 先用问号添加占位符，然后再用setXx(位置(1,2,3,4)|值)替代;</p>
 </li>
 </ul>
-<h4>Statement和PreparedStatement的区别:</h4>
-<p>1.Statement</p>
+<h4 id="Statement和PreparedStatement的区别"><a href="#Statement和PreparedStatement的区别" class="headerlink" title="Statement和PreparedStatement的区别:"></a>Statement和PreparedStatement的区别:</h4><p>1.Statement</p>
 <p>sql</p>
 <p>executeUpdate(sql)</p>
 <p>2.PreparedStatement</p>
@@ -386,89 +376,78 @@
 <p>在创建PreparedStatement对象时，将sql预编译 prepareStatement(sql)</p>
 <p>executeUpdate()执行</p>
 <p>setXxx():将占位符替换掉</p>
-<h5>推荐使用PreparedStatement原因如下:</h5>
-<h5>1.编码更加简单,避免字符串拼接</h5>
-<p>String name=&quot;zs&quot;;</p>
+<h5 id="推荐使用PreparedStatement原因如下"><a href="#推荐使用PreparedStatement原因如下" class="headerlink" title="推荐使用PreparedStatement原因如下:"></a>推荐使用PreparedStatement原因如下:</h5><h5 id="1-编码更加简单-避免字符串拼接"><a href="#1-编码更加简单-避免字符串拼接" class="headerlink" title="1.编码更加简单,避免字符串拼接"></a>1.编码更加简单,避免字符串拼接</h5><p>String name=”zs”;</p>
 <p>Int age=23;</p>
 <p>stmt:</p>
-<p>String sql=&quot;insert into student(stunt,stuname) values('&quot;+name+&quot;', &quot;+age+&quot;)&quot;;</p>
+<p>String sql=”insert into student(stunt,stuname) values(‘“+name+”‘, “+age+”)”;</p>
 <p>Stmt.executeUpdate(sql);</p>
 <p>pstmt:</p>
-<p>String sql=&quot;insert into student(stunt,stuname) values(?,?)&quot;;</p>
+<p>String sql=”insert into student(stunt,stuname) values(?,?)”;</p>
 <p>pstmt=connection.prepareStatement(sql); //预编译sql</p>
 <p>pstmt.setString(1,name);</p>
 <p>pstmt.setInt(2,age);</p>
 <p>pstmt.executeUpdate();</p>
-<h5>2.提高性能:(因为有预编译操作，预编译只需要执行一次)</h5>
-<p>需要重复增加100条数</p>
+<h5 id="2-提高性能-因为有预编译操作，预编译只需要执行一次"><a href="#2-提高性能-因为有预编译操作，预编译只需要执行一次" class="headerlink" title="2.提高性能:(因为有预编译操作，预编译只需要执行一次)"></a>2.提高性能:(因为有预编译操作，预编译只需要执行一次)</h5><p>需要重复增加100条数</p>
 <p>stmt:</p>
-<p>String sql=&quot;insert into student(stunt,stuname) values('&quot;+name+&quot;', &quot;+age+&quot;)&quot;;</p>
+<p>String sql=”insert into student(stunt,stuname) values(‘“+name+”‘, “+age+”)”;</p>
 <p>Stmt.executeUpdate(sql);  需要编译100次</p>
 <p>pstmt:</p>
-<p>String sql=&quot;insert into student(stunt,stuname) values(?,?)&quot;;</p>
+<p>String sql=”insert into student(stunt,stuname) values(?,?)”;</p>
 <p>pstmt=connection.prepareStatement(sql); //预编译sql</p>
 <p>pstmt.setString(1,name);</p>
 <p>pstmt.setInt(2,age);</p>
 <p>for(100){</p>
 <p>pstmt.executeUpdate();   省略了sql预编译的操作</p>
 <p>}</p>
-<h5>3.安全(可以有效防止sql注入)</h5>
-<p><strong>sql注入: 将客户输入的内容 和开发人员的sql语句 混为一体</strong></p>
+<h5 id="3-安全-可以有效防止sql注入"><a href="#3-安全-可以有效防止sql注入" class="headerlink" title="3.安全(可以有效防止sql注入)"></a>3.安全(可以有效防止sql注入)</h5><p><strong>sql注入: 将客户输入的内容 和开发人员的sql语句 混为一体</strong></p>
 <ul>
-<li>stmt: 存在被sql注入的风险
-<ul>
-<li>(例如输入用户名:  任意值 ' or 1=1 --</li>
+<li>stmt: 存在被sql注入的风险<ul>
+<li>(例如输入用户名:  任意值 ‘ or 1=1 –</li>
 </ul>
 </li>
 </ul>
 <p>​                                               密码:任意值)</p>
 <p><img src="/images/21.png" alt="21"></p>
 <ul>
-<li>
-<p>分析:</p>
+<li><p>分析:</p>
 <ul>
-<li>select count(<em>) from login where name='任意值' or 1=1 -- ' and pwd='任意值'</em></li>
-<li><em>select count(</em>) from login where name='任意值' or 1=1</li>
+<li>select count(<em>) from login where name=’任意值’ or 1=1 – ‘ and pwd=’任意值’</em></li>
+<li><em>select count(</em>) from login where name=’任意值’ or 1=1</li>
 <li>select count(<em>) from login</em></li>
-<li><em>select count(</em>) from login where uname='&quot; +name +&quot;' and pwd=' &quot; +pwd+&quot;'</li>
+<li><em>select count(</em>) from login where uname=’” +name +”‘ and pwd=’ “ +pwd+”‘</li>
 </ul>
 </li>
-<li>
-<p>pstmt:有效防止sql注入</p>
+<li><p>pstmt:有效防止sql注入</p>
 <ul>
 <li>推荐使用pstmt</li>
 </ul>
 </li>
 </ul>
-<h4>(Oracle数据库)CallableStatement:调用数据库中的存储过程/存储函数(通过Connection产生)</h4>
-<p>connection.prepareCall(存储过程或存储函数名);</p>
+<h4 id="Oracle数据库-CallableStatement-调用数据库中的存储过程-存储函数-通过Connection产生"><a href="#Oracle数据库-CallableStatement-调用数据库中的存储过程-存储函数-通过Connection产生" class="headerlink" title="(Oracle数据库)CallableStatement:调用数据库中的存储过程/存储函数(通过Connection产生)"></a>(Oracle数据库)CallableStatement:调用数据库中的存储过程/存储函数(通过Connection产生)</h4><p>connection.prepareCall(存储过程或存储函数名);</p>
 <p>参数格式:</p>
 <p>存储过程(无返回值):</p>
 <p>​              { call   存储过程名(参数列表)}</p>
 <p>存储函数(有返回值):</p>
-<p>​               { ? = call   存储函数名(参数列表) }</p>
-<p>Create or replace procedure addTwoNum (num1  in number,num2  in number, result out number) -- 1+2  -&gt;3</p>
+<p>​               { ? = call   存储函数名(参数列表) } </p>
+<p>Create or replace procedure addTwoNum (num1  in number,num2  in number, result out number) – 1+2  -&gt;3 </p>
 <p>as</p>
 <p>begin</p>
 <p>​           Result := num1+num2;</p>
 <p>end;</p>
 <p><img src="/images/22.png" alt="22"></p>
 <p>jdbc调用存储过程的步骤:</p>
-<p>a.产生调用存储过程的对象 (CallableStatement) cstmt = connection.prepareCall(&quot;.....&quot;);</p>
+<p>a.产生调用存储过程的对象 (CallableStatement) cstmt = connection.prepareCall(“…..”);</p>
 <p>b.通过setXxx()处理 输出参数值  cstmt.setInt(1,30);</p>
-<p>c.通过registerOutParameter(...)处理输出参数类型</p>
+<p>c.通过registerOutParameter(…)处理输出参数类型</p>
 <p>d. cstmt.execute()执行</p>
 <p>e.接受 输出值(返回值)   getXxx();</p>
 <p>Result:返回的结果集(上面的Statement等产生) select * from xxx</p>
 <ul>
-<li>
-<p>next()：光标下移，判断是否有下一条数据; true/false</p>
+<li><p>next()：光标下移，判断是否有下一条数据; true/false</p>
 </li>
-<li>
-<p>previous():光标上移 true/false</p>
+<li><p>previous():光标上移 true/false</p>
 </li>
-<li>
-<p>getXxx(字段名|位置): 获取具体的字段值</p>
+<li><p>getXxx(字段名|位置): 获取具体的字段值</p>
 </li>
 </ul>
 <p><img src="//images/20.png" alt="20"></p>
@@ -487,8 +466,7 @@
 <th>连接字符串</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>Oracle</td>
 <td>Ojdbc-x.jar</td>
 <td>oracle.jdbc.OracleDriver</td>
@@ -506,11 +484,9 @@
 <td>com.microsoft.sqlserver.jdbc.SQLServerDriver</td>
 <td>Jdbc:microsoft:sqlserver:localhost:1433;databasename=数据库实例名</td>
 </tr>
-</tbody>
-</table>
-<h4>jdbc总结(模板)</h4>
-<p>a.导入驱动包，加载具体驱动类Class.forName(&quot;具体驱动类&quot;);</p>
-<p>b.与数据库建立连接connection =DriverManager.getConnection(...);</p>
+</tbody></table>
+<h4 id="jdbc总结-模板"><a href="#jdbc总结-模板" class="headerlink" title="jdbc总结(模板)"></a>jdbc总结(模板)</h4><p>a.导入驱动包，加载具体驱动类Class.forName(“具体驱动类”);</p>
+<p>b.与数据库建立连接connection =DriverManager.getConnection(…);</p>
 <p>c.通过connection，获取操作数据库的对象(Statement\PreparedStatement\CallabeStatement);</p>
 <p>d.(查询)处理结果集 re=pstmt.executeQuery();</p>
 <p>​                                  while(rs.next()){      rs.getXxx(..);   }</p>
@@ -522,11 +498,11 @@
 <p>​                                         if(rs!=null)   rs.close();</p>
 <p>​                                          If(pstmt!=null)  pstmt.close();</p>
 <p>​                                          if(connection!=null)  connection.close();</p>
-<p>​                                    }</p>
+<p>​                                    } </p>
 <p>jdbc中，除了Class.forName()抛出ClassNotFoundException  其余都抛出SQLException</p>
 <p>jsp访问数据库</p>
 <p>jsp就是html中嵌套的java代码,因此 java代码可以写在jsp中(&lt;%%&gt;)</p>
-<p>导包操作: java项目: 1.jar复制到工程  2.右键该jar：build path --&gt; add to bulid Path</p>
+<p>导包操作: java项目: 1.jar复制到工程  2.右键该jar：build path –&gt; add to bulid Path</p>
 <p>​                 web项目: jar复制到WEB-INF/lib里</p>
 <p>核心:  就是将 java中的jdbc代码，复制到jsp中的&lt;%%&gt;</p>
 
@@ -699,7 +675,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">Statement和PreparedStatement的区别:</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#null"><span class="nav-number">1.1.</span> <span class="nav-text">推荐使用PreparedStatement原因如下:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#null"><span class="nav-number">1.2.</span> <span class="nav-text">1.编码更加简单,避免字符串拼接</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#null"><span class="nav-number">1.3.</span> <span class="nav-text">2.提高性能:(因为有预编译操作，预编译只需要执行一次)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#null"><span class="nav-number">1.4.</span> <span class="nav-text">3.安全(可以有效防止sql注入)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">2.</span> <span class="nav-text">(Oracle数据库)CallableStatement:调用数据库中的存储过程/存储函数(通过Connection产生)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">3.</span> <span class="nav-text">jdbc总结(模板)</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Statement和PreparedStatement的区别"><span class="nav-number">1.</span> <span class="nav-text">Statement和PreparedStatement的区别:</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#推荐使用PreparedStatement原因如下"><span class="nav-number">1.1.</span> <span class="nav-text">推荐使用PreparedStatement原因如下:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-编码更加简单-避免字符串拼接"><span class="nav-number">1.2.</span> <span class="nav-text">1.编码更加简单,避免字符串拼接</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-提高性能-因为有预编译操作，预编译只需要执行一次"><span class="nav-number">1.3.</span> <span class="nav-text">2.提高性能:(因为有预编译操作，预编译只需要执行一次)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-安全-可以有效防止sql注入"><span class="nav-number">1.4.</span> <span class="nav-text">3.安全(可以有效防止sql注入)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Oracle数据库-CallableStatement-调用数据库中的存储过程-存储函数-通过Connection产生"><span class="nav-number">2.</span> <span class="nav-text">(Oracle数据库)CallableStatement:调用数据库中的存储过程/存储函数(通过Connection产生)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#jdbc总结-模板"><span class="nav-number">3.</span> <span class="nav-text">jdbc总结(模板)</span></a></li></ol></div>
             
 
           </div>
