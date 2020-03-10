@@ -411,6 +411,162 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/25/hexo_d%E6%8A%A5%E9%94%99/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Li Miao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LiMiao's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/25/hexo_d%E6%8A%A5%E9%94%99/" itemprop="url">hexo -d 报错:Spawn failed</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-25T00:00:00+08:00">
+                2020-02-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index">
+                    <span itemprop="name">操作系统</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在使用hexo和github搭建的博客时，hexo -d提交失败</p>
+<p>经过google，stackoverflow………</p>
+<p>网上的一种方法是直接修改.git下面的config文件</p>
+<p>如果在使用hexo d命令的前提下，直接修改.git下面的config文件是无法成功的。原因是：使用该命令之后，会根据_config.yml下面的deploy节点进行cofig文件的覆盖。也就是说，_config.yml如果不做修改，无论如何修改.git下面的配置文件都是无效的，都会被覆盖。</p>
+<p>终于找到了解决方法:</p>
+<p>修改配置文件：根目录下的_config.yml，修改deploy节点。</p>
+<p>deploy:</p>
+<p>type: git</p>
+<p>repo: <a href="https://link.zhihu.com/?target=https%3A//github.com/%7Byourname%7D/%7Byourname%7D.github.io.git">https://github.com/{yourname}/{yourname}.github.io</a></p>
+<p>branch: master</p>
+<p>修改为如下：</p>
+<p>deploy:</p>
+<p>type: git</p>
+<p>repo: <a href="https://link.zhihu.com/?target=https%3A//worldknoweme%3A127721wm%40github.com/worldknoweme/worldknoweme.github.io.git">https://{yourname}:{yourpassword}@github.com/{yourname}/{yourname}.github.io</a></p>
+<p>branch: master</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/25/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1883,162 +2039,6 @@ version=&quot;3.1&quot;&gt;</code></pre>  <!--传统的web3.0之前的配置方�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/12/Mybatis%E5%B0%8F%E9%97%AE%E9%A2%98(%E4%B8%80)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Li Miao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LiMiao's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/02/12/Mybatis%E5%B0%8F%E9%97%AE%E9%A2%98(%E4%B8%80)/" itemprop="url">从服务器收到未知的初始字符集索引"255"</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-12T09:33:49+08:00">
-                2020-02-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/mybatis/" itemprop="url" rel="index">
-                    <span itemprop="name">mybatis</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>问题如下:</p>
-<p>Caused by: java.sql.SQLException: Unknown initial character set index ‘255’ received from server.</p>
-<p>主要是因为mysql的版本问题。在问题出现之前我用的是</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    &lt;groupId&gt;mysql&lt;/groupId&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    &lt;version&gt;5.1.6&lt;/version&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">&lt;/dependency&gt;</span></pre></td></tr></table></figure>
-
-<p>问题出在MySQL v.8.0中所做的更改中：</p>
-<blockquote>
-<p>字符集支持</p>
-<p>重要更改：默认字符集已从latin1更改为utf8mb4。这些系统变量会受到影响：</p>
-<p>character_set_server和character_set_database系统变量的默认值已从<strong>latin1</strong>更改为 <strong>utf8mb4</strong>。</p>
-<p>在collation_server的和collation_database查看系统变量的缺省值已经从<strong>latin1_swedish_ci</strong> 到<strong>utf8mb4_0900_ai_ci</strong>。</p>
-</blockquote>
-<p>所有这些更改已在新版本的mysql-connector-java中处理，因此无需配置MySQL。因此，请从更改<code>5.1.6</code>为<code>5.1.44</code>解决此问题：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    &lt;groupId&gt;mysql&lt;/groupId&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    &lt;version&gt;5.1.44&lt;/version&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">&lt;/dependency&gt;</span></pre></td></tr></table></figure>
-
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2091,7 +2091,7 @@ version=&quot;3.1&quot;&gt;</code></pre>  <!--传统的web3.0之前的配置方�
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-count">30</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
