@@ -79,12 +79,12 @@
 
 
 
-<meta name="description" content="一般而言，修改web.xml，配置文件,java 需要重启tomcat服务器；但是如果修改jsp\html\css\js则不需要重启。 注意，out.println()不能回车；要想回车: ““ out.print()     &amp;lt;%&#x3D; %&amp;gt;  可以直接解析html代码 指令page指令: &amp;lt;%@ page …&amp;gt; page指令的属性: Language:jsp页面使用的脚本语">
+<meta name="description" content="一般而言，修改web.xml，配置文件,java 需要重启tomcat服务器；但是如果修改jsp\html\css\js则不需要重启。 注意，out.println()不能回车；要想回车: &amp;quot;&amp;lt;br&#x2F;&amp;gt;&amp;quot; out.print()     &amp;lt;%&#x3D; %&amp;gt;  可以直接解析html代码 指令 page指令: &amp;lt;%@ page ...&amp;gt; page指令的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jsp(1)">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;03&#x2F;jsp(1)&#x2F;index.html">
 <meta property="og:site_name" content="LiMiao&#39;s blog">
-<meta property="og:description" content="一般而言，修改web.xml，配置文件,java 需要重启tomcat服务器；但是如果修改jsp\html\css\js则不需要重启。 注意，out.println()不能回车；要想回车: ““ out.print()     &amp;lt;%&#x3D; %&amp;gt;  可以直接解析html代码 指令page指令: &amp;lt;%@ page …&amp;gt; page指令的属性: Language:jsp页面使用的脚本语">
+<meta property="og:description" content="一般而言，修改web.xml，配置文件,java 需要重启tomcat服务器；但是如果修改jsp\html\css\js则不需要重启。 注意，out.println()不能回车；要想回车: &amp;quot;&amp;lt;br&#x2F;&amp;gt;&amp;quot; out.print()     &amp;lt;%&#x3D; %&amp;gt;  可以直接解析html代码 指令 page指令: &amp;lt;%@ page ...&amp;gt; page指令的">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;10.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;11.png">
@@ -337,31 +337,37 @@
 
       
         <p>一般而言，修改web.xml，配置文件,java 需要重启tomcat服务器；但是如果修改jsp\html\css\js则不需要重启。</p>
-<p>注意，out.println()不能回车；要想回车: “<br>“</p>
+<p>注意，out.println()不能回车；要想回车: &quot;&lt;br/&gt;&quot;</p>
 <p>out.print()     &lt;%= %&gt;  可以直接解析html代码</p>
-<h3 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h3><p>page指令:</p>
-<p>&lt;%@ page …&gt;</p>
+<h3>指令</h3>
+<p>page指令:</p>
+<p>&lt;%@ page ...&gt;</p>
 <p>page指令的属性:</p>
 <p>Language:jsp页面使用的脚本语言</p>
 <p>Import:导入类</p>
-<p>pageEncoding:jsp文件自身编码，  jsp–&gt;java</p>
+<p>pageEncoding:jsp文件自身编码，  jsp--&gt;java</p>
 <p>contentType:浏览器解析jsp的编码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">&lt;%@ page contentType=<span class="string">"text/html;charset=UTF-8"</span> language=<span class="string">"java"</span> %&gt;</span></pre></td></tr></table></figure>
-
-<h3 id="注释"><a href="#注释" class="headerlink" title="注释:"></a>注释:</h3><p>​    html注释<!--  --> 可以被用户通过浏览器查看源码所观察到</p>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">&lt;%@ page contentType=<span class="string">"text/html;charset=UTF-8"</span> language=<span class="string">"java"</span> %&gt;</span></pre></td></tr></table></figure></p>
+<h3>注释:</h3>
+<p>​    html注释&lt;!--  --&gt; 可以被用户通过浏览器查看源码所观察到</p>
 <p>​    java注释//    /*   */</p>
-<p>​    jsp注释&lt;%–  –%&gt;</p>
-<h3 id="jsp九大内置对象-自带的，不需要new也能使用的对象"><a href="#jsp九大内置对象-自带的，不需要new也能使用的对象" class="headerlink" title="jsp九大内置对象(自带的，不需要new也能使用的对象)"></a>jsp九大内置对象(自带的，不需要new也能使用的对象)</h3><h4 id="out-输出对象，向客户端输出内容"><a href="#out-输出对象，向客户端输出内容" class="headerlink" title="out: 输出对象，向客户端输出内容"></a>out: 输出对象，向客户端输出内容</h4><h4 id="pageContext-jsp页面容器"><a href="#pageContext-jsp页面容器" class="headerlink" title="pageContext:  jsp页面容器"></a>pageContext:  jsp页面容器</h4><h4 id="request-请求对象-存储“客户端向服务器端发送的请求信息“"><a href="#request-请求对象-存储“客户端向服务器端发送的请求信息“" class="headerlink" title="request: 请求对象;存储“客户端向服务器端发送的请求信息“"></a>request: 请求对象;存储“客户端向服务器端发送的请求信息“</h4><h5 id="request对象的常见方法"><a href="#request对象的常见方法" class="headerlink" title="request对象的常见方法:"></a>request对象的常见方法:</h5><p><strong>String getParameter(String name):</strong>根据请求的字段名key(input标签的name属性),返回字段值value(input标签的value值)</p>
+<p>​    jsp注释&lt;%--  --%&gt;</p>
+<h3>jsp九大内置对象(自带的，不需要new也能使用的对象)</h3>
+<h4>out: 输出对象，向客户端输出内容</h4>
+<h4>pageContext:  jsp页面容器</h4>
+<h4>request: 请求对象;存储“客户端向服务器端发送的请求信息“</h4>
+<h5>request对象的常见方法:</h5>
+<p>**String getParameter(String name):**根据请求的字段名key(input标签的name属性),返回字段值value(input标签的value值)</p>
 <p>String[] getParametervalue(String name):根据请求的字段名key,返回多个字段值value   (checkbox)</p>
-<p>void setCharacterEncoding(“编码格式utf-8”):设置post方式的请求编码(tomcat7以前默认iso-8859-1,tomcat8以后改为了utf-8)</p>
-<p>getRequestDispatcher(“b.jsp”).forward(request, response): 请求转发 的方式跳转页面    a–&gt;b</p>
+<p>void setCharacterEncoding(&quot;编码格式utf-8&quot;):设置post方式的请求编码(tomcat7以前默认iso-8859-1,tomcat8以后改为了utf-8)</p>
+<p>getRequestDispatcher(&quot;b.jsp&quot;).forward(request, response): 请求转发 的方式跳转页面    a--&gt;b</p>
 <p>ServerContext getServerContext(): 获取项目ServerContext对象</p>
-<p>response:响应对象 </p>
+<p>response:响应对象</p>
 <p>提供的方法:</p>
 <p>addCookie(Cookie cooke): 服务端向客户端增加cookie对象</p>
 <p>void sendRedirect(String location) throw IOException:页面跳转的一种方式</p>
 <p>void setContentType(String type):设置服务端响应的编码(设置服务端的contentType对象)</p>
-<p>​                          </p>
+<p>​</p>
 <table>
 <thead>
 <tr>
@@ -370,7 +376,8 @@
 <th>重定向</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>地址栏是否改变</td>
 <td>不变</td>
 <td>改变</td>
@@ -390,23 +397,24 @@
 <td>服务端</td>
 <td>客户端发出第二次跳转</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p><img src="/images/10.png" alt="10"></p>
 <p><img src="/images/11.png" alt="11"></p>
 <p>转发，重定向(状态码一般为3开头):</p>
-<p>转发:  张三(客户端)      -&gt;  [服务窗口A(服务端)  –&gt;服务窗口B]</p>
-<p>重定向:张三(客户端)    -&gt;服务窗口A(服务端) –&gt;去找B</p>
+<p>转发:  张三(客户端)      -&gt;  [服务窗口A(服务端)  --&gt;服务窗口B]</p>
+<p>重定向:张三(客户端)    -&gt;服务窗口A(服务端) --&gt;去找B</p>
 <p>​             张三(客户端)    -&gt;服务窗口B(服务端)</p>
 <p>session:存在于服务端，是内置对象;会话</p>
 <p>例子:</p>
-<p>a.浏览网站: 开始—&gt;关闭</p>
+<p>a.浏览网站: 开始---&gt;关闭</p>
 <p>b.购物: 浏览，付款，退出</p>
 <p>c.电子邮件: 浏览，写邮件，退出</p>
-<p>​                    开始–结束</p>
+<p>​                    开始--结束</p>
 <p>session机制:</p>
 <p>客户端第一次请求服务端时，（jsessionid和sessionid匹配）服务端会产生一个session对象(用于保存该客户的信息)</p>
 <p>并且每个session对象都会有一个唯一的sessionId(用于区分其他session);</p>
-<p>服务端就会产生一个cookie，并且该cookie的name=JSESSIONID,value=服务端sessionId的值;然后服务端会在响应客户端的同时将该cookie发送给客户端,至此，客户端就有啦一个cookie(JSESSIONID);因此客户端的cookie就可以和服务端的session一一对应(JSESSIONID–sessionID)</p>
+<p>服务端就会产生一个cookie，并且该cookie的name=JSESSIONID,value=服务端sessionId的值;然后服务端会在响应客户端的同时将该cookie发送给客户端,至此，客户端就有啦一个cookie(JSESSIONID);因此客户端的cookie就可以和服务端的session一一对应(JSESSIONID--sessionID)</p>
 <p>客户端第二次/多次请求，服务端会先根据客户端cookie中的JSESSIONID,去服务端的session中匹配session，如果匹配成功(cookie的jsessionid和session的session)说明此用户不是第一次访问，无需登录</p>
 <p>session机制：</p>
 <p>a .session存储在服务端</p>
@@ -425,10 +433,10 @@
 <p><img src="/images/15.png" alt="15"></p>
 <p><img src="/images/16.png" alt="16"></p>
 <p><img src="/images/17.png" alt="17"></p>
-<p>​     Cookie(客户端，不是内置对象):  Cookie是由服务端生成的，再发送给客户端保存。<strong>相当于本地缓存的作用</strong>:   客户端(hello.mp4)–&gt;服务端(hello.mp4) (电影在服务端，在服务端下载以后，客户端之后就可以直接看了，提高了效率)</p>
+<p>​     Cookie(客户端，不是内置对象):  Cookie是由服务端生成的，再发送给客户端保存。<strong>相当于本地缓存的作用</strong>:   客户端(hello.mp4)--&gt;服务端(hello.mp4) (电影在服务端，在服务端下载以后，客户端之后就可以直接看了，提高了效率)</p>
 <p>作用:提高访问服务端的效率，但是安全性较差。</p>
-<p>  Cookie：name=value</p>
-<p>  Cookie是有javax.servlet.http.Cookie产生的</p>
+<p>Cookie：name=value</p>
+<p>Cookie是有javax.servlet.http.Cookie产生的</p>
 <p>public   Cookie(String name,String value)</p>
 <p>String  getName()  获取name</p>
 <p>String  getValue()  获取value</p>
@@ -453,7 +461,8 @@
 <th>Session</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>保存的位置</td>
 <td>客户端</td>
 <td>服务端</td>
@@ -468,29 +477,39 @@
 <td>String</td>
 <td>Object</td>
 </tr>
-</tbody></table>
-<h4 id="page-当前jsp页面对象-相当于java中的this"><a href="#page-当前jsp页面对象-相当于java中的this" class="headerlink" title="page: 当前jsp页面对象(相当于java中的this)"></a>page: 当前jsp页面对象(相当于java中的this)</h4><h4 id="config-配置对象-服务器配置信息"><a href="#config-配置对象-服务器配置信息" class="headerlink" title="config: 配置对象(服务器配置信息)"></a>config: 配置对象(服务器配置信息)</h4><h4 id="exception-异常对象"><a href="#exception-异常对象" class="headerlink" title="exception: 异常对象"></a>exception: 异常对象</h4><h4 id="application-全局对象"><a href="#application-全局对象" class="headerlink" title="application: 全局对象"></a>application: 全局对象</h4><p>application方法:</p>
+</tbody>
+</table>
+<h4>page: 当前jsp页面对象(相当于java中的this)</h4>
+<h4>config: 配置对象(服务器配置信息)</h4>
+<h4>exception: 异常对象</h4>
+<h4>application: 全局对象</h4>
+<p>application方法:</p>
 <p>String getContextPath()   虚拟路径</p>
 <p>String getRealPath(String name)   绝对路径(虚拟路径 相对的绝对路径)</p>
-<p>get提交方式: method=”get” 和地址栏，超链接(<a href="xx">)请求方式 默认都属于get提交方式</a></p>
+<p>get提交方式: method=&quot;get&quot; 和地址栏，超链接(&lt;a href=&quot;xx&quot;&gt;)请求方式 默认都属于get提交方式</p>
 <p>连接/文件?参数名1=参数值1 &amp; 参数名2=参数值2 &amp; 参数名3=参数值3</p>
-<h3 id="get与post请求的区别："><a href="#get与post请求的区别：" class="headerlink" title="get与post请求的区别："></a>get与post请求的区别：</h3><ul>
-<li><p>get方式在地址栏显示请求信息(但是地址栏能够容纳的信息有限，最多4-5kb，如果请求数据存在大文件，图片等，会出现地址栏无法容纳全部的数据而出错)；post不会显示</p>
+<h3>get与post请求的区别：</h3>
+<ul>
+<li>
+<p>get方式在地址栏显示请求信息(但是地址栏能够容纳的信息有限，最多4-5kb，如果请求数据存在大文件，图片等，会出现地址栏无法容纳全部的数据而出错)；post不会显示</p>
 </li>
-<li><p>文件上传操作，必须是post(根本原因还是数据受限，且相对不安全)</p>
+<li>
+<p>文件上传操作，必须是post(根本原因还是数据受限，且相对不安全)</p>
 </li>
 </ul>
-<h3 id="统一请求的编码-request"><a href="#统一请求的编码-request" class="headerlink" title="统一请求的编码:  request"></a>统一请求的编码:  request</h3><h4 id="get方式-如果出现乱码，解决："><a href="#get方式-如果出现乱码，解决：" class="headerlink" title="get方式: 如果出现乱码，解决："></a>get方式: 如果出现乱码，解决：</h4><ul>
+<h3>统一请求的编码:  request</h3>
+<h4>get方式: 如果出现乱码，解决：</h4>
+<ul>
 <li>统一每一个变量的编码(不推荐)</li>
 </ul>
 <p>​      new String(旧编码，新编码)；</p>
-<p>​       name =  new String(name.getBytes(“iso-8859-1”),”utf-8”);</p>
+<p>​       name =  new String(name.getBytes(&quot;iso-8859-1&quot;),&quot;utf-8&quot;);</p>
 <ul>
 <li>修改server.xml，一次性的更改tomcat默认get提交方式的编码</li>
 </ul>
-<p>建议使用tomcat时，首先在server.xml中，统一get方式的编码…..URIEncoding=”UTF-8”</p>
+<p>建议使用tomcat时，首先在server.xml中，统一get方式的编码.....URIEncoding=&quot;UTF-8&quot;</p>
 <p>Post方式:如果出现乱码，解决:</p>
-<p>request.setCharacterEncoding(“utf-8”);</p>
+<p>request.setCharacterEncoding(&quot;utf-8&quot;);</p>
 
       
     </div>
@@ -661,7 +680,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#指令"><span class="nav-number">1.</span> <span class="nav-text">指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注释"><span class="nav-number">2.</span> <span class="nav-text">注释:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jsp九大内置对象-自带的，不需要new也能使用的对象"><span class="nav-number">3.</span> <span class="nav-text">jsp九大内置对象(自带的，不需要new也能使用的对象)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#out-输出对象，向客户端输出内容"><span class="nav-number">3.1.</span> <span class="nav-text">out: 输出对象，向客户端输出内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pageContext-jsp页面容器"><span class="nav-number">3.2.</span> <span class="nav-text">pageContext:  jsp页面容器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#request-请求对象-存储“客户端向服务器端发送的请求信息“"><span class="nav-number">3.3.</span> <span class="nav-text">request: 请求对象;存储“客户端向服务器端发送的请求信息“</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#request对象的常见方法"><span class="nav-number">3.3.1.</span> <span class="nav-text">request对象的常见方法:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#page-当前jsp页面对象-相当于java中的this"><span class="nav-number">3.4.</span> <span class="nav-text">page: 当前jsp页面对象(相当于java中的this)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#config-配置对象-服务器配置信息"><span class="nav-number">3.5.</span> <span class="nav-text">config: 配置对象(服务器配置信息)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#exception-异常对象"><span class="nav-number">3.6.</span> <span class="nav-text">exception: 异常对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#application-全局对象"><span class="nav-number">3.7.</span> <span class="nav-text">application: 全局对象</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#get与post请求的区别："><span class="nav-number">4.</span> <span class="nav-text">get与post请求的区别：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#统一请求的编码-request"><span class="nav-number">5.</span> <span class="nav-text">统一请求的编码:  request</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#get方式-如果出现乱码，解决："><span class="nav-number">5.1.</span> <span class="nav-text">get方式: 如果出现乱码，解决：</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">2.</span> <span class="nav-text">注释:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">3.</span> <span class="nav-text">jsp九大内置对象(自带的，不需要new也能使用的对象)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">3.1.</span> <span class="nav-text">out: 输出对象，向客户端输出内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">3.2.</span> <span class="nav-text">pageContext:  jsp页面容器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">3.3.</span> <span class="nav-text">request: 请求对象;存储“客户端向服务器端发送的请求信息“</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#null"><span class="nav-number">3.3.1.</span> <span class="nav-text">request对象的常见方法:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">3.4.</span> <span class="nav-text">page: 当前jsp页面对象(相当于java中的this)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">3.5.</span> <span class="nav-text">config: 配置对象(服务器配置信息)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">3.6.</span> <span class="nav-text">exception: 异常对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">3.7.</span> <span class="nav-text">application: 全局对象</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">4.</span> <span class="nav-text">get与post请求的区别：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">5.</span> <span class="nav-text">统一请求的编码:  request</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">5.1.</span> <span class="nav-text">get方式: 如果出现乱码，解决：</span></a></li></ol></li></ol></div>
             
 
           </div>
