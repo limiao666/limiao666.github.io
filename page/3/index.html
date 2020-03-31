@@ -258,6 +258,224 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/25/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Li Miao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LiMiao's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/25/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F1/" itemprop="url">操作系统(一)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-25T00:00:00+08:00">
+                2020-02-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index">
+                    <span itemprop="name">操作系统</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="操作系统定义"><a href="#操作系统定义" class="headerlink" title="操作系统定义"></a>操作系统定义</h2><ul>
+<li>用户角度上，操作系统是一个控制软件</li>
+</ul>
+<p>​          管理应用程序，为应用程序提供服务，杀死应用程序，资源管理，管理外设，分配资源</p>
+<ul>
+<li>操作系统架层次结构</li>
+</ul>
+<p>​          硬件之上，应用程序之下</p>
+<p>​           Linux,windows,android的界面属于外壳(shell),而不是内核(kernel),kernel是我们的研究重点，在shell之下。</p>
+<h2 id="Kernel–操作系统内部组件"><a href="#Kernel–操作系统内部组件" class="headerlink" title="Kernel–操作系统内部组件"></a>Kernel–操作系统内部组件</h2><ul>
+<li><p>包括:(cpu,内存,磁盘)</p>
+</li>
+<li><p>cpu调度器，物理内存管理，虚拟内存管理，文件系统管理，中断处理与设备驱动</p>
+</li>
+</ul>
+<h2 id="OS-Kernel的特征"><a href="#OS-Kernel的特征" class="headerlink" title="OS Kernel的特征:"></a>OS Kernel的特征:</h2><h4 id="1-并发"><a href="#1-并发" class="headerlink" title="1.并发:"></a>1.并发:</h4><ul>
+<li>计算机系统中同时存在多个运行的程序，需要os管理和调度。并发是在一段时间内，有多个程序同时运行</li>
+<li>并行:一个时间点，要求存在多个cpu</li>
+</ul>
+<h4 id="2-共享"><a href="#2-共享" class="headerlink" title="2.共享:"></a>2.共享:</h4><ul>
+<li><p>“同时”共享</p>
+</li>
+<li><p>互斥共享</p>
+</li>
+</ul>
+<h4 id="3-虚拟化"><a href="#3-虚拟化" class="headerlink" title="3.虚拟化:"></a>3.虚拟化:</h4><ul>
+<li><p>比如把cup虚拟化成进程，把磁盘虚拟化成文件，把内存虚拟化成地址空间</p>
+</li>
+<li><p>好处:使得我们每一个应用程序或者每一个用户感觉到自己在独自拥有一台计算机</p>
+</li>
+<li><p>利用多道程序设计技术，让每个用户都觉得有一个计算机专门为他服务</p>
+</li>
+</ul>
+<h4 id="4-异步："><a href="#4-异步：" class="headerlink" title="4.异步："></a>4.异步：</h4><ul>
+<li><p>程序的执行部署一贯到底，而是走走停停，向前推进的速度不可预知</p>
+</li>
+<li><p>但只要运行环境相同，os需要保证程序运行的结果也要相同</p>
+</li>
+</ul>
+<hr>
+<h4 id="为什么要学习操作系统"><a href="#为什么要学习操作系统" class="headerlink" title="为什么要学习操作系统"></a>为什么要学习操作系统</h4><p>综合许多不同的课程</p>
+<ul>
+<li><p>程序设计语言</p>
+</li>
+<li><p>数据结构</p>
+</li>
+<li><p>算法</p>
+</li>
+<li><p>计算机体系结构</p>
+</li>
+<li><p>材料</p>
+</li>
+<li><p>操作系统概念和原理，源代码</p>
+</li>
+<li><p>技能</p>
+</li>
+<li><p>操作系统的设计与实现</p>
+</li>
+</ul>
+<p>操作系统还在不断地发展，在工控等各种领域有强烈的需求</p>
+<p>操作系统很酷，很有用，有挑战</p>
+<p>操作系统顶级会议：</p>
+<ul>
+<li><p>SOSP(每两年)</p>
+</li>
+<li><p>USENIX(每两年)</p>
+</li>
+</ul>
+<p>操作系统需要权衡:</p>
+<ul>
+<li><p>空间与时间</p>
+</li>
+<li><p>性能和可预测性</p>
+</li>
+<li><p>公平和性能</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/23/servlet_2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -694,6 +912,160 @@ version=&quot;3.1&quot;&gt;</code></pre>  <!--传统的web3.0之前的配置方�
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/22/%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Li Miao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LiMiao's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/22/%E6%9C%8D%E5%8A%A1%E5%99%A8/" itemprop="url">服务器介绍</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-22T00:00:00+08:00">
+                2020-02-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/" itemprop="url" rel="index">
+                    <span itemprop="name">服务器</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h2><ul>
+<li>Tomcat服务器<ul>
+<li>属于Apache</li>
+<li>识别Servlet,jsp(动态网页),也能够解析静态资源</li>
+<li>php,asp</li>
+<li>是Apache服务器的拓展</li>
+<li>面试–优化操作</li>
+<li>中小型公司，并发要求不是特别高                                    </li>
+</ul>
+</li>
+<li>apache服务器–只能解析静态网页(html)–静态资源</li>
+<li>一般都是apache+tomcat配合一起使用</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/22/tomcat%E4%B8%BB%E8%A6%81%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -805,160 +1177,6 @@ version=&quot;3.1&quot;&gt;</code></pre>  <!--传统的web3.0之前的配置方�
 </li>
 </ul>
 </li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/22/%E6%9C%8D%E5%8A%A1%E5%99%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Li Miao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LiMiao's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/02/22/%E6%9C%8D%E5%8A%A1%E5%99%A8/" itemprop="url">服务器介绍</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-22T00:00:00+08:00">
-                2020-02-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/" itemprop="url" rel="index">
-                    <span itemprop="name">服务器</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h2><ul>
-<li>Tomcat服务器<ul>
-<li>属于Apache</li>
-<li>识别Servlet,jsp(动态网页),也能够解析静态资源</li>
-<li>php,asp</li>
-<li>是Apache服务器的拓展</li>
-<li>面试–优化操作</li>
-<li>中小型公司，并发要求不是特别高                                    </li>
-</ul>
-</li>
-<li>apache服务器–只能解析静态网页(html)–静态资源</li>
-<li>一般都是apache+tomcat配合一起使用</li>
 </ul>
 
           
@@ -1856,162 +2074,6 @@ version=&quot;3.1&quot;&gt;</code></pre>  <!--传统的web3.0之前的配置方�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/16/idea_connect_mysql/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Li Miao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LiMiao's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/12/16/idea_connect_mysql/" itemprop="url">idea连接mysql出现Client does not support authentication protocol requested by server</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-16T08:47:16+08:00">
-                2019-12-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index">
-                    <span itemprop="name">java</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java/mysql/" itemprop="url" rel="index">
-                    <span itemprop="name">mysql</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>解决方案如下:</p>
-<p>首先查看是否缺少:mysql-connector-java-5.1.7-bin.jar</p>
-<p>其次如果还是连接失败，操作如下:</p>
-<p><img src="/images/idea_connect_mysql.png" alt="idea_connetc_mysql"></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2064,7 +2126,7 @@ version=&quot;3.1&quot;&gt;</code></pre>  <!--传统的web3.0之前的配置方�
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2075,7 +2137,7 @@ version=&quot;3.1&quot;&gt;</code></pre>  <!--传统的web3.0之前的配置方�
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">36</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -2086,7 +2148,7 @@ version=&quot;3.1&quot;&gt;</code></pre>  <!--传统的web3.0之前的配置方�
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">36</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
