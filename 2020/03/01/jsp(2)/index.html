@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="jsp," />
 
 
 
@@ -80,9 +80,10 @@
 
 
 <meta name="description" content="1.JDBC:  Java DataBase  Connectivity   可以为多种关系型数据库DBMS 提供统一的访问方式  2.JDBC API功能:  三件事，具体是通过以下类&#x2F;接口实现: DriverManager: 管理jdbc驱动 Connection:连接 Connection产生操作数据库的对象:  Connection产生Statement对象   createStateme">
+<meta name="keywords" content="jsp">
 <meta property="og:type" content="article">
-<meta property="og:title" content="jsp(2)">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;04&#x2F;jsp(2)&#x2F;index.html">
+<meta property="og:title" content="jsp连接数据库部分">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;01&#x2F;jsp(2)&#x2F;index.html">
 <meta property="og:site_name" content="LiMiao&#39;s blog">
 <meta property="og:description" content="1.JDBC:  Java DataBase  Connectivity   可以为多种关系型数据库DBMS 提供统一的访问方式  2.JDBC API功能:  三件事，具体是通过以下类&#x2F;接口实现: DriverManager: 管理jdbc驱动 Connection:连接 Connection产生操作数据库的对象:  Connection产生Statement对象   createStateme">
 <meta property="og:locale" content="en">
@@ -91,7 +92,7 @@
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;21.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;22.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;20.png">
-<meta property="og:updated_time" content="2020-03-10T06:59:43.186Z">
+<meta property="og:updated_time" content="2020-03-14T13:41:17.999Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;18.png">
 
@@ -123,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/03/04/jsp(2)/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/03/01/jsp(2)/"/>
 
 
 
 
 
-  <title>jsp(2) | LiMiao's blog</title>
+  <title>jsp连接数据库部分 | LiMiao's blog</title>
   
 
 
@@ -266,7 +267,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/jsp(2)/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/01/jsp(2)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Li Miao">
@@ -283,7 +284,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">jsp(2)</h1>
+          <h1 class="post-title" itemprop="name headline">jsp连接数据库部分</h1>
         
 
         <div class="post-meta">
@@ -295,8 +296,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-04T22:08:33+08:00">
-                2020-03-04
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-01T00:00:00+08:00">
+                2020-03-01
               </time>
             
 
@@ -305,6 +306,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/jsp/" itemprop="url" rel="index">
+                    <span itemprop="name">jsp</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -500,11 +523,43 @@
 <p>​                                          if(connection!=null)  connection.close();</p>
 <p>​                                    } </p>
 <p>jdbc中，除了Class.forName()抛出ClassNotFoundException  其余都抛出SQLException</p>
+<hr>
 <p>jsp访问数据库</p>
 <p>jsp就是html中嵌套的java代码,因此 java代码可以写在jsp中(&lt;%%&gt;)</p>
 <p>导包操作: java项目: 1.jar复制到工程  2.右键该jar：build path –&gt; add to bulid Path</p>
 <p>​                 web项目: jar复制到WEB-INF/lib里</p>
-<p>核心:  就是将 java中的jdbc代码，复制到jsp中的&lt;%%&gt;</p>
+<p>核心:  就是将 java中的jdbc代码，复制到jsp中的&lt;%…%&gt;</p>
+<p>注意:如果jsp出现错误:xxx type is not resolved ….</p>
+<p>尝试解决步骤:</p>
+<ul>
+<li><p>a.可能是jdk,tomcat版本问题 右键项目–&gt;build path,将其中报错的library或lib删除后，重新导入</p>
+</li>
+<li><p>b.清空各种缓存  右键项目–&gt;clean tomcat… clean (project - clean 或者进tomcat目录，删除里面work的子目录)</p>
+</li>
+<li><p>c.删除之前的tomcat,重新解压缩，配置tomcat,重启计算机</p>
+</li>
+<li><p>d.如果类之前没有包，则把类加入包中</p>
+</li>
+</ul>
+<hr>
+<p>Javabean:</p>
+<p>javabean的作用:</p>
+<ul>
+<li><p>减轻了jsp的复杂度</p>
+</li>
+<li><p>提高代码复用(例如以后任何地方的登录操作，都可以通过调用LoginDao实现)</p>
+</li>
+</ul>
+<p>javabean(就是一个java类)的定义:满足以下两点</p>
+<ul>
+<li><p>public修饰的类，public无参构造</p>
+</li>
+<li><p>所有属性(如果有) 都是private,并且提供set/get(如果boolean则get可以替换成is)</p>
+</li>
+</ul>
+<p>javabean使用层面分为两大类:</p>
+<p>封装业务逻辑的javabean (LoginDao.java 封装了登录逻辑) 用于操作一个封装数据的javabean</p>
+<p>封装数据的javabean   (实体类，Student.java  Person.java) 对应于数据库中的一张表</p>
 
       
     </div>
@@ -520,6 +575,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/jsp/" rel="tag"># jsp</a>
+          
+        </div>
+      
 
       
       
@@ -529,8 +590,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/03/03/jsp(1)/" rel="next" title="jsp(1)">
-                <i class="fa fa-chevron-left"></i> jsp(1)
+              <a href="/2020/02/28/idea%E6%89%93%E5%8C%85war/" rel="next" title="IntelliJ IDEA打包war并部署运行">
+                <i class="fa fa-chevron-left"></i> IntelliJ IDEA打包war并部署运行
               </a>
             
           </div>
@@ -539,8 +600,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/03/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86(1)%20/" rel="prev" title="计算机组成原理(1)">
-                计算机组成原理(1) <i class="fa fa-chevron-right"></i>
+              <a href="/2020/03/01/jsp%E9%A1%B5%E9%9D%A2%E4%B8%8D%E6%9B%B4%E6%96%B0/" rel="prev" title="idea下修改jsp页面不自动更新">
+                idea下修改jsp页面不自动更新 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -620,7 +681,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -631,7 +692,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -642,7 +703,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>

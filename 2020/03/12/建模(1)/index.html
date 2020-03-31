@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="建模," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="建模方法: 1.结构化方法： 层次化(特点) 顺序结构，选择结构，循环结构(特点) 2.面向对象方法: 对象化(特点) 更多地是和客观世界的对象事物紧密结合起来，一种映射关系 建模过程: 数据字典(以其为中心)数据模型，功能模型，行为模型 面向对象建模过程与uml:    对象(核心) 数据建模 功能建模 行为建模    用例图use-case 类图class 顺序图sequence 状态转移图s">
+<meta name="keywords" content="建模">
+<meta property="og:type" content="article">
+<meta property="og:title" content="建模uml">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;12&#x2F;%E5%BB%BA%E6%A8%A1(1)&#x2F;index.html">
+<meta property="og:site_name" content="LiMiao&#39;s blog">
+<meta property="og:description" content="建模方法: 1.结构化方法： 层次化(特点) 顺序结构，选择结构，循环结构(特点) 2.面向对象方法: 对象化(特点) 更多地是和客观世界的对象事物紧密结合起来，一种映射关系 建模过程: 数据字典(以其为中心)数据模型，功能模型，行为模型 面向对象建模过程与uml:    对象(核心) 数据建模 功能建模 行为建模    用例图use-case 类图class 顺序图sequence 状态转移图s">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;uml1-5313214.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;uml2.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;uml3.png">
+<meta property="og:updated_time" content="2020-03-27T15:26:15.077Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;uml1-5313214.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/03/12/建模(1)/"/>
+
+
+
+
+
+  <title>建模uml | LiMiao's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/limiao666" target="_blank" rel="noopener"><img style="position: absolute; top: 0; right: 0; border: 0;" width="149" height="149" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_gray_6d6d6d.png?resize=149%2C149" class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">LiMiao's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/12/%E5%BB%BA%E6%A8%A1(1)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Li Miao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LiMiao's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">建模uml</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-12T13:56:29+08:00">
+                2020-03-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BB%BA%E6%A8%A1/" itemprop="url" rel="index">
+                    <span itemprop="name">建模</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>建模方法:</strong></p>
+<p>1.结构化方法：</p>
+<p>层次化(特点)</p>
+<p>顺序结构，选择结构，循环结构(特点)</p>
+<p>2.面向对象方法:</p>
+<p>对象化(特点)</p>
+<p>更多地是和客观世界的对象事物紧密结合起来，一种映射关系</p>
+<p><strong>建模过程:</strong></p>
+<p>数据字典(以其为中心)数据模型，功能模型，行为模型</p>
+<p>面向对象建模过程与uml:</p>
+<table>
+<thead>
+<tr>
+<th>对象(核心)</th>
+<th>数据建模</th>
+<th>功能建模</th>
+<th>行为建模</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>用例图use-case</td>
+<td>类图class</td>
+<td>顺序图sequence</td>
+<td>状态转移图std</td>
+</tr>
+</tbody></table>
+<p>类由属性和方法组成</p>
+<p>属性=静态结构</p>
+<p>方法=动态行为</p>
+<p>太极建模口诀:由外向内，层次分明，动静结合，逐步求精</p>
+<p>由外向内：(系统边界)对于系统而言，用户就是系统的外部，由外部用户出发向内开发。</p>
+<p>层次分明：(用户目标，真正的用例)可以把同一层面的问题，分解成不同层面的问题，从数量上降下来。</p>
+<p>动静结合:(fr(用例)/uc + nfr)多种方面。程序执行是动，程序的属性就是静</p>
+<p>逐步求精:(先图形，后文本)前期实现一个核心原型，然后逐步优化，不断去得到一个最优化的系统。</p>
+<p>采用动宾结构</p>
+<hr>
+<p>需求用例分析</p>
+<p>用例是功能性需求</p>
+<p>uml(需求)模型=静态图+动态图</p>
+<hr>
+<p>uml静态建模</p>
+<p>1.理解用例模型</p>
+<p>2.3.4为core</p>
+<p>2.识别分析类: 识别实体类，识别边界类，识别控制类</p>
+<p>实体类: 表示系统存储和管理的永久信息(数据)</p>
+<p>边界类: 表示参与者与系统之间的交互(界面)</p>
+<p>控制类: 表示系统在运行过程中的业务控制逻辑</p>
+<p>3.定义交互行为</p>
+<p>4.建立分析类图: 定义属性，定义行为，定义关系</p>
+<p>5.评审分析模型</p>
+<p>一般来说，一个用例对应一个控制类</p>
+<hr>
+<p>面向对象模型更接近于问题域，以问题域中的对象为基础建模</p>
+<p>面向对象分析(object oriented analysis ooa)</p>
+<p>面向对象设计(object oriented design food)</p>
+<p>面向对象编程(object oriented programming pop)</p>
+<p>面向对象测试(object oriented testing oot)</p>
+<p>uml(unified modeling language):</p>
+<p>统一建模语言是一种直观化，明确化，构建和文档化软件系统产物的通用可视化建模语言。</p>
+<p>uml代替了传统的“边想边写”开发方式</p>
+<p>uml可以描述开发所需要的各种视图:</p>
+<p>概念的: 业务过程和系统功能</p>
+<p>具体的:程序中的类，数据库模式，可重用的软件构件</p>
+<p><img src="/images/uml1-5313214.png" alt="uml1"></p>
+<p>uml基本构造块:</p>
+<p>事物:表示系统中的元素，包括:结构事物，行为事物，分组事物，注释事物</p>
+<p>关系:表示系统中的元素如何进行连接；包括:依赖，关联，泛化，实现</p>
+<p>图:系统模型中每一个视图的内容是由一些图来描述的；对整个系统而言，其功能由用例图描述，静态结构由类图和对象图描述，动态行为由状态图，时序图，协作图和活动图描述，而物理架构则是由组件图和部署图描述。</p>
+<p><img src="/images/uml2.png" alt="uml2"></p>
+<p>用例图:</p>
+<p>用例是从用户角度描述系统的行为</p>
+<p>用例之间的关系:</p>
+<p>关联(association):参与者与用例间的关系;</p>
+<p>【箭头指向】：指向消息接收方</p>
+<p>包含关系(include):用例之间的关系</p>
+<p>【箭头指向】：指向分解出来的功能用例</p>
+<p>扩展关系(extend):用例之间的关系</p>
+<p>【箭头指向】：指向基础用例</p>
+<p>泛化关系(generalization):参与者之间或用例之间的关系</p>
+<p>【箭头指向】：指向父用例</p>
+<p><img src="/images/uml3.png" alt="uml3"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E5%BB%BA%E6%A8%A1/" rel="tag"># 建模</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/03/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86(1)%20/" rel="next" title="计算机组成原理(1)">
+                <i class="fa fa-chevron-left"></i> 计算机组成原理(1)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/03/19/c#%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7rider/" rel="prev" title="c#开发工具rider环境配置">
+                c#开发工具rider环境配置 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Li Miao</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Li Miao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/clicklove.js"></script>
+  
+</body>
+</html>

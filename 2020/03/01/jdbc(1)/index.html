@@ -79,15 +79,15 @@
 
 
 
-<meta name="description" content="JDBC连接MySQL：Unknown initial character set index ‘255’ received from server.Initial client character报错信息:Unknown initial character set index ‘255’ received from server. Initial client character set can">
+<meta name="description" content="问题1: JDBC连接MySQL：Unknown initial character set index ‘255’ received from server.Initial client character 报错信息: Unknown initial character set index ‘255’ received from server. Initial client character">
 <meta name="keywords" content="jdbc">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JDBC连接mysql:255">
+<meta property="og:title" content="JDBC连接mysql问题合集">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;01&#x2F;jdbc(1)&#x2F;index.html">
 <meta property="og:site_name" content="LiMiao&#39;s blog">
-<meta property="og:description" content="JDBC连接MySQL：Unknown initial character set index ‘255’ received from server.Initial client character报错信息:Unknown initial character set index ‘255’ received from server. Initial client character set can">
+<meta property="og:description" content="问题1: JDBC连接MySQL：Unknown initial character set index ‘255’ received from server.Initial client character 报错信息: Unknown initial character set index ‘255’ received from server. Initial client character">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-03-05T02:17:27.604Z">
+<meta property="og:updated_time" content="2020-03-19T11:11:04.355Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -124,7 +124,7 @@
 
 
 
-  <title>JDBC连接mysql:255 | LiMiao's blog</title>
+  <title>JDBC连接mysql问题合集 | LiMiao's blog</title>
   
 
 
@@ -278,7 +278,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JDBC连接mysql:255</h1>
+          <h1 class="post-title" itemprop="name headline">JDBC连接mysql问题合集</h1>
         
 
         <div class="post-meta">
@@ -350,9 +350,15 @@
       
 
       
-        <h1 id="JDBC连接MySQL：Unknown-initial-character-set-index-‘255’-received-from-server-Initial-client-character"><a href="#JDBC连接MySQL：Unknown-initial-character-set-index-‘255’-received-from-server-Initial-client-character" class="headerlink" title="JDBC连接MySQL：Unknown initial character set index ‘255’ received from server.Initial client character"></a>JDBC连接MySQL：Unknown initial character set index ‘255’ received from server.Initial client character</h1><h4 id="报错信息"><a href="#报错信息" class="headerlink" title="报错信息:"></a>报错信息:</h4><p>Unknown initial character set index ‘255’ received from server. Initial client character set can be forced via the ‘characterEncoding’ property.</p>
-<p>需要在url前面添加上字符集的编码格式</p>
+        <p>问题1:</p>
+<p>JDBC连接MySQL：Unknown initial character set index ‘255’ received from server.Initial client character</p>
+<p>报错信息:</p>
+<p>Unknown initial character set index ‘255’ received from server. Initial client character set can be forced via the ‘characterEncoding’ property.</p>
+<p>解决方法:在url前面添加上字符集的编码格式</p>
 <p>“Jdbc:mysql://xxx.xxx.xxx.xxx:3306/student?useUnicode=true&amp;characterEncoding=utf-8”;</p>
+<p>问题2:</p>
+<p>java.lang.ClassNotFoundException: com.mysql.jdbc.Driver</p>
+<p>这种报错是因为tomcat找不到mysql jar包，只需要把mysql-connector-java-5.1.7-bin.jar导入到tomcat的lib目录下面就ok了,然后重启tomcat就行啦！</p>
 
       
     </div>
@@ -383,8 +389,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/03/01/jsp%E9%A1%B5%E9%9D%A2%E4%B8%8D%E6%9B%B4%E6%96%B0/" rel="next" title="idea下修改jsp页面不自动更新">
-                <i class="fa fa-chevron-left"></i> idea下修改jsp页面不自动更新
+              <a href="/2020/03/01/jsp(3)/" rel="next" title="MVC">
+                <i class="fa fa-chevron-left"></i> MVC
               </a>
             
           </div>
@@ -393,8 +399,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/03/02/%E8%BD%AF%E4%BB%B6%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%88%86%E6%9E%90(1)/" rel="prev" title="软件建模与分析(1)">
-                软件建模与分析(1) <i class="fa fa-chevron-right"></i>
+              <a href="/2020/03/01/jsp(1)/" rel="prev" title="jsp(1)">
+                jsp(1) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -449,17 +455,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -474,7 +471,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -485,7 +482,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -496,7 +493,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -519,22 +516,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JDBC连接MySQL：Unknown-initial-character-set-index-‘255’-received-from-server-Initial-client-character"><span class="nav-number">1.</span> <span class="nav-text">JDBC连接MySQL：Unknown initial character set index ‘255’ received from server.Initial client character</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#报错信息"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">报错信息:</span></a></li></ol></li></ol></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
