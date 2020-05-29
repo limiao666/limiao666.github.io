@@ -258,6 +258,369 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/26/oracle%E9%85%8D%E7%BD%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Li Miao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LiMiao's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/26/oracle%E9%85%8D%E7%BD%AE/" itemprop="url">oracle配置</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-26T00:00:00+08:00">
+                2020-02-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/oracle/" itemprop="url" rel="index">
+                    <span itemprop="name">oracle</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="oracle安装配置"><a href="#oracle安装配置" class="headerlink" title="oracle安装配置"></a>oracle安装配置</h2><p>刚开始部署有点问题，搜索了半天也不知道怎么搞，最后决定移除oracle重新装。</p>
+<ul>
+<li><p>首先停止oracle: docker stop oracle</p>
+</li>
+<li><p>移除oracle:  docker rm oracle</p>
+</li>
+<li><p>如果没有移除掉: dock  rmi (image id)</p>
+</li>
+<li><p>然后docker ps -a  和 docker images查看是否移除</p>
+</li>
+<li><p>以下是重新部署步骤:</p>
+</li>
+<li><p>下载:  docker pull registry.cn-hangzhou.aliyuncs.com/helowin/oracle_11g</p>
+</li>
+<li><p>docker run -d -p 1521:1521 –name oracle registry.aliyuncs.com/helowin/oracle_11g</p>
+</li>
+<li><p>docker exec -it oracle bash</p>
+</li>
+<li><p>su root   password为: helowin</p>
+</li>
+<li><p>vi /etc/profile    </p>
+</li>
+<li><p>将以下添加到profile最下面:</p>
+<p>export ORACLE_HOME=/home/oracle/app/oracle/product/11.2.0/dbhome_2</p>
+<p>export ORACLE_SID=helowin</p>
+<p>export PATH=$ORACLE_HOME/bin:$PATH</p>
+</li>
+<li><p>保存退出后: source /etc/profile</p>
+</li>
+<li><p>su  oracle</p>
+</li>
+<li><p>qlplus /nolog</p>
+</li>
+<li><p>su  oracle</p>
+</li>
+<li><p>sqlplus /nolog</p>
+</li>
+<li><p>进入sql以后:   conn /as sysdba</p>
+</li>
+<li><p>alter user system identified by oracle;</p>
+</li>
+<li><p>alter user sys identified by oracle;</p>
+</li>
+<li><p>ALTER PROFILE DEFAULT LIMIT PASSWORD_LIFE_TIME UNLIMITED;</p>
+</li>
+<li><p>select * from user  执行这个语句应该会有信息。</p>
+</li>
+<li><p>退出：两次exit 退到root层</p>
+</li>
+<li><p>打开navicat创建oracle连接</p>
+</li>
+<li><p>ip为本机ip</p>
+</li>
+<li><p>Username：system</p>
+</li>
+<li><p>Password: oracle</p>
+</li>
+</ul>
+<h2 id="如下图所示"><a href="#如下图所示" class="headerlink" title="如下图所示:"></a>如下图所示:</h2><p><img src="/images/oracle_1.png" alt="oracle_1"></p>
+<p><img src="/images/oracle_2.png" alt="oracle_2"></p>
+<p>如果有问题解决不了，那就卸载干净再来一次</p>
+<p><img src="/images/oracle_3.png" alt="oracle_3"></p>
+<p>最后连接成功效果图:</p>
+<p><img src="/images/%E6%95%88%E6%9E%9C%E5%9B%BE1.png" alt="效果图1"></p>
+<p><img src="/images/%E6%95%88%E6%9E%9C%E5%9B%BE2.png" alt="效果图2"></p>
+<h4 id="安装docker地址"><a href="#安装docker地址" class="headerlink" title="安装docker地址:"></a>安装docker地址:</h4><p><a href="https://www.cnblogs.com/yufeng218/p/8370670.html" target="_blank" rel="noopener">https://www.cnblogs.com/yufeng218/p/8370670.html</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/25/hexo_d%E6%8A%A5%E9%94%99/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Li Miao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LiMiao's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/25/hexo_d%E6%8A%A5%E9%94%99/" itemprop="url">hexo -d 报错:Spawn failed</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-25T00:00:00+08:00">
+                2020-02-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/hexo/" itemprop="url" rel="index">
+                    <span itemprop="name">hexo</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在使用hexo和github搭建的博客时，hexo -d提交失败</p>
+<p>经过google，stackoverflow………</p>
+<p>网上的一种方法是直接修改.git下面的config文件</p>
+<p>如果在使用hexo d命令的前提下，直接修改.git下面的config文件是无法成功的。原因是：使用该命令之后，会根据_config.yml下面的deploy节点进行cofig文件的覆盖。也就是说，_config.yml如果不做修改，无论如何修改.git下面的配置文件都是无效的，都会被覆盖。</p>
+<p>终于找到了解决方法:</p>
+<p>修改配置文件：根目录下的_config.yml，修改deploy节点。</p>
+<p>deploy:</p>
+<p>type: git</p>
+<p>repo: <a href="https://link.zhihu.com/?target=https%3A//github.com/%7Byourname%7D/%7Byourname%7D.github.io.git">https://github.com/{yourname}/{yourname}.github.io</a></p>
+<p>branch: master</p>
+<p>修改为如下：</p>
+<p>deploy:</p>
+<p>type: git</p>
+<p>repo: <a href="https://link.zhihu.com/?target=https%3A//worldknoweme%3A127721wm%40github.com/worldknoweme/worldknoweme.github.io.git">https://{yourname}:{yourpassword}@github.com/{yourname}/{yourname}.github.io</a></p>
+<p>branch: master</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/25/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -912,160 +1275,6 @@ version=&quot;3.1&quot;&gt;</code></pre>  <!--传统的web3.0之前的配置方�
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/22/%E6%9C%8D%E5%8A%A1%E5%99%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Li Miao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LiMiao's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/02/22/%E6%9C%8D%E5%8A%A1%E5%99%A8/" itemprop="url">服务器介绍</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-22T00:00:00+08:00">
-                2020-02-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/" itemprop="url" rel="index">
-                    <span itemprop="name">服务器</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h2><ul>
-<li>Tomcat服务器<ul>
-<li>属于Apache</li>
-<li>识别Servlet,jsp(动态网页),也能够解析静态资源</li>
-<li>php,asp</li>
-<li>是Apache服务器的拓展</li>
-<li>面试–优化操作</li>
-<li>中小型公司，并发要求不是特别高                                    </li>
-</ul>
-</li>
-<li>apache服务器–只能解析静态网页(html)–静态资源</li>
-<li>一般都是apache+tomcat配合一起使用</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/22/tomcat%E4%B8%BB%E8%A6%81%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1177,6 +1386,160 @@ version=&quot;3.1&quot;&gt;</code></pre>  <!--传统的web3.0之前的配置方�
 </li>
 </ul>
 </li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/22/%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Li Miao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LiMiao's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/22/%E6%9C%8D%E5%8A%A1%E5%99%A8/" itemprop="url">服务器介绍</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-22T00:00:00+08:00">
+                2020-02-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/" itemprop="url" rel="index">
+                    <span itemprop="name">服务器</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h2><ul>
+<li>Tomcat服务器<ul>
+<li>属于Apache</li>
+<li>识别Servlet,jsp(动态网页),也能够解析静态资源</li>
+<li>php,asp</li>
+<li>是Apache服务器的拓展</li>
+<li>面试–优化操作</li>
+<li>中小型公司，并发要求不是特别高                                    </li>
+</ul>
+</li>
+<li>apache服务器–只能解析静态网页(html)–静态资源</li>
+<li>一般都是apache+tomcat配合一起使用</li>
 </ul>
 
           
@@ -1730,350 +2093,6 @@ version=&quot;3.1&quot;&gt;</code></pre>  <!--传统的web3.0之前的配置方�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/12/Mybatis%E5%B0%8F%E9%97%AE%E9%A2%98(%E4%B8%80)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Li Miao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LiMiao's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/02/12/Mybatis%E5%B0%8F%E9%97%AE%E9%A2%98(%E4%B8%80)/" itemprop="url">从服务器收到未知的初始字符集索引"255"</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-12T09:33:49+08:00">
-                2020-02-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/mybatis/" itemprop="url" rel="index">
-                    <span itemprop="name">mybatis</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>问题如下:</p>
-<p>Caused by: java.sql.SQLException: Unknown initial character set index ‘255’ received from server.</p>
-<p>主要是因为mysql的版本问题。在问题出现之前我用的是</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    &lt;groupId&gt;mysql&lt;/groupId&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    &lt;version&gt;5.1.6&lt;/version&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">&lt;/dependency&gt;</span></pre></td></tr></table></figure>
-
-<p>问题出在MySQL v.8.0中所做的更改中：</p>
-<blockquote>
-<p>字符集支持</p>
-<p>重要更改：默认字符集已从latin1更改为utf8mb4。这些系统变量会受到影响：</p>
-<p>character_set_server和character_set_database系统变量的默认值已从<strong>latin1</strong>更改为 <strong>utf8mb4</strong>。</p>
-<p>在collation_server的和collation_database查看系统变量的缺省值已经从<strong>latin1_swedish_ci</strong> 到<strong>utf8mb4_0900_ai_ci</strong>。</p>
-</blockquote>
-<p>所有这些更改已在新版本的mysql-connector-java中处理，因此无需配置MySQL。因此，请从更改<code>5.1.6</code>为<code>5.1.44</code>解决此问题：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    &lt;groupId&gt;mysql&lt;/groupId&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    &lt;version&gt;5.1.44&lt;/version&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">&lt;/dependency&gt;</span></pre></td></tr></table></figure>
-
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/27/%E9%A1%BA%E5%BA%8F%E8%A1%A8%E4%B8%8E%E5%8D%95%E9%93%BE%E8%A1%A8%E5%8C%BA%E5%88%AB%E5%8F%8A%E5%85%B6%E4%BC%98%E7%BC%BA%E7%82%B9/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Li Miao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LiMiao's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/12/27/%E9%A1%BA%E5%BA%8F%E8%A1%A8%E4%B8%8E%E5%8D%95%E9%93%BE%E8%A1%A8%E5%8C%BA%E5%88%AB%E5%8F%8A%E5%85%B6%E4%BC%98%E7%BC%BA%E7%82%B9/" itemprop="url">顺序表与单链表区别及其优缺点</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-27T14:32:59+08:00">
-                2019-12-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%A1%BA%E5%BA%8F%E8%A1%A8/" itemprop="url" rel="index">
-                    <span itemprop="name">顺序表</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%A1%BA%E5%BA%8F%E8%A1%A8/%E5%8D%95%E9%93%BE%E8%A1%A8/" itemprop="url" rel="index">
-                    <span itemprop="name">单链表</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>顺序表的定义:</p>
-<p>​    顺序表是在计算机内存中以数组的形式保存的线性表，是指用一组地址连续的存储单元依次存储数据元素的线性结构。</p>
-<p>单链表的定义:</p>
-<p>​    单链表是一种链式存取的数据结构，用一组地址任意的存储单元存放线性表中的数据元素。它的数据是以结点来表示的，每个结点的构成是：数据(类型为要存储的数据类型)+指针。</p>
-<p>二者的优缺点比较</p>
-<p>①空间上的比较（Space）<br>a. 空间的开辟：<br>顺序表的实现一般是实现连续开辟一段空间，然后在进行数据的增删查改（静态顺序表），所以顺序表一般是固定空间大小的；而单链表则是一次只开辟一个结点的空间，用来存储当前要保存的数据及指向下一个结点或NULL的指针，所以单链表的空间大小时动态变化的。（当然，顺序表也可以在初始化时利用malloc函数来开辟一块空间，每当空间不够用时，再用realloc来把当前空间扩容成2倍，从而也能实现空间的动态变化（动态顺序表））。</p>
-<p>b. 空间的使用：<br>当我们不知道要存储多少数据时，用顺序表来开辟的空间如果太大，就会造成一定程度上的浪费，而用单链表是实现时，因为是每需要存储一个数据时，才开辟一个空间，虽然有非数据项的指针占空间，但相比顺序表来说，浪费不是那么明显；反之，当我们知道存储的数据的数量时，用顺序表来开辟对应的空间大小，来存储数据，因为顺序表中每个元素的存储密度为 1，就完全不会有浪费的空间，而用单链表，因为每个结点都会有非数据项得指针，那么就会造成空间的浪费。再者，编译器会为每个程序从内存上分配一段空间，给该程序使用。然而我们每次开辟空间时都是在随机的位置开辟的，那么使用单链表，就会多次的在程序分配到的这块空间上开辟空间，因为每次都是开辟的位置都是随机的，那么可能会把这块空间搞得七零八碎，出现很多小的一般使用不到的碎片空间，这样很大程度上造成了空间的浪费，而使用顺序表的话，不会经常开辟空间，这样就减少了碎片空间的出现，那么就一定程度上节省了空间。</p>
-<p>c. 对CPU高速缓存的影响：<br>因为顺序表的空间一般是连续开辟的，而且一次会开辟存储多个元素的空间，所以在使用顺序表时，可以一次把多个数据写入高速缓存，再写入主存，顺序表的CPU高速缓存效率更高，且CPU流水线也不会总是被打断；而单链表是每需要存储一个数据才开辟一次空间，所以每个数据存储时都要单独的写入高速缓存区，再写入主存，这样就造成了，单链表CPU高速缓存效率低，且CPU流水线会经常被打断。</p>
-<p>②时间上的比较（Time）</p>
-<p>a. 访问随机元素的时间复杂度：<br>因为顺序表的结构就像是数组一样，可以用下标来访问它的元素，所以它的元素是支持随机访问的；相比之下，单链表的数据是链式存储的，它的元素是不支持随机访问的，想要知道某个元素，只能从头结点开始遍历整个链表，知道找到了该元素为止。因此顺序表访问随机元素的时间复杂度是O（1），而单链表访问随机元素的平均时间复杂度是O（n）。</p>
-<p>b. 随机位置插入、删除元素的时间复杂度：<br>因为顺序表的元素是连续存储的，因此要在特定位置插入、删除元素需要把它之后的元素全部后移或前移一个元素的位置，时间开销很大；而单链表在插入或删除元素时，只需要改变它的前驱元素及插入或删除元素的指向即可。因此，顺序表在插入随机位置插入、删除元素的平均时间复杂度是O（n），单链表在插入随机位置插入、删除元素的时间复杂度是O（1）。<br>一般来说线性表（顺序表和单链表都属于线性表）的插入删除操作会被执行的频繁一些，因此，使用单链表的频率较大。</p>
-<p>====顺序表===</p>
-<p>   1.从栈中开辟一片连续的存储单元对数据进行存储，存储结构和数据逻辑相同；</p>
-<p>   2.空间大小固定，管理方便，自由度小；</p>
-<p>   3.通过下标获取元素，存储密度为1；</p>
-<p>   4.查找元素快，平均时间复杂度为O(1)；</p>
-<p>   5.增删元素慢，增删的平均时间复杂度为O(n)；</p>
-<p>===链表===</p>
-<p>​    1.从堆中动态开辟出的不连续存储单元，通过指针在计算机存储单元上对数据逻辑进行链接</p>
-<p>​     2.空间大小不固定，申请管理麻烦，自由度大；</p>
-<p>​     3.通过结构体next数据项中存储的指针寻找并获取元素；</p>
-<p>​     4.查找元素慢，查找平均时间复杂度为O(n)；</p>
-<p>​     5.增删元素快，增删的平均时间复杂度为O(1)；</p>
-<p>🌟🌟</p>
-<p>综上，在查找操作频繁时候考虑采用顺序表，在增删操作频繁时候考虑采用链表。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2126,7 +2145,7 @@ version=&quot;3.1&quot;&gt;</code></pre>  <!--传统的web3.0之前的配置方�
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-count">40</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2137,7 +2156,7 @@ version=&quot;3.1&quot;&gt;</code></pre>  <!--传统的web3.0之前的配置方�
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -2148,7 +2167,7 @@ version=&quot;3.1&quot;&gt;</code></pre>  <!--传统的web3.0之前的配置方�
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>

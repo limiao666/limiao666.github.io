@@ -95,7 +95,7 @@
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;%E8%BF%9B%E7%A8%8B6-5659343.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;%E8%BF%9B%E7%A8%8B7.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;%E8%BF%9B%E7%A8%8B8.png">
-<meta property="og:updated_time" content="2020-03-31T13:05:14.251Z">
+<meta property="og:updated_time" content="2020-04-03T05:07:26.826Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;j%E8%BF%9B%E7%A8%8B1.png">
 
@@ -506,6 +506,23 @@
 <p><img src="/images/%E8%BF%9B%E7%A8%8B6-5659343.png" alt="进程6"></p>
 <p><img src="/images/%E8%BF%9B%E7%A8%8B7.png" alt="进程7"></p>
 <p><img src="/images/%E8%BF%9B%E7%A8%8B8.png" alt="进程8"></p>
+<hr>
+<p>进程通信</p>
+<p>进程间通信:在用户空间实现进程通信是不可能的，通过linux内核通信</p>
+<p>线程间通信:可以在用户空间就可以实现，可以通过全局变量通信</p>
+<p>有哪几种通信方式:</p>
+<ul>
+<li><p>管道通信:无名管道，有名管道(文件系统中有名)</p>
+</li>
+<li><p>信号通信:信号(通知)通信包括:信号的发送，信号的接收和信号的处理</p>
+</li>
+<li><p>IPC(Inter-Process Communication)通信:共享内存，消息队列和信号灯</p>
+</li>
+</ul>
+<p>以上是单机模式下的进程通信(只有一个linux内核)</p>
+<ul>
+<li>Socket通信: 存在于一个网络中两个进程之间的通信(两个linux内核)</li>
+</ul>
 
       
     </div>
@@ -545,6 +562,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/03/31/struts2(1)/" rel="prev" title="学习struts2">
+                学习struts2 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -614,7 +635,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-count">40</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -625,7 +646,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -636,7 +657,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
