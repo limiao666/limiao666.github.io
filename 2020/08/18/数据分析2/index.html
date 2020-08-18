@@ -1,0 +1,2049 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="数据分析," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1.4.1 任务一：pandas中有两个数据类型DateFrame和Series，通过查找简单了解他们。然后自己写一个关于这两个数据类型的小例子🌰In [2]: 1import numpy as np2import pandas as pd  In [3]: 1sdata &#x3D; &amp;#123;&amp;apos;Ohio&amp;apos;: 35000, &amp;apos;Texas&amp;apos;: 71000, &amp;apos;Oregon&amp;apos;: 16000, &amp;apos;Utah&amp;apos;">
+<meta name="keywords" content="数据分析">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据分析:pandas基础">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;08&#x2F;18&#x2F;%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%902&#x2F;index.html">
+<meta property="og:site_name" content="LiMiao&#39;s blog">
+<meta property="og:description" content="1.4.1 任务一：pandas中有两个数据类型DateFrame和Series，通过查找简单了解他们。然后自己写一个关于这两个数据类型的小例子🌰In [2]: 1import numpy as np2import pandas as pd  In [3]: 1sdata &#x3D; &amp;#123;&amp;apos;Ohio&amp;apos;: 35000, &amp;apos;Texas&amp;apos;: 71000, &amp;apos;Oregon&amp;apos;: 16000, &amp;apos;Utah&amp;apos;">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-08-18T15:18:28.083Z">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/08/18/数据分析2/"/>
+
+
+
+
+
+  <title>数据分析:pandas基础 | LiMiao's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/limiao666" target="_blank" rel="noopener"><img style="position: absolute; top: 0; right: 0; border: 0;" width="149" height="149" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_gray_6d6d6d.png?resize=149%2C149" class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">LiMiao's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/18/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%902/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Li Miao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LiMiao's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">数据分析:pandas基础</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-18T00:00:00+08:00">
+                2020-08-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" itemprop="url" rel="index">
+                    <span itemprop="name">数据分析</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="1-4-1-任务一：pandas中有两个数据类型DateFrame和Series，通过查找简单了解他们。然后自己写一个关于这两个数据类型的小例子🌰"><a href="#1-4-1-任务一：pandas中有两个数据类型DateFrame和Series，通过查找简单了解他们。然后自己写一个关于这两个数据类型的小例子🌰" class="headerlink" title="1.4.1 任务一：pandas中有两个数据类型DateFrame和Series，通过查找简单了解他们。然后自己写一个关于这两个数据类型的小例子🌰"></a>1.4.1 任务一：pandas中有两个数据类型DateFrame和Series，通过查找简单了解他们。然后自己写一个关于这两个数据类型的小例子🌰</h4><p>In [2]:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span></pre></td></tr></table></figure>
+
+<p>In [3]:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">sdata = &#123;<span class="string">'Ohio'</span>: <span class="number">35000</span>, <span class="string">'Texas'</span>: <span class="number">71000</span>, <span class="string">'Oregon'</span>: <span class="number">16000</span>, <span class="string">'Utah'</span>: <span class="number">5000</span>&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">example_1 = pd.Series(sdata)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">example_1</span></pre></td></tr></table></figure>
+
+<p>Out[3]:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">Ohio      35000</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">Texas     71000</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">Oregon    16000</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">Utah       5000</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">dtype: int64</span></pre></td></tr></table></figure>
+
+<p>In [4]:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">data = &#123;<span class="string">'state'</span>: [<span class="string">'Ohio'</span>, <span class="string">'Ohio'</span>, <span class="string">'Ohio'</span>, <span class="string">'Nevada'</span>, <span class="string">'Nevada'</span>, <span class="string">'Nevada'</span>],</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">        <span class="string">'year'</span>: [<span class="number">2000</span>, <span class="number">2001</span>, <span class="number">2002</span>, <span class="number">2001</span>, <span class="number">2002</span>, <span class="number">2003</span>],<span class="string">'pop'</span>: [<span class="number">1.5</span>, <span class="number">1.7</span>, <span class="number">3.6</span>, <span class="number">2.4</span>, <span class="number">2.9</span>, <span class="number">3.2</span>]&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">example_2 = pd.DataFrame(data)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">example_2</span></pre></td></tr></table></figure>
+
+<p>Out[4]:</p>
+<table>
+<thead>
+<tr>
+<th align="right"></th>
+<th align="right">state</th>
+<th align="right">year</th>
+<th align="right">pop</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="right">0</td>
+<td align="right">Ohio</td>
+<td align="right">2000</td>
+<td align="right">1.5</td>
+</tr>
+<tr>
+<td align="right">1</td>
+<td align="right">Ohio</td>
+<td align="right">2001</td>
+<td align="right">1.7</td>
+</tr>
+<tr>
+<td align="right">2</td>
+<td align="right">Ohio</td>
+<td align="right">2002</td>
+<td align="right">3.6</td>
+</tr>
+<tr>
+<td align="right">3</td>
+<td align="right">Nevada</td>
+<td align="right">2001</td>
+<td align="right">2.4</td>
+</tr>
+<tr>
+<td align="right">4</td>
+<td align="right">Nevada</td>
+<td align="right">2002</td>
+<td align="right">2.9</td>
+</tr>
+<tr>
+<td align="right">5</td>
+<td align="right">Nevada</td>
+<td align="right">2003</td>
+<td align="right">3.2</td>
+</tr>
+</tbody></table>
+<h4 id="1-4-2-任务二：根据上节课的方法载入”train-csv”文件"><a href="#1-4-2-任务二：根据上节课的方法载入”train-csv”文件" class="headerlink" title="1.4.2 任务二：根据上节课的方法载入”train.csv”文件"></a>1.4.2 任务二：根据上节课的方法载入”train.csv”文件</h4><p>In [5]:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">df = pd.read_csv(<span class="string">'train.csv'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">df.head(<span class="number">3</span>)</span></pre></td></tr></table></figure>
+
+<p>Out[5]:</p>
+<table>
+<thead>
+<tr>
+<th align="right"></th>
+<th align="right">PassengerId</th>
+<th align="right">Survived</th>
+<th align="right">Pclass</th>
+<th align="right">Name</th>
+<th align="right">Sex</th>
+<th align="right">Age</th>
+<th align="right">SibSp</th>
+<th align="right">Parch</th>
+<th align="right">Ticket</th>
+<th align="right">Fare</th>
+<th align="right">Cabin</th>
+<th align="right">Embarked</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">Braund, Mr. Owen Harris</td>
+<td align="right">male</td>
+<td align="right">22.0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">A/5 21171</td>
+<td align="right">7.2500</td>
+<td align="right">NaN</td>
+<td align="right">S</td>
+</tr>
+<tr>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">Cumings, Mrs. John Bradley (Florence Briggs Th…</td>
+<td align="right">female</td>
+<td align="right">38.0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">PC 17599</td>
+<td align="right">71.2833</td>
+<td align="right">C85</td>
+<td align="right">C</td>
+</tr>
+<tr>
+<td align="right">2</td>
+<td align="right">3</td>
+<td align="right">1</td>
+<td align="right">3</td>
+<td align="right">Heikkinen, Miss. Laina</td>
+<td align="right">female</td>
+<td align="right">26.0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">STON/O2. 3101282</td>
+<td align="right">7.9250</td>
+<td align="right">NaN</td>
+<td align="right">S</td>
+</tr>
+</tbody></table>
+<p>也可以加载上一节课保存的”train_chinese.csv”文件。</p>
+<h4 id="1-4-3-任务三：查看DataFrame数据的每列的项"><a href="#1-4-3-任务三：查看DataFrame数据的每列的项" class="headerlink" title="1.4.3 任务三：查看DataFrame数据的每列的项"></a>1.4.3 任务三：查看DataFrame数据的每列的项</h4><p>In [5]:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">df.columns</span></pre></td></tr></table></figure>
+
+<p>Out[5]:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">Index([<span class="string">'PassengerId'</span>, <span class="string">'Survived'</span>, <span class="string">'Pclass'</span>, <span class="string">'Name'</span>, <span class="string">'Sex'</span>, <span class="string">'Age'</span>, <span class="string">'SibSp'</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">       <span class="string">'Parch'</span>, <span class="string">'Ticket'</span>, <span class="string">'Fare'</span>, <span class="string">'Cabin'</span>, <span class="string">'Embarked'</span>],</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">      dtype=<span class="string">'object'</span>)</span></pre></td></tr></table></figure>
+
+<h4 id="1-4-4任务四：查看”cabin”这列的所有项-有多种方法"><a href="#1-4-4任务四：查看”cabin”这列的所有项-有多种方法" class="headerlink" title="1.4.4任务四：查看”cabin”这列的所有项 [有多种方法]"></a>1.4.4任务四：查看”cabin”这列的所有项 [有多种方法]</h4><p>In [6]:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">df[<span class="string">'Cabin'</span>].head(<span class="number">3</span>)</span></pre></td></tr></table></figure>
+
+<p>Out[6]:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">0     NaN</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">1     C85</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">2     NaN</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">3    C123</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">4     NaN</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">Name: Cabin, dtype: object</span></pre></td></tr></table></figure>
+
+<p>In [7]:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">df.Cabin.head(<span class="number">3</span>)</span></pre></td></tr></table></figure>
+
+<p>Out[7]:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">0     NaN</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">1     C85</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">2     NaN</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">3    C123</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">4     NaN</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">Name: Cabin, dtype: object</span></pre></td></tr></table></figure>
+
+<h4 id="1-4-5-任务五：加载文件”test-1-csv”，然后对比”train-csv”，看看有哪些多出的列，然后将多出的列删除"><a href="#1-4-5-任务五：加载文件”test-1-csv”，然后对比”train-csv”，看看有哪些多出的列，然后将多出的列删除" class="headerlink" title="1.4.5 任务五：加载文件”test_1.csv”，然后对比”train.csv”，看看有哪些多出的列，然后将多出的列删除"></a>1.4.5 任务五：加载文件”test_1.csv”，然后对比”train.csv”，看看有哪些多出的列，然后将多出的列删除</h4><p>经过我们的观察发现一个测试集test_1.csv有一列是多余的，我们需要将这个多余的列删去</p>
+<p>In [10]:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">test_1 = pd.read_csv(<span class="string">'test_1.csv'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">test_1.head(<span class="number">3</span>)</span></pre></td></tr></table></figure>
+
+<p>Out[10]:</p>
+<table>
+<thead>
+<tr>
+<th align="right"></th>
+<th align="right">Unnamed: 0</th>
+<th align="right">PassengerId</th>
+<th align="right">Survived</th>
+<th align="right">Pclass</th>
+<th align="right">Name</th>
+<th align="right">Sex</th>
+<th align="right">Age</th>
+<th align="right">SibSp</th>
+<th align="right">Parch</th>
+<th align="right">Ticket</th>
+<th align="right">Fare</th>
+<th align="right">Cabin</th>
+<th align="right">Embarked</th>
+<th align="right">a</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">Braund, Mr. Owen Harris</td>
+<td align="right">male</td>
+<td align="right">22.0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">A/5 21171</td>
+<td align="right">7.2500</td>
+<td align="right">NaN</td>
+<td align="right">S</td>
+<td align="right">100</td>
+</tr>
+<tr>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">Cumings, Mrs. John Bradley (Florence Briggs Th…</td>
+<td align="right">female</td>
+<td align="right">38.0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">PC 17599</td>
+<td align="right">71.2833</td>
+<td align="right">C85</td>
+<td align="right">C</td>
+<td align="right">100</td>
+</tr>
+<tr>
+<td align="right">2</td>
+<td align="right">2</td>
+<td align="right">3</td>
+<td align="right">1</td>
+<td align="right">3</td>
+<td align="right">Heikkinen, Miss. Laina</td>
+<td align="right">female</td>
+<td align="right">26.0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">STON/O2. 3101282</td>
+<td align="right">7.9250</td>
+<td align="right">NaN</td>
+<td align="right">S</td>
+<td align="right">100</td>
+</tr>
+</tbody></table>
+<p>In [11]:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># 删除多余的列</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">del</span> test_1[<span class="string">'a'</span>]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">test_1.head(<span class="number">3</span>)</span></pre></td></tr></table></figure>
+
+<p>Out[11]:</p>
+<table>
+<thead>
+<tr>
+<th align="right"></th>
+<th align="right">Unnamed: 0</th>
+<th align="right">PassengerId</th>
+<th align="right">Survived</th>
+<th align="right">Pclass</th>
+<th align="right">Name</th>
+<th align="right">Sex</th>
+<th align="right">Age</th>
+<th align="right">SibSp</th>
+<th align="right">Parch</th>
+<th align="right">Ticket</th>
+<th align="right">Fare</th>
+<th align="right">Cabin</th>
+<th align="right">Embarked</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">Braund, Mr. Owen Harris</td>
+<td align="right">male</td>
+<td align="right">22.0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">A/5 21171</td>
+<td align="right">7.2500</td>
+<td align="right">NaN</td>
+<td align="right">S</td>
+</tr>
+<tr>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">Cumings, Mrs. John Bradley (Florence Briggs Th…</td>
+<td align="right">female</td>
+<td align="right">38.0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">PC 17599</td>
+<td align="right">71.2833</td>
+<td align="right">C85</td>
+<td align="right">C</td>
+</tr>
+<tr>
+<td align="right">2</td>
+<td align="right">2</td>
+<td align="right">3</td>
+<td align="right">1</td>
+<td align="right">3</td>
+<td align="right">Heikkinen, Miss. Laina</td>
+<td align="right">female</td>
+<td align="right">26.0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">STON/O2. 3101282</td>
+<td align="right">7.9250</td>
+<td align="right">NaN</td>
+<td align="right">S</td>
+</tr>
+</tbody></table>
+<p>【思考】还有其他的删除多余的列的方式吗？</p>
+<p>In [12]:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">#思考回答</span></pre></td></tr></table></figure>
+
+<h4 id="1-4-6-任务六：-将-‘PassengerId’-’Name’-’Age’-’Ticket’-这几个列元素隐藏，只观察其他几个列元素"><a href="#1-4-6-任务六：-将-‘PassengerId’-’Name’-’Age’-’Ticket’-这几个列元素隐藏，只观察其他几个列元素" class="headerlink" title="1.4.6 任务六： 将[‘PassengerId’,’Name’,’Age’,’Ticket’]这几个列元素隐藏，只观察其他几个列元素"></a>1.4.6 任务六： 将[‘PassengerId’,’Name’,’Age’,’Ticket’]这几个列元素隐藏，只观察其他几个列元素</h4><p>In [13]:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">df.drop([<span class="string">'PassengerId'</span>,<span class="string">'Name'</span>,<span class="string">'Age'</span>,<span class="string">'Ticket'</span>],axis=<span class="number">1</span>).head(<span class="number">3</span>)</span></pre></td></tr></table></figure>
+
+<p>Out[13]:</p>
+<table>
+<thead>
+<tr>
+<th align="right"></th>
+<th align="right">Survived</th>
+<th align="right">Pclass</th>
+<th align="right">Sex</th>
+<th align="right">SibSp</th>
+<th align="right">Parch</th>
+<th align="right">Fare</th>
+<th align="right">Cabin</th>
+<th align="right">Embarked</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">male</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">7.2500</td>
+<td align="right">NaN</td>
+<td align="right">S</td>
+</tr>
+<tr>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">female</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">71.2833</td>
+<td align="right">C85</td>
+<td align="right">C</td>
+</tr>
+<tr>
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="right">3</td>
+<td align="right">female</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">7.9250</td>
+<td align="right">NaN</td>
+<td align="right">S</td>
+</tr>
+</tbody></table>
+<p>【思考】对比任务五和任务六，是不是使用了不一样的方法(函数)，如果使用一样的函数如何完成上面的不同的要求呢？</p>
+<p>【思考回答】</p>
+<p>如果想要完全的删除你的数据结构，使用inplace=True，因为使用inplace就将原数据覆盖了，所以这里没有用</p>
+<p>In [14]:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># 思考回答</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">df.head(<span class="number">3</span>)</span></pre></td></tr></table></figure>
+
+<p>Out[14]:</p>
+<table>
+<thead>
+<tr>
+<th align="right"></th>
+<th align="right">PassengerId</th>
+<th align="right">Survived</th>
+<th align="right">Pclass</th>
+<th align="right">Name</th>
+<th align="right">Sex</th>
+<th align="right">Age</th>
+<th align="right">SibSp</th>
+<th align="right">Parch</th>
+<th align="right">Ticket</th>
+<th align="right">Fare</th>
+<th align="right">Cabin</th>
+<th align="right">Embarked</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">Braund, Mr. Owen Harris</td>
+<td align="right">male</td>
+<td align="right">22.0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">A/5 21171</td>
+<td align="right">7.2500</td>
+<td align="right">NaN</td>
+<td align="right">S</td>
+</tr>
+<tr>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">Cumings, Mrs. John Bradley (Florence Briggs Th…</td>
+<td align="right">female</td>
+<td align="right">38.0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">PC 17599</td>
+<td align="right">71.2833</td>
+<td align="right">C85</td>
+<td align="right">C</td>
+</tr>
+<tr>
+<td align="right">2</td>
+<td align="right">3</td>
+<td align="right">1</td>
+<td align="right">3</td>
+<td align="right">Heikkinen, Miss. Laina</td>
+<td align="right">female</td>
+<td align="right">26.0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">STON/O2. 3101282</td>
+<td align="right">7.9250</td>
+<td align="right">NaN</td>
+<td align="right">S</td>
+</tr>
+</tbody></table>
+<h3 id="1-5-筛选的逻辑"><a href="#1-5-筛选的逻辑" class="headerlink" title="1.5 筛选的逻辑"></a>1.5 筛选的逻辑</h3><p>表格数据中，最重要的一个功能就是要具有可筛选的能力，选出我所需要的信息，丢弃无用的信息。</p>
+<p>下面我们还是用实战来学习pandas这个功能。</p>
+<h4 id="1-5-1-任务一：-我们以”Age”为筛选条件，显示年龄在10岁以下的乘客信息。"><a href="#1-5-1-任务一：-我们以”Age”为筛选条件，显示年龄在10岁以下的乘客信息。" class="headerlink" title="1.5.1 任务一： 我们以”Age”为筛选条件，显示年龄在10岁以下的乘客信息。"></a>1.5.1 任务一： 我们以”Age”为筛选条件，显示年龄在10岁以下的乘客信息。</h4><p>In [15]:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">df[df[<span class="string">"Age"</span>]&lt;<span class="number">10</span>].head(<span class="number">3</span>)</span></pre></td></tr></table></figure>
+
+<p>Out[15]:</p>
+<table>
+<thead>
+<tr>
+<th align="right"></th>
+<th align="right">PassengerId</th>
+<th align="right">Survived</th>
+<th align="right">Pclass</th>
+<th align="right">Name</th>
+<th align="right">Sex</th>
+<th align="right">Age</th>
+<th align="right">SibSp</th>
+<th align="right">Parch</th>
+<th align="right">Ticket</th>
+<th align="right">Fare</th>
+<th align="right">Cabin</th>
+<th align="right">Embarked</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="right">7</td>
+<td align="right">8</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">Palsson, Master. Gosta Leonard</td>
+<td align="right">male</td>
+<td align="right">2.0</td>
+<td align="right">3</td>
+<td align="right">1</td>
+<td align="right">349909</td>
+<td align="right">21.075</td>
+<td align="right">NaN</td>
+<td align="right">S</td>
+</tr>
+<tr>
+<td align="right">10</td>
+<td align="right">11</td>
+<td align="right">1</td>
+<td align="right">3</td>
+<td align="right">Sandstrom, Miss. Marguerite Rut</td>
+<td align="right">female</td>
+<td align="right">4.0</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">PP 9549</td>
+<td align="right">16.700</td>
+<td align="right">G6</td>
+<td align="right">S</td>
+</tr>
+<tr>
+<td align="right">16</td>
+<td align="right">17</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">Rice, Master. Eugene</td>
+<td align="right">male</td>
+<td align="right">2.0</td>
+<td align="right">4</td>
+<td align="right">1</td>
+<td align="right">382652</td>
+<td align="right">29.125</td>
+<td align="right">NaN</td>
+<td align="right">Q</td>
+</tr>
+</tbody></table>
+<h4 id="1-5-2-任务二：-以”Age”为条件，将年龄在10岁以上和50岁以下的乘客信息显示出来，并将这个数据命名为midage"><a href="#1-5-2-任务二：-以”Age”为条件，将年龄在10岁以上和50岁以下的乘客信息显示出来，并将这个数据命名为midage" class="headerlink" title="1.5.2 任务二： 以”Age”为条件，将年龄在10岁以上和50岁以下的乘客信息显示出来，并将这个数据命名为midage"></a>1.5.2 任务二： 以”Age”为条件，将年龄在10岁以上和50岁以下的乘客信息显示出来，并将这个数据命名为midage</h4><p>In [27]:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">midage = df[(df[<span class="string">"Age"</span>]&gt;<span class="number">10</span>)&amp; (df[<span class="string">"Age"</span>]&lt;<span class="number">50</span>)]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">midage.head(<span class="number">3</span>)</span></pre></td></tr></table></figure>
+
+<p>Out[27]:</p>
+<table>
+<thead>
+<tr>
+<th align="right"></th>
+<th align="right">PassengerId</th>
+<th align="right">Survived</th>
+<th align="right">Pclass</th>
+<th align="right">Name</th>
+<th align="right">Sex</th>
+<th align="right">Age</th>
+<th align="right">SibSp</th>
+<th align="right">Parch</th>
+<th align="right">Ticket</th>
+<th align="right">Fare</th>
+<th align="right">Cabin</th>
+<th align="right">Embarked</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">Braund, Mr. Owen Harris</td>
+<td align="right">male</td>
+<td align="right">22.0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">A/5 21171</td>
+<td align="right">7.2500</td>
+<td align="right">NaN</td>
+<td align="right">S</td>
+</tr>
+<tr>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">Cumings, Mrs. John Bradley (Florence Briggs Th…</td>
+<td align="right">female</td>
+<td align="right">38.0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">PC 17599</td>
+<td align="right">71.2833</td>
+<td align="right">C85</td>
+<td align="right">C</td>
+</tr>
+<tr>
+<td align="right">2</td>
+<td align="right">3</td>
+<td align="right">1</td>
+<td align="right">3</td>
+<td align="right">Heikkinen, Miss. Laina</td>
+<td align="right">female</td>
+<td align="right">26.0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">STON/O2. 3101282</td>
+<td align="right">7.9250</td>
+<td align="right">NaN</td>
+<td align="right">S</td>
+</tr>
+</tbody></table>
+<p>【提示】了解pandas的条件筛选方式以及如何使用交集和并集操作</p>
+<h4 id="1-5-3-任务三：将midage的数据中第100行的”Pclass”和”Sex”的数据显示出来"><a href="#1-5-3-任务三：将midage的数据中第100行的”Pclass”和”Sex”的数据显示出来" class="headerlink" title="1.5.3 任务三：将midage的数据中第100行的”Pclass”和”Sex”的数据显示出来"></a>1.5.3 任务三：将midage的数据中第100行的”Pclass”和”Sex”的数据显示出来</h4><p>In [28]:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">midage = midage.reset_index(drop=<span class="literal">True</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">midage.head(<span class="number">3</span>)</span></pre></td></tr></table></figure>
+
+<p>Out[28]:</p>
+<table>
+<thead>
+<tr>
+<th align="right"></th>
+<th align="right">PassengerId</th>
+<th align="right">Survived</th>
+<th align="right">Pclass</th>
+<th align="right">Name</th>
+<th align="right">Sex</th>
+<th align="right">Age</th>
+<th align="right">SibSp</th>
+<th align="right">Parch</th>
+<th align="right">Ticket</th>
+<th align="right">Fare</th>
+<th align="right">Cabin</th>
+<th align="right">Embarked</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">Braund, Mr. Owen Harris</td>
+<td align="right">male</td>
+<td align="right">22.0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">A/5 21171</td>
+<td align="right">7.2500</td>
+<td align="right">NaN</td>
+<td align="right">S</td>
+</tr>
+<tr>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">Cumings, Mrs. John Bradley (Florence Briggs Th…</td>
+<td align="right">female</td>
+<td align="right">38.0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">PC 17599</td>
+<td align="right">71.2833</td>
+<td align="right">C85</td>
+<td align="right">C</td>
+</tr>
+<tr>
+<td align="right">2</td>
+<td align="right">3</td>
+<td align="right">1</td>
+<td align="right">3</td>
+<td align="right">Heikkinen, Miss. Laina</td>
+<td align="right">female</td>
+<td align="right">26.0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">STON/O2. 3101282</td>
+<td align="right">7.9250</td>
+<td align="right">NaN</td>
+<td align="right">S</td>
+</tr>
+</tbody></table>
+<p>【思考】这个reset_index()函数的作用是什么？如果不用这个函数，下面的任务会出现什么情况？</p>
+<p>In [31]:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">midage.loc[[<span class="number">100</span>],[<span class="string">'Pclass'</span>,<span class="string">'Sex'</span>]]</span></pre></td></tr></table></figure>
+
+<p>Out[31]:</p>
+<table>
+<thead>
+<tr>
+<th align="right"></th>
+<th align="right">Pclass</th>
+<th align="right">Sex</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="right">100</td>
+<td align="right">2</td>
+<td align="right">male</td>
+</tr>
+</tbody></table>
+<h4 id="1-5-4-任务四：使用loc方法将midage的数据中第100，105，108行的”Pclass”，”Name”和”Sex”的数据显示出来"><a href="#1-5-4-任务四：使用loc方法将midage的数据中第100，105，108行的”Pclass”，”Name”和”Sex”的数据显示出来" class="headerlink" title="1.5.4 任务四：使用loc方法将midage的数据中第100，105，108行的”Pclass”，”Name”和”Sex”的数据显示出来"></a>1.5.4 任务四：使用loc方法将midage的数据中第100，105，108行的”Pclass”，”Name”和”Sex”的数据显示出来</h4><p>In [32]:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">midage.loc[[<span class="number">100</span>,<span class="number">105</span>,<span class="number">108</span>],[<span class="string">'Pclass'</span>,<span class="string">'Name'</span>,<span class="string">'Sex'</span>]] <span class="comment">#因为你主动的延长了行的距离，所以会产生表格形式</span></span></pre></td></tr></table></figure>
+
+<p>Out[32]:</p>
+<table>
+<thead>
+<tr>
+<th align="right"></th>
+<th align="right">Pclass</th>
+<th align="right">Name</th>
+<th align="right">Sex</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="right">100</td>
+<td align="right">2</td>
+<td align="right">Byles, Rev. Thomas Roussel Davids</td>
+<td align="right">male</td>
+</tr>
+<tr>
+<td align="right">105</td>
+<td align="right">3</td>
+<td align="right">Cribb, Mr. John Hatfield</td>
+<td align="right">male</td>
+</tr>
+<tr>
+<td align="right">108</td>
+<td align="right">3</td>
+<td align="right">Calic, Mr. Jovo</td>
+<td align="right">male</td>
+</tr>
+</tbody></table>
+<p>【提示】使用pandas提出的简单方式，你可以看看loc方法</p>
+<p>对比整体的数据位置，你有发现什么问题吗？那么如何解决？</p>
+<h4 id="1-5-5-任务五：使用iloc方法将midage的数据中第100，105，108行的”Pclass”，”Name”和”Sex”的数据显示出来"><a href="#1-5-5-任务五：使用iloc方法将midage的数据中第100，105，108行的”Pclass”，”Name”和”Sex”的数据显示出来" class="headerlink" title="1.5.5 任务五：使用iloc方法将midage的数据中第100，105，108行的”Pclass”，”Name”和”Sex”的数据显示出来"></a>1.5.5 任务五：使用iloc方法将midage的数据中第100，105，108行的”Pclass”，”Name”和”Sex”的数据显示出来</h4><p>In [33]:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">midage.iloc[[<span class="number">100</span>,<span class="number">105</span>,<span class="number">108</span>],[<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]]</span></pre></td></tr></table></figure>
+
+<p>Out[33]:</p>
+<table>
+<thead>
+<tr>
+<th align="right"></th>
+<th align="right">Pclass</th>
+<th align="right">Name</th>
+<th align="right">Sex</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="right">100</td>
+<td align="right">2</td>
+<td align="right">Byles, Rev. Thomas Roussel Davids</td>
+<td align="right">male</td>
+</tr>
+<tr>
+<td align="right">105</td>
+<td align="right">3</td>
+<td align="right">Cribb, Mr. John Hatfield</td>
+<td align="right">male</td>
+</tr>
+<tr>
+<td align="right">108</td>
+<td align="right">3</td>
+<td align="right">Calic, Mr. Jovo</td>
+<td align="right">male</td>
+</tr>
+</tbody></table>
+<hr>
+<h1 id="探索性数据分析"><a href="#探索性数据分析" class="headerlink" title="探索性数据分析"></a>探索性数据分析</h1><p>如何利用Pandas进行排序、算术计算以及计算描述函数describe()的使用。</p>
+<h4 id="开始之前，导入numpy、pandas包和数据"><a href="#开始之前，导入numpy、pandas包和数据" class="headerlink" title="开始之前，导入numpy、pandas包和数据"></a>开始之前，导入numpy、pandas包和数据</h4><p>In [6]:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">#加载所需的库</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span></pre></td></tr></table></figure>
+
+<p>In [7]:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">#载入之前保存的train_chinese.csv数据，关于泰坦尼克号的任务，我们就使用这个数据</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">text = pd.read_csv(<span class="string">'train_chinese.csv'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">text.head()</span></pre></td></tr></table></figure>
+
+<p>Out[7]:</p>
+<table>
+<thead>
+<tr>
+<th align="right"></th>
+<th align="right">乘客ID</th>
+<th align="right">是否幸存</th>
+<th align="right">仓位等级</th>
+<th align="right">姓名</th>
+<th align="right">性别</th>
+<th align="right">年龄</th>
+<th align="right">兄弟姐妹个数</th>
+<th align="right">父母子女个数</th>
+<th align="right">船票信息</th>
+<th align="right">票价</th>
+<th align="right">客舱</th>
+<th align="right">登船港口</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">Braund, Mr. Owen Harris</td>
+<td align="right">male</td>
+<td align="right">22.0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">A/5 21171</td>
+<td align="right">7.2500</td>
+<td align="right">NaN</td>
+<td align="right">S</td>
+</tr>
+<tr>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">Cumings, Mrs. John Bradley (Florence Briggs Th…</td>
+<td align="right">female</td>
+<td align="right">38.0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">PC 17599</td>
+<td align="right">71.2833</td>
+<td align="right">C85</td>
+<td align="right">C</td>
+</tr>
+<tr>
+<td align="right">2</td>
+<td align="right">3</td>
+<td align="right">1</td>
+<td align="right">3</td>
+<td align="right">Heikkinen, Miss. Laina</td>
+<td align="right">female</td>
+<td align="right">26.0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">STON/O2. 3101282</td>
+<td align="right">7.9250</td>
+<td align="right">NaN</td>
+<td align="right">S</td>
+</tr>
+<tr>
+<td align="right">3</td>
+<td align="right">4</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">Futrelle, Mrs. Jacques Heath (Lily May Peel)</td>
+<td align="right">female</td>
+<td align="right">35.0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">113803</td>
+<td align="right">53.1000</td>
+<td align="right">C123</td>
+<td align="right">S</td>
+</tr>
+<tr>
+<td align="right">4</td>
+<td align="right">5</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">Allen, Mr. William Henry</td>
+<td align="right">male</td>
+<td align="right">35.0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">373450</td>
+<td align="right">8.0500</td>
+<td align="right">NaN</td>
+<td align="right">S</td>
+</tr>
+</tbody></table>
+<h3 id="1-6-了解你的数据吗？"><a href="#1-6-了解你的数据吗？" class="headerlink" title="1.6 了解你的数据吗？"></a>1.6 了解你的数据吗？</h3><h4 id="1-6-1-任务一：利用Pandas对示例数据进行排序，要求升序"><a href="#1-6-1-任务一：利用Pandas对示例数据进行排序，要求升序" class="headerlink" title="1.6.1 任务一：利用Pandas对示例数据进行排序，要求升序"></a>1.6.1 任务一：利用Pandas对示例数据进行排序，要求升序</h4><p>In [15]:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># 具体请看《利用Python进行数据分析》第五章 排序和排名 部分</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="comment">#自己构建一个都为数字的DataFrame数据</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">frame = pd.DataFrame(np.arange(<span class="number">8</span>).reshape((<span class="number">2</span>, <span class="number">4</span>)), </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">                     index=[<span class="string">'2'</span>, <span class="string">'1'</span>], </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">                     columns=[<span class="string">'d'</span>, <span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>])</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">frame</span></pre></td></tr></table></figure>
+
+<p>Out[15]:</p>
+<table>
+<thead>
+<tr>
+<th align="right"></th>
+<th align="right">d</th>
+<th align="right">a</th>
+<th align="right">b</th>
+<th align="right">c</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="right">2</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">3</td>
+</tr>
+<tr>
+<td align="right">1</td>
+<td align="right">4</td>
+<td align="right">5</td>
+<td align="right">6</td>
+<td align="right">7</td>
+</tr>
+</tbody></table>
+<p>【代码解析】</p>
+<p>pd.DataFrame() ：创建一个DataFrame对象</p>
+<p>np.arange(8).reshape((2, 4)) : 生成一个二维数组（2*4）,第一列：0，1，2，3 第二列：4，5，6，7</p>
+<p>index=[‘2, 1] ：DataFrame 对象的索引列</p>
+<p>columns=[‘d’, ‘a’, ‘b’, ‘c’] ：DataFrame 对象的索引行</p>
+<p>In [16]:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># 大多数时候我们都是想根据列的值来排序,所以，将你构建的DataFrame中的数据根据某一列，升序排列</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">frame.sort_values(by=<span class="string">'c'</span>, ascending=<span class="literal">False</span>)</span></pre></td></tr></table></figure>
+
+<p>Out[16]:</p>
+<table>
+<thead>
+<tr>
+<th align="right"></th>
+<th align="right">d</th>
+<th align="right">a</th>
+<th align="right">b</th>
+<th align="right">c</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="right">1</td>
+<td align="right">4</td>
+<td align="right">5</td>
+<td align="right">6</td>
+<td align="right">7</td>
+</tr>
+<tr>
+<td align="right">2</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">3</td>
+</tr>
+</tbody></table>
+<p>可以看到sort_values这个函数中by参数指向要排列的列，ascending参数指向排序的方式（升序还是降序）</p>
+<p>【总结】下面将不同的排序方式做一个小总结</p>
+<p>In [17]:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># 让行索引升序排序</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">frame.sort_index()</span></pre></td></tr></table></figure>
+
+<p>Out[17]:</p>
+<table>
+<thead>
+<tr>
+<th align="right"></th>
+<th align="right">d</th>
+<th align="right">a</th>
+<th align="right">b</th>
+<th align="right">c</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="right">1</td>
+<td align="right">4</td>
+<td align="right">5</td>
+<td align="right">6</td>
+<td align="right">7</td>
+</tr>
+<tr>
+<td align="right">2</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">3</td>
+</tr>
+</tbody></table>
+<p>In [18]:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># 让列索引升序排序</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">frame.sort_index(axis=<span class="number">1</span>)</span></pre></td></tr></table></figure>
+
+<p>Out[18]:</p>
+<table>
+<thead>
+<tr>
+<th align="right"></th>
+<th align="right">a</th>
+<th align="right">b</th>
+<th align="right">c</th>
+<th align="right">d</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">3</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="right">1</td>
+<td align="right">5</td>
+<td align="right">6</td>
+<td align="right">7</td>
+<td align="right">4</td>
+</tr>
+</tbody></table>
+<p>In [19]:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># 让列索引降序排序</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">frame.sort_index(axis=<span class="number">1</span>, ascending=<span class="literal">False</span>)</span></pre></td></tr></table></figure>
+
+<p>Out[19]:</p>
+<table>
+<thead>
+<tr>
+<th align="right"></th>
+<th align="right">d</th>
+<th align="right">c</th>
+<th align="right">b</th>
+<th align="right">a</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="right">2</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">2</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td align="right">1</td>
+<td align="right">4</td>
+<td align="right">7</td>
+<td align="right">6</td>
+<td align="right">5</td>
+</tr>
+</tbody></table>
+<p>In [20]:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># 让任选两列数据同时降序排序</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">frame.sort_values(by=[<span class="string">'a'</span>, <span class="string">'c'</span>])</span></pre></td></tr></table></figure>
+
+<p>Out[20]:</p>
+<table>
+<thead>
+<tr>
+<th align="right"></th>
+<th align="right">d</th>
+<th align="right">a</th>
+<th align="right">b</th>
+<th align="right">c</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="right">2</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">3</td>
+</tr>
+<tr>
+<td align="right">1</td>
+<td align="right">4</td>
+<td align="right">5</td>
+<td align="right">6</td>
+<td align="right">7</td>
+</tr>
+</tbody></table>
+<h4 id="1-6-2-任务二：对泰坦尼克号数据（trian-csv）按票价和年龄两列进行综合排序（降序排列），从数据中你能发现什么"><a href="#1-6-2-任务二：对泰坦尼克号数据（trian-csv）按票价和年龄两列进行综合排序（降序排列），从数据中你能发现什么" class="headerlink" title="1.6.2 任务二：对泰坦尼克号数据（trian.csv）按票价和年龄两列进行综合排序（降序排列），从数据中你能发现什么"></a>1.6.2 任务二：对泰坦尼克号数据（trian.csv）按票价和年龄两列进行综合排序（降序排列），从数据中你能发现什么</h4><p>In [21]:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="string">在开始我们已经导入了train_chinese.csv数据，而且前面我们也学习了导入数据过程，根据上面学习，我们直接对目标列进行排序即可</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="string">head(20) : 读取前20条数据</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">text.sort_values(by=[<span class="string">'票价'</span>, <span class="string">'年龄'</span>], ascending=<span class="literal">False</span>).head(<span class="number">3</span>)</span></pre></td></tr></table></figure>
+
+<p>Out[21]:</p>
+<table>
+<thead>
+<tr>
+<th align="right"></th>
+<th align="right">乘客ID</th>
+<th align="right">是否幸存</th>
+<th align="right">仓位等级</th>
+<th align="right">姓名</th>
+<th align="right">性别</th>
+<th align="right">年龄</th>
+<th align="right">兄弟姐妹个数</th>
+<th align="right">父母子女个数</th>
+<th align="right">船票信息</th>
+<th align="right">票价</th>
+<th align="right">客舱</th>
+<th align="right">登船港口</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="right">679</td>
+<td align="right">680</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">Cardeza, Mr. Thomas Drake Martinez</td>
+<td align="right">male</td>
+<td align="right">36.0</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">PC 17755</td>
+<td align="right">512.3292</td>
+<td align="right">B51 B53 B55</td>
+<td align="right">C</td>
+</tr>
+<tr>
+<td align="right">258</td>
+<td align="right">259</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">Ward, Miss. Anna</td>
+<td align="right">female</td>
+<td align="right">35.0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">PC 17755</td>
+<td align="right">512.3292</td>
+<td align="right">NaN</td>
+<td align="right">C</td>
+</tr>
+<tr>
+<td align="right">737</td>
+<td align="right">738</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">Lesurer, Mr. Gustave J</td>
+<td align="right">male</td>
+<td align="right">35.0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">PC 17755</td>
+<td align="right">512.3292</td>
+<td align="right">B101</td>
+<td align="right">C</td>
+</tr>
+</tbody></table>
+<p>【思考】排序后，如果我们仅仅关注年龄和票价两列。根据常识我知道发现票价越高的应该客舱越好，所以我们会明显看出，票价前20的乘客中存活的有14人，这是相当高的一个比例，那么我们后面是不是可以进一步分析一下票价和存活之间的关系，年龄和存活之间的关系呢？当你开始发现数据之间的关系了，数据分析就开始了。</p>
+<h4 id="1-6-3-任务三：利用Pandas进行算术计算，计算两个DataFrame数据相加结果"><a href="#1-6-3-任务三：利用Pandas进行算术计算，计算两个DataFrame数据相加结果" class="headerlink" title="1.6.3 任务三：利用Pandas进行算术计算，计算两个DataFrame数据相加结果"></a>1.6.3 任务三：利用Pandas进行算术计算，计算两个DataFrame数据相加结果</h4><p>In [12]:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># 具体请看《利用Python进行数据分析》第五章 算术运算与数据对齐 部分</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="comment">#建立一个例子</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">frame1_a = pd.DataFrame(np.arange(<span class="number">9.</span>).reshape(<span class="number">3</span>, <span class="number">3</span>),</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">                     columns=[<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>],</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">                     index=[<span class="string">'one'</span>, <span class="string">'two'</span>, <span class="string">'three'</span>])</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">frame1_b = pd.DataFrame(np.arange(<span class="number">12.</span>).reshape(<span class="number">4</span>, <span class="number">3</span>),</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">                     columns=[<span class="string">'a'</span>, <span class="string">'e'</span>, <span class="string">'c'</span>],</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">                     index=[<span class="string">'first'</span>, <span class="string">'one'</span>, <span class="string">'two'</span>, <span class="string">'second'</span>])</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">frame1_a</span></pre></td></tr></table></figure>
+
+<p>Out[12]:</p>
+<table>
+<thead>
+<tr>
+<th align="right"></th>
+<th align="right">a</th>
+<th align="right">b</th>
+<th align="right">c</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="right">one</td>
+<td align="right">0.0</td>
+<td align="right">1.0</td>
+<td align="right">2.0</td>
+</tr>
+<tr>
+<td align="right">two</td>
+<td align="right">3.0</td>
+<td align="right">4.0</td>
+<td align="right">5.0</td>
+</tr>
+<tr>
+<td align="right">three</td>
+<td align="right">6.0</td>
+<td align="right">7.0</td>
+<td align="right">8.0</td>
+</tr>
+</tbody></table>
+<p>In [13]:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">frame1_b</span></pre></td></tr></table></figure>
+
+<p>Out[13]:</p>
+<table>
+<thead>
+<tr>
+<th align="right"></th>
+<th align="right">a</th>
+<th align="right">e</th>
+<th align="right">c</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="right">first</td>
+<td align="right">0.0</td>
+<td align="right">1.0</td>
+<td align="right">2.0</td>
+</tr>
+<tr>
+<td align="right">one</td>
+<td align="right">3.0</td>
+<td align="right">4.0</td>
+<td align="right">5.0</td>
+</tr>
+<tr>
+<td align="right">two</td>
+<td align="right">6.0</td>
+<td align="right">7.0</td>
+<td align="right">8.0</td>
+</tr>
+<tr>
+<td align="right">second</td>
+<td align="right">9.0</td>
+<td align="right">10.0</td>
+<td align="right">11.0</td>
+</tr>
+</tbody></table>
+<p>In [14]:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">#将frame_a和frame_b进行相加</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">frame1_a + frame1_b</span></pre></td></tr></table></figure>
+
+<p>Out[14]:</p>
+<table>
+<thead>
+<tr>
+<th align="right"></th>
+<th align="right">a</th>
+<th align="right">b</th>
+<th align="right">c</th>
+<th align="right">e</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="right">first</td>
+<td align="right">NaN</td>
+<td align="right">NaN</td>
+<td align="right">NaN</td>
+<td align="right">NaN</td>
+</tr>
+<tr>
+<td align="right">one</td>
+<td align="right">3.0</td>
+<td align="right">NaN</td>
+<td align="right">7.0</td>
+<td align="right">NaN</td>
+</tr>
+<tr>
+<td align="right">second</td>
+<td align="right">NaN</td>
+<td align="right">NaN</td>
+<td align="right">NaN</td>
+<td align="right">NaN</td>
+</tr>
+<tr>
+<td align="right">three</td>
+<td align="right">NaN</td>
+<td align="right">NaN</td>
+<td align="right">NaN</td>
+<td align="right">NaN</td>
+</tr>
+<tr>
+<td align="right">two</td>
+<td align="right">9.0</td>
+<td align="right">NaN</td>
+<td align="right">13.0</td>
+<td align="right">NaN</td>
+</tr>
+</tbody></table>
+<p>【提醒】两个DataFrame相加后，会返回一个新的DataFrame，对应的行和列的值会相加，没有对应的会变成空值NaN。</p>
+<h4 id="1-6-4-任务四：通过泰坦尼克号数据如何计算出在船上最大的家族有多少人？"><a href="#1-6-4-任务四：通过泰坦尼克号数据如何计算出在船上最大的家族有多少人？" class="headerlink" title="1.6.4 任务四：通过泰坦尼克号数据如何计算出在船上最大的家族有多少人？"></a>1.6.4 任务四：通过泰坦尼克号数据如何计算出在船上最大的家族有多少人？</h4><p>In [15]:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="string">还是用之前导入的chinese_train.csv如果我们想看看在船上，最大的家族有多少人（‘兄弟姐妹个数’+‘父母子女个数’），我们该怎么做呢？</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">max(text[<span class="string">'兄弟姐妹个数'</span>] + text[<span class="string">'父母子女个数'</span>])</span></pre></td></tr></table></figure>
+
+<p>Out[15]:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">10</span></pre></td></tr></table></figure>
+
+<p>我们只需找出兄弟姐妹个数和父母子女个数之和最大的数就行，先让这两列相加返回一个DataFrame，然后用max函数求出最大值。</p>
+<h4 id="1-6-5-任务五：学会使用Pandas-describe-函数查看数据基本统计信息"><a href="#1-6-5-任务五：学会使用Pandas-describe-函数查看数据基本统计信息" class="headerlink" title="1.6.5 任务五：学会使用Pandas describe()函数查看数据基本统计信息"></a>1.6.5 任务五：学会使用Pandas describe()函数查看数据基本统计信息</h4><p>In [16]:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">#(1) 关键知识点示例做一遍（简单数据）</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># 具体请看《利用Python进行数据分析》第五章 汇总和计算描述统计 部分</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="comment">#建立一个例子</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">frame2 = pd.DataFrame([[<span class="number">1.4</span>, np.nan], </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">                       [<span class="number">7.1</span>, <span class="number">-4.5</span>],</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">                       [np.nan, np.nan], </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">                       [<span class="number">0.75</span>, <span class="number">-1.3</span>]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">                      ], index=[<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>], columns=[<span class="string">'one'</span>, <span class="string">'two'</span>])</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">frame2</span></pre></td></tr></table></figure>
+
+<p>Out[16]:</p>
+<table>
+<thead>
+<tr>
+<th align="right"></th>
+<th align="right">one</th>
+<th align="right">two</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="right">a</td>
+<td align="right">1.40</td>
+<td align="right">NaN</td>
+</tr>
+<tr>
+<td align="right">b</td>
+<td align="right">7.10</td>
+<td align="right">-4.5</td>
+</tr>
+<tr>
+<td align="right">c</td>
+<td align="right">NaN</td>
+<td align="right">NaN</td>
+</tr>
+<tr>
+<td align="right">d</td>
+<td align="right">0.75</td>
+<td align="right">-1.3</td>
+</tr>
+</tbody></table>
+<p>In [18]:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># 调用 describe 函数，观察frame2的数据基本信息</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">frame2.describe()</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="string">count : 样本数据大小</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"><span class="string">mean : 样本数据的平均值</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"><span class="string">std : 样本数据的标准差</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line"><span class="string">min : 样本数据的最小值</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line"><span class="string">25% : 样本数据25%的时候的值</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line"><span class="string">50% : 样本数据50%的时候的值</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line"><span class="string">75% : 样本数据75%的时候的值</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line"><span class="string">max : 样本数据的最大值</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span></pre></td></tr></table></figure>
+
+<p>Out[18]:</p>
+<table>
+<thead>
+<tr>
+<th align="right"></th>
+<th align="right">one</th>
+<th align="right">two</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="right">count</td>
+<td align="right">3.000000</td>
+<td align="right">2.000000</td>
+</tr>
+<tr>
+<td align="right">mean</td>
+<td align="right">3.083333</td>
+<td align="right">-2.900000</td>
+</tr>
+<tr>
+<td align="right">std</td>
+<td align="right">3.493685</td>
+<td align="right">2.262742</td>
+</tr>
+<tr>
+<td align="right">min</td>
+<td align="right">0.750000</td>
+<td align="right">-4.500000</td>
+</tr>
+<tr>
+<td align="right">25%</td>
+<td align="right">1.075000</td>
+<td align="right">-3.700000</td>
+</tr>
+<tr>
+<td align="right">50%</td>
+<td align="right">1.400000</td>
+<td align="right">-2.900000</td>
+</tr>
+<tr>
+<td align="right">75%</td>
+<td align="right">4.250000</td>
+<td align="right">-2.100000</td>
+</tr>
+<tr>
+<td align="right">max</td>
+<td align="right">7.100000</td>
+<td align="right">-1.300000</td>
+</tr>
+</tbody></table>
+<h4 id="1-6-6-任务六：分别看看泰坦尼克号数据集中-票价、父母子女-这列数据的基本统计数据，你能发现什么？"><a href="#1-6-6-任务六：分别看看泰坦尼克号数据集中-票价、父母子女-这列数据的基本统计数据，你能发现什么？" class="headerlink" title="1.6.6 任务六：分别看看泰坦尼克号数据集中 票价、父母子女 这列数据的基本统计数据，你能发现什么？"></a>1.6.6 任务六：分别看看泰坦尼克号数据集中 票价、父母子女 这列数据的基本统计数据，你能发现什么？</h4><p>In [20]:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="string">看看泰坦尼克号数据集中 票价 这列数据的基本统计数据</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">text[<span class="string">'票价'</span>].describe()</span></pre></td></tr></table></figure>
+
+<p>Out[20]:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">count    891.000000</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">mean      32.204208</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">std       49.693429</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">min        0.000000</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">25%        7.910400</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">50%       14.454200</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">75%       31.000000</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">max      512.329200</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">Name: 票价, dtype: float64</span></pre></td></tr></table></figure>
+
+<p>【思考】从上面数据我们可以看出， 一共有891个票价数据， 平均值约为：32.20， 标准差约为49.69，说明票价波动特别大， 25%的人的票价是低于7.91的，50%的人的票价低于14.45，75%的人的票价低于31.00， 票价最大值约为512.33，最小值为0。</p>
+<p>In [21]:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="string">通过上面的例子，我们再看看泰坦尼克号数据集中 父母子女个数 这列数据的基本统计数据，然后可以说出你的想法</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">text[<span class="string">'父母子女个数'</span>].describe()</span></pre></td></tr></table></figure>
+
+<p>Out[21]:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">count    891.000000</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">mean       0.381594</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">std        0.806057</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">min        0.000000</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">25%        0.000000</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">50%        0.000000</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">75%        0.000000</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">max        6.000000</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">Name: 父母子女个数, dtype: float64</span></pre></td></tr></table></figure>
+
+<p>【总结】本节中我们通过Pandas的一些内置函数对数据进行了初步统计查看，这个过程最重要的不是大家得掌握这些函数，而是看懂从这些函数出来的数据，构建自己的数据分析思维，这也是第一章最重要的点，希望大家学完第一章能对数据有个基本认识，了解自己在做什么，为什么这么做，后面的章节我们将开始对数据进行清洗，进一步分析。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" rel="tag"># 数据分析</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/08/18/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95_%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/" rel="next" title="机器学习算法--逻辑回归">
+                <i class="fa fa-chevron-left"></i> 机器学习算法--逻辑回归
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/08/18/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%901/" rel="prev" title="数据分析:数据加载">
+                数据分析:数据加载 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Li Miao</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">49</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-1-任务一：pandas中有两个数据类型DateFrame和Series，通过查找简单了解他们。然后自己写一个关于这两个数据类型的小例子🌰"><span class="nav-number">1.</span> <span class="nav-text">1.4.1 任务一：pandas中有两个数据类型DateFrame和Series，通过查找简单了解他们。然后自己写一个关于这两个数据类型的小例子🌰</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-2-任务二：根据上节课的方法载入”train-csv”文件"><span class="nav-number">2.</span> <span class="nav-text">1.4.2 任务二：根据上节课的方法载入”train.csv”文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-3-任务三：查看DataFrame数据的每列的项"><span class="nav-number">3.</span> <span class="nav-text">1.4.3 任务三：查看DataFrame数据的每列的项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-4任务四：查看”cabin”这列的所有项-有多种方法"><span class="nav-number">4.</span> <span class="nav-text">1.4.4任务四：查看”cabin”这列的所有项 [有多种方法]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-5-任务五：加载文件”test-1-csv”，然后对比”train-csv”，看看有哪些多出的列，然后将多出的列删除"><span class="nav-number">5.</span> <span class="nav-text">1.4.5 任务五：加载文件”test_1.csv”，然后对比”train.csv”，看看有哪些多出的列，然后将多出的列删除</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-6-任务六：-将-‘PassengerId’-’Name’-’Age’-’Ticket’-这几个列元素隐藏，只观察其他几个列元素"><span class="nav-number">6.</span> <span class="nav-text">1.4.6 任务六： 将[‘PassengerId’,’Name’,’Age’,’Ticket’]这几个列元素隐藏，只观察其他几个列元素</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-筛选的逻辑"><span class="nav-number"></span> <span class="nav-text">1.5 筛选的逻辑</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-1-任务一：-我们以”Age”为筛选条件，显示年龄在10岁以下的乘客信息。"><span class="nav-number">1.</span> <span class="nav-text">1.5.1 任务一： 我们以”Age”为筛选条件，显示年龄在10岁以下的乘客信息。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-2-任务二：-以”Age”为条件，将年龄在10岁以上和50岁以下的乘客信息显示出来，并将这个数据命名为midage"><span class="nav-number">2.</span> <span class="nav-text">1.5.2 任务二： 以”Age”为条件，将年龄在10岁以上和50岁以下的乘客信息显示出来，并将这个数据命名为midage</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-3-任务三：将midage的数据中第100行的”Pclass”和”Sex”的数据显示出来"><span class="nav-number">3.</span> <span class="nav-text">1.5.3 任务三：将midage的数据中第100行的”Pclass”和”Sex”的数据显示出来</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-4-任务四：使用loc方法将midage的数据中第100，105，108行的”Pclass”，”Name”和”Sex”的数据显示出来"><span class="nav-number">4.</span> <span class="nav-text">1.5.4 任务四：使用loc方法将midage的数据中第100，105，108行的”Pclass”，”Name”和”Sex”的数据显示出来</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-5-任务五：使用iloc方法将midage的数据中第100，105，108行的”Pclass”，”Name”和”Sex”的数据显示出来"><span class="nav-number">5.</span> <span class="nav-text">1.5.5 任务五：使用iloc方法将midage的数据中第100，105，108行的”Pclass”，”Name”和”Sex”的数据显示出来</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#探索性数据分析"><span class="nav-number"></span> <span class="nav-text">探索性数据分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#开始之前，导入numpy、pandas包和数据"><span class="nav-number">1.</span> <span class="nav-text">开始之前，导入numpy、pandas包和数据</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-6-了解你的数据吗？"><span class="nav-number"></span> <span class="nav-text">1.6 了解你的数据吗？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-6-1-任务一：利用Pandas对示例数据进行排序，要求升序"><span class="nav-number">1.</span> <span class="nav-text">1.6.1 任务一：利用Pandas对示例数据进行排序，要求升序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-6-2-任务二：对泰坦尼克号数据（trian-csv）按票价和年龄两列进行综合排序（降序排列），从数据中你能发现什么"><span class="nav-number">2.</span> <span class="nav-text">1.6.2 任务二：对泰坦尼克号数据（trian.csv）按票价和年龄两列进行综合排序（降序排列），从数据中你能发现什么</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-6-3-任务三：利用Pandas进行算术计算，计算两个DataFrame数据相加结果"><span class="nav-number">3.</span> <span class="nav-text">1.6.3 任务三：利用Pandas进行算术计算，计算两个DataFrame数据相加结果</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-6-4-任务四：通过泰坦尼克号数据如何计算出在船上最大的家族有多少人？"><span class="nav-number">4.</span> <span class="nav-text">1.6.4 任务四：通过泰坦尼克号数据如何计算出在船上最大的家族有多少人？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-6-5-任务五：学会使用Pandas-describe-函数查看数据基本统计信息"><span class="nav-number">5.</span> <span class="nav-text">1.6.5 任务五：学会使用Pandas describe()函数查看数据基本统计信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-6-6-任务六：分别看看泰坦尼克号数据集中-票价、父母子女-这列数据的基本统计数据，你能发现什么？"><span class="nav-number">6.</span> <span class="nav-text">1.6.6 任务六：分别看看泰坦尼克号数据集中 票价、父母子女 这列数据的基本统计数据，你能发现什么？</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Li Miao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/clicklove.js"></script>
+  
+</body>
+</html>

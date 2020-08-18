@@ -258,6 +258,627 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/31/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F_%E8%BF%9B%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Li Miao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LiMiao's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/31/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F_%E8%BF%9B%E7%A8%8B/" itemprop="url">操作系统之进程</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-31T17:55:17+08:00">
+                2020-03-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%BF%9B%E7%A8%8B/" itemprop="url" rel="index">
+                    <span itemprop="name">进程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>进程的定义:</strong></p>
+<p>在某种角度上，我们可以把运行的程序看成是进程。它代表程序在整个执行过程中的一个描述。</p>
+<p>进程:一个具有一定独立功能的程序在一个数据集合上的一次动态执行过程。</p>
+<p><strong>进程的组成:</strong></p>
+<ul>
+<li><p>程序的代码;</p>
+</li>
+<li><p>程序处理的数据;</p>
+</li>
+<li><p>程序计数器中的值，指示下一条将运行的指令;</p>
+</li>
+<li><p>一组通用的寄存器的当前值,堆,栈;</p>
+</li>
+<li><p>一组系统资源(如打开的文件);</p>
+</li>
+</ul>
+<p>总之，进程包含了正在运行的一个程序的所有状态信息;</p>
+<p><strong>进程与程序的联系:</strong></p>
+<ul>
+<li><p>程序是产生进程的基础;</p>
+</li>
+<li><p>程序的每次运行构成不同的进程;</p>
+</li>
+<li><p>进程是程序功能的体现;</p>
+</li>
+<li><p>通过多次执行，一个程序可对应多个进程;通过调用关系，一个进程可包括多个程序;</p>
+</li>
+</ul>
+<p><strong>进程与程序的区别:</strong></p>
+<ul>
+<li><p>进程是动态的，程序是静态的;程序是有序代码的集合;进程是程序的执行，进程有核心态/用户态;</p>
+</li>
+<li><p>进程是暂时的，程序是永久的;进程是一个状态变化的过程，程序可长久保存;</p>
+</li>
+<li><p>进程与程序的组成不同:进程的组成包括程序，数据和进程控制块(即进程状态信息);</p>
+</li>
+</ul>
+<p><img src="/images/j%E8%BF%9B%E7%A8%8B1.png" alt="j进程1"></p>
+<p><strong>进程的特点:</strong></p>
+<ul>
+<li><p>动态性：可动态地创建，结束进程；</p>
+</li>
+<li><p>并发性:进程可以被独立调度并占用处理机运行；</p>
+</li>
+</ul>
+<p>并发:在一段时间内有多个进程在执行;</p>
+<p>并行:在一个时刻多个进程执行；多个cpu才可以并行，单个无法进行并行;</p>
+<ul>
+<li><p>独立性:不同进程的工作不相互影响;</p>
+</li>
+<li><p>制约性:因访问共享数据/资源或进程间同步而产生制约;</p>
+</li>
+</ul>
+<p>程序=算法+数据结构</p>
+<p>操作系统也可以看成是一个程序，有相应的算法和数据结构;</p>
+<p>描述进程的数据结构:进程控制块；(Process Control Block,PCB);</p>
+<p>操作系统为每个进程都维护了一个PCB,用来保存与该进程有关的各种状态信息；</p>
+<p><strong>进程控制结构:</strong></p>
+<p>进程控制块: 操作系统管理控制进程运行所用的信息集合。</p>
+<p>操作系统用PCB来描述进程的基本情况以及运行变化的过程，PCB是进程存在的唯一标志。</p>
+<p><strong>使用进程控制块:</strong></p>
+<p>进程的创建:为该进程生成一个PCB;</p>
+<p>进程的终止:回收它的PCB;</p>
+<p>进程的组织管理:通过对PCB的组织管理来实现;</p>
+<p><strong>PCB含有以下三大类信息:</strong></p>
+<ul>
+<li><p>进程标识信息(process identity pid)。如本进程的标识，本进程的产生者标识(父进程标识)；用户标识。</p>
+</li>
+<li><p>处理机状态信息保存区。保存进程的运行现场信息；</p>
+<ul>
+<li>用户可见寄存器。用户程序可以使用的数据，地址等寄存器。</li>
+<li>控制和状态寄存器。如程序计数器(PC)程序状态字(PSW)。</li>
+<li>栈指针。过程调用/系统调用/中断处理和返回时需要用到它。</li>
+</ul>
+</li>
+<li><p>进程控制信息。</p>
+<ul>
+<li>调度和状态信息，用于操作系统调度进程并占用处理机使用。</li>
+<li>进程间通信信息，为支持进程间的与通信相关的各种标识，信号，信件等，这些信息存在接收方的进程控制块中。</li>
+<li>存储管理信息，包含有指向本进程映像存储空间的数据结构。</li>
+<li>进程所用资源，说明由进程打开，使用的系统资源，如打开的文件等。</li>
+<li>有关数据结构连接信息，进程可以连接到一个进程队列中，或连接到相关的其他进程的PCB。</li>
+</ul>
+</li>
+</ul>
+<p>创建过程: 进程B —&gt;进程A—&gt;进程C</p>
+<p><strong>PCB的组织方式:</strong></p>
+<ul>
+<li>链表: 同一状态的进程其PCB成一链表，多个状态对应多个不同的链表</li>
+</ul>
+<p>​         各状态的进程形成不同的链表:就绪链表，阻塞链表。</p>
+<ul>
+<li>索引表:同一状态的进程归入一个index表(由index指向PCB)，多个状态对应多个不同的index表。</li>
+</ul>
+<p>​          各状态的进行形成不同的索引表:就绪索引表，阻塞索引表。</p>
+<p>进程状态变化模型:</p>
+<p><strong>进程的三种基本状态:</strong></p>
+<p>​          进程在生命结束前处于且仅处于三种基本状态之一</p>
+<p>不同操作系统设置的进程状态数目不同。</p>
+<ul>
+<li><p>运行状态(Running):当一个进程正在处理机上运行时。</p>
+</li>
+<li><p>就绪状态(Ready):一个进程获得了除处理机之外的一切所需资源，一旦得到处理机即可运行。</p>
+</li>
+<li><p>等待状态(又称阻塞状态Blocked):一个进程正在等待某一事件而暂停运行时。如等待某资源，等待输入/输出完成。</p>
+</li>
+</ul>
+<p><strong>进程其它的基本状态:</strong></p>
+<ul>
+<li><p>创建状态(New): 一个进程正在被创建，还没被转到就绪状态之前的状态。</p>
+</li>
+<li><p>结束状态(Exit): 一个进程正在从系统中消失的状态，这是因为进程结束或由于其它原因所导致的。</p>
+</li>
+</ul>
+<p><img src="/images/%E8%BF%9B%E7%A8%8B2.png" alt="进程2"></p>
+<p><strong>可能的状态变化如下:</strong></p>
+<ul>
+<li><p>Null—&gt;New: 一个新进程被产生出来执行一个程序。</p>
+</li>
+<li><p>New–&gt;Ready:当进程被创建完成并初始化后，一切就绪准备运行时，变为就绪状态。(过程不会很久)</p>
+</li>
+<li><p>Ready–&gt;Running:处于就绪状态的进程被进程调度程序选中后，就分配到处理机上来运行。</p>
+</li>
+<li><p>Running–&gt;Exit:当进程表示它已经完成或者因出错，当前运行进程会由操作系统作结束处理。</p>
+</li>
+<li><p>Running–&gt;Ready:处于运行状态的进程在其运行过程中，由于分配给它的处理机时间片用完而让出处理机。(操作系统来完成)</p>
+</li>
+<li><p>Running–&gt;Blocked:当进程请求某样东西且必须等待时。</p>
+</li>
+<li><p>Blocked–&gt;Ready:当进程要等待某事件到来时，它从阻塞状态变到就绪状态。</p>
+</li>
+</ul>
+<p><strong>进程挂起</strong>:</p>
+<p><img src="/images/%E8%BF%9B%E7%A8%8B3.png" alt="进程3"></p>
+<p><strong>挂起状态:</strong></p>
+<ul>
+<li><p>阻塞挂起状态(Blocked-suspend): 进程在外存并等待某事件的出现。</p>
+</li>
+<li><p>就绪挂起状态(Ready-suspend):进程在外存，但只要进入内存，即可运行；</p>
+</li>
+</ul>
+<p><strong>与挂起相关的状态转换</strong></p>
+<p><img src="/images/%E8%BF%9B%E7%A8%8B4.png" alt="进程4"></p>
+<p><img src="/images/%E8%BF%9B%E7%A8%8B5.png" alt="进程5"></p>
+<p><img src="/images/%E8%BF%9B%E7%A8%8B6-5659343.png" alt="进程6"></p>
+<p><img src="/images/%E8%BF%9B%E7%A8%8B7.png" alt="进程7"></p>
+<p><img src="/images/%E8%BF%9B%E7%A8%8B8.png" alt="进程8"></p>
+<hr>
+<p>进程通信</p>
+<p>进程间通信:在用户空间实现进程通信是不可能的，通过linux内核通信</p>
+<p>线程间通信:可以在用户空间就可以实现，可以通过全局变量通信</p>
+<p>有哪几种通信方式:</p>
+<ul>
+<li><p>管道通信:无名管道，有名管道(文件系统中有名)</p>
+</li>
+<li><p>信号通信:信号(通知)通信包括:信号的发送，信号的接收和信号的处理</p>
+</li>
+<li><p>IPC(Inter-Process Communication)通信:共享内存，消息队列和信号灯</p>
+</li>
+</ul>
+<p>以上是单机模式下的进程通信(只有一个linux内核)</p>
+<ul>
+<li>Socket通信: 存在于一个网络中两个进程之间的通信(两个linux内核)</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/30/idea%E9%85%8D%E7%BD%AEmaven/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Li Miao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LiMiao's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/30/idea%E9%85%8D%E7%BD%AEmaven/" itemprop="url">idea配置maven</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-30T18:47:58+08:00">
+                2020-03-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/maven/" itemprop="url" rel="index">
+                    <span itemprop="name">maven</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>idea配置maven,参考博客:<a href="https://www.cnblogs.com/weiqingfeng/p/9494914.html" target="_blank" rel="noopener">https://www.cnblogs.com/weiqingfeng/p/9494914.html</a></p>
+<p>404问题:</p>
+<p><a href="https://blog.csdn.net/weixin_40517703/article/details/86513308" target="_blank" rel="noopener">https://blog.csdn.net/weixin_40517703/article/details/86513308</a></p>
+<p>特别注意的是,在配置tomcat server的时候，在deployment应该选:war  由于我选了其他的，导致404!</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/24/%E9%98%9F%E5%88%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Li Miao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LiMiao's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/24/%E9%98%9F%E5%88%97/" itemprop="url">队列算法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-24T09:53:15+08:00">
+                2020-03-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%98%9F%E5%88%97/" itemprop="url" rel="index">
+                    <span itemprop="name">队列</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>队列介绍:</p>
+<p>队列是一个有序列表，可以用数组或是链表来实现。</p>
+<p>遵循先入先出的原则。</p>
+<p><img src="../images/queue1.png" alt="queue1"></p>
+<p>rear代表队列尾部</p>
+<p>front为队首</p>
+<p>加数据在队尾，取数据在队首</p>
+<p><strong>Demo1</strong>:<strong>最近的请求次数</strong></p>
+<p>写一个 RecentCounter 类来计算最近的请求。</p>
+<p>它只有一个方法：ping(int t)，其中 t 代表以毫秒为单位的某个时间。</p>
+<p>返回从 3000 毫秒前到现在的 ping 数。</p>
+<p>任何处于 [t - 3000, t] 时间范围之内的 ping 都将会被计算在内，包括当前（指 t 时刻）的 ping。</p>
+<p>保证每次对 ping 的调用都使用比之前更大的 t 值。</p>
+<p>示例：</p>
+<p>输入：inputs = [“RecentCounter”,”ping”,”ping”,”ping”,”ping”], inputs = [[],[1],[100],[3001],[3002]]<br>输出：[null,1,2,3,3]</p>
+<p>提示：</p>
+<p>每个测试用例最多调用 10000 次 ping。<br>每个测试用例会使用严格递增的 t 值来调用 ping。<br>每次调用 ping 都有 1 &lt;= t &lt;= 10^9。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RecentCounter</span> </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    Queue&lt;Integer&gt; q;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">RecentCounter</span><span class="params">()</span> </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">        q = <span class="keyword">new</span> LinkedList();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">ping</span><span class="params">(<span class="keyword">int</span> t)</span> </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">        q.add(t);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">while</span> (q.peek() &lt; t - <span class="number">3000</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">            q.poll();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">return</span> q.size();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/24/%E6%95%B0%E7%BB%84/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1483,796 +2104,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/01/jdbc(1)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Li Miao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LiMiao's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/03/01/jdbc(1)/" itemprop="url">JDBC连接mysql问题合集</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-01T00:00:00+08:00">
-                2020-03-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/jdbc/" itemprop="url" rel="index">
-                    <span itemprop="name">jdbc</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>问题1:</p>
-<p>JDBC连接MySQL：Unknown initial character set index ‘255’ received from server.Initial client character</p>
-<p>报错信息:</p>
-<p>Unknown initial character set index ‘255’ received from server. Initial client character set can be forced via the ‘characterEncoding’ property.</p>
-<p>解决方法:在url前面添加上字符集的编码格式</p>
-<p>“Jdbc:mysql://xxx.xxx.xxx.xxx:3306/student?useUnicode=true&amp;characterEncoding=utf-8”;</p>
-<p>问题2:</p>
-<p>java.lang.ClassNotFoundException: com.mysql.jdbc.Driver</p>
-<p>这种报错是因为tomcat找不到mysql jar包，只需要把mysql-connector-java-5.1.7-bin.jar导入到tomcat的lib目录下面就ok了,然后重启tomcat就行啦！</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/01/jsp(1)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Li Miao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LiMiao's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/03/01/jsp(1)/" itemprop="url">jsp(1)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-01T00:00:00+08:00">
-                2020-03-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/jsp/" itemprop="url" rel="index">
-                    <span itemprop="name">jsp</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>一般而言，修改web.xml，配置文件,java 需要重启tomcat服务器；但是如果修改jsp\html\css\js则不需要重启。</p>
-<p>out.print()     &lt;%= %&gt;  可以直接解析html代码</p>
-<h3 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h3><p>page指令:</p>
-<p>&lt;%@ page …&gt;</p>
-<p>page指令的属性:</p>
-<p>Language:jsp页面使用的脚本语言</p>
-<p>Import:导入类</p>
-<p>pageEncoding:jsp文件自身编码，  jsp–&gt;java</p>
-<p>contentType:浏览器解析jsp的编码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">&lt;%@ page contentType=<span class="string">"text/html;charset=UTF-8"</span> language=<span class="string">"java"</span> %&gt;</span></pre></td></tr></table></figure>
-
-<h3 id="注释"><a href="#注释" class="headerlink" title="注释:"></a>注释:</h3><p>​    html注释<!--  --> 可以被用户通过浏览器查看源码所观察到</p>
-<p>​    java注释//    /*   */</p>
-<p>​    jsp注释&lt;%–  –%&gt;</p>
-<h3 id="jsp九大内置对象-自带的，不需要new也能使用的对象"><a href="#jsp九大内置对象-自带的，不需要new也能使用的对象" class="headerlink" title="jsp九大内置对象(自带的，不需要new也能使用的对象)"></a>jsp九大内置对象(自带的，不需要new也能使用的对象)</h3><h4 id="out-输出对象，向客户端输出内容"><a href="#out-输出对象，向客户端输出内容" class="headerlink" title="out: 输出对象，向客户端输出内容"></a>out: 输出对象，向客户端输出内容</h4><h4 id="pageContext-jsp页面容器"><a href="#pageContext-jsp页面容器" class="headerlink" title="pageContext:  jsp页面容器"></a>pageContext:  jsp页面容器</h4><h4 id="request-请求对象-存储“客户端向服务器端发送的请求信息“"><a href="#request-请求对象-存储“客户端向服务器端发送的请求信息“" class="headerlink" title="request: 请求对象;存储“客户端向服务器端发送的请求信息“"></a>request: 请求对象;存储“客户端向服务器端发送的请求信息“</h4><h5 id="request对象的常见方法"><a href="#request对象的常见方法" class="headerlink" title="request对象的常见方法:"></a>request对象的常见方法:</h5><p><strong>String getParameter(String name):</strong>根据请求的字段名key(input标签的name属性),返回字段值value(input标签的value值)</p>
-<p>String[] getParametervalue(String name):根据请求的字段名key,返回多个字段值value   (checkbox)</p>
-<p>void setCharacterEncoding(“编码格式utf-8”):设置post方式的请求编码(tomcat7以前默认iso-8859-1,tomcat8以后改为了utf-8)</p>
-<p>getRequestDispatcher(“b.jsp”).forward(request, response): 请求转发 的方式跳转页面    a–&gt;b</p>
-<p>ServerContext getServerContext(): 获取项目ServerContext对象</p>
-<p>response:响应对象 </p>
-<p>提供的方法:</p>
-<p>addCookie(Cookie cooke): 服务端向客户端增加cookie对象</p>
-<p>void sendRedirect(String location) throw IOException:页面跳转的一种方式</p>
-<p>void setContentType(String type):设置服务端响应的编码(设置服务端的contentType对象)</p>
-<p>​                          </p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>请求转发</th>
-<th>重定向</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>地址栏是否改变</td>
-<td>不变</td>
-<td>改变</td>
-</tr>
-<tr>
-<td>是否保留第一次请求时的数据</td>
-<td>保留</td>
-<td>不保留</td>
-</tr>
-<tr>
-<td>请求的次数</td>
-<td>1</td>
-<td>2</td>
-</tr>
-<tr>
-<td>跳转发生的位置</td>
-<td>服务端</td>
-<td>客户端发出第二次跳转</td>
-</tr>
-</tbody></table>
-<p><img src="/images/10.png" alt="10"></p>
-<p><img src="/images/11.png" alt="11"></p>
-<p>转发，重定向(状态码一般为3开头):</p>
-<p>转发:  张三(客户端)      -&gt;  [服务窗口A(服务端)  –&gt;服务窗口B]</p>
-<p>重定向:张三(客户端)    -&gt;服务窗口A(服务端) –&gt;去找B</p>
-<p>​             张三(客户端)    -&gt;服务窗口B(服务端)</p>
-<p>session:存在于服务端，是内置对象;会话</p>
-<p>例子:</p>
-<p>a.浏览网站: 开始—&gt;关闭</p>
-<p>b.购物: 浏览，付款，退出</p>
-<p>c.电子邮件: 浏览，写邮件，退出</p>
-<p>​                    开始–结束</p>
-<p>session机制:</p>
-<p>客户端第一次请求服务端时，（jsessionid和sessionid匹配）服务端会产生一个session对象(用于保存该客户的信息)</p>
-<p>并且每个session对象都会有一个唯一的sessionId(用于区分其他session);</p>
-<p>服务端就会产生一个cookie，并且该cookie的name=JSESSIONID,value=服务端sessionId的值;然后服务端会在响应客户端的同时将该cookie发送给客户端,至此，客户端就有啦一个cookie(JSESSIONID);因此客户端的cookie就可以和服务端的session一一对应(JSESSIONID–sessionID)</p>
-<p>客户端第二次/多次请求，服务端会先根据客户端cookie中的JSESSIONID,去服务端的session中匹配session，如果匹配成功(cookie的jsessionid和session的session)说明此用户不是第一次访问，无需登录</p>
-<p>session机制：</p>
-<p>a .session存储在服务端</p>
-<p>b. session是在同一个用户(客户)请求时共享</p>
-<p>c. session实现机制:第一个客户请求时，产生一个sessionid并复制给cookie的jsessionid复制给客户端,最终通过session的sessionid实现一一对应</p>
-<p>session方法:</p>
-<p>String getId(): 获取sessionid</p>
-<p>boolean isNew(): 判断是否是新用户(第一个访问)</p>
-<p>void invalidate():  使session失效(退出登录，注销)</p>
-<p>setAttribute()</p>
-<p>getAttribute()</p>
-<p>Void setMaxInactiveInterval(秒): 设置最大有效非活动时间</p>
-<p>Int getMaxInactiveInterval():  获取最大有效非活动时间</p>
-<p><img src="/images/13.png" alt="13"></p>
-<p><img src="/images/14.png" alt="14"></p>
-<p><img src="/images/15.png" alt="15"></p>
-<p><img src="/images/16.png" alt="16"></p>
-<p><img src="/images/17.png" alt="17"></p>
-<p>​     Cookie(客户端，不是内置对象):  Cookie是由服务端生成的，再发送给客户端保存。<strong>相当于本地缓存的作用</strong>:   客户端(hello.mp4)–&gt;服务端(hello.mp4) (电影在服务端，在服务端下载以后，客户端之后就可以直接看了，提高了效率)</p>
-<p>作用:提高访问服务端的效率，但是安全性较差。</p>
-<p>  Cookie：name=value</p>
-<p>  Cookie是有javax.servlet.http.Cookie产生的</p>
-<p>public   Cookie(String name,String value)</p>
-<p>String  getName()  获取name</p>
-<p>String  getValue()  获取value</p>
-<p>void setMaxAge(int expiry):设置最大有效期(秒)</p>
-<p>服务端发送给客户端:</p>
-<p>1.服务端准备Cookie:</p>
-<p>response.addCookie(Cookie cookie);</p>
-<p>2.页面跳转(转发或重定向都行)</p>
-<p>3.客户端获取cookie: request.getCookies();</p>
-<p>a.  服务端增加cookie：response对象；客户端获取对象:request对象</p>
-<p>b.不能直接获取某一个单独对象，只能一次性将 全部都cookie拿到</p>
-<p>通过检查查看network,发现除了自己设置的Cookie对象外，还有一个name为JSESSIONID的cookie</p>
-<p>建议cookie只保存英文数字，否则需要进行编码，解码</p>
-<p>将cookie发送到客户端，不管哪个页面，在客户端的页面都能共享cookie信息，主要是服务端跳转response这个操作</p>
-<p><img src="/images/12.png" alt="12"></p>
-<p>cookie和session的区别:</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>Cookie</th>
-<th>Session</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>保存的位置</td>
-<td>客户端</td>
-<td>服务端</td>
-</tr>
-<tr>
-<td>安全性</td>
-<td>较不安全</td>
-<td>较安全</td>
-</tr>
-<tr>
-<td>保存的内容</td>
-<td>String</td>
-<td>Object</td>
-</tr>
-</tbody></table>
-<h4 id="page-当前jsp页面对象-相当于java中的this"><a href="#page-当前jsp页面对象-相当于java中的this" class="headerlink" title="page: 当前jsp页面对象(相当于java中的this)"></a>page: 当前jsp页面对象(相当于java中的this)</h4><h4 id="config-配置对象-服务器配置信息"><a href="#config-配置对象-服务器配置信息" class="headerlink" title="config: 配置对象(服务器配置信息)"></a>config: 配置对象(服务器配置信息)</h4><h4 id="exception-异常对象"><a href="#exception-异常对象" class="headerlink" title="exception: 异常对象"></a>exception: 异常对象</h4><h4 id="application-全局对象"><a href="#application-全局对象" class="headerlink" title="application: 全局对象"></a>application: 全局对象</h4><p>application方法:</p>
-<p>String getContextPath()   虚拟路径</p>
-<p>String getRealPath(String name)   绝对路径(虚拟路径 相对的绝对路径)</p>
-<p>get提交方式: method=”get” 和地址栏，超链接(<a href="xx">)请求方式 默认都属于get提交方式</a></p>
-<p>连接/文件?参数名1=参数值1 &amp; 参数名2=参数值2 &amp; 参数名3=参数值3</p>
-<h3 id="get与post请求的区别："><a href="#get与post请求的区别：" class="headerlink" title="get与post请求的区别："></a>get与post请求的区别：</h3><ul>
-<li><p>get方式在地址栏显示请求信息(但是地址栏能够容纳的信息有限，最多4-5kb，如果请求数据存在大文件，图片等，会出现地址栏无法容纳全部的数据而出错)；post不会显示</p>
-</li>
-<li><p>文件上传操作，必须是post(根本原因还是数据受限，且相对不安全)</p>
-</li>
-</ul>
-<h3 id="统一请求的编码-request"><a href="#统一请求的编码-request" class="headerlink" title="统一请求的编码:  request"></a>统一请求的编码:  request</h3><h4 id="get方式-如果出现乱码，解决："><a href="#get方式-如果出现乱码，解决：" class="headerlink" title="get方式: 如果出现乱码，解决："></a>get方式: 如果出现乱码，解决：</h4><ul>
-<li>统一每一个变量的编码(不推荐)</li>
-</ul>
-<p>​      new String(旧编码，新编码)；</p>
-<p>​       name =  new String(name.getBytes(“iso-8859-1”),”utf-8”);</p>
-<ul>
-<li>修改server.xml，一次性的更改tomcat默认get提交方式的编码</li>
-</ul>
-<p>建议使用tomcat时，首先在server.xml中，统一get方式的编码…..URIEncoding=”UTF-8”</p>
-<p>Post方式:如果出现乱码，解决:</p>
-<p>request.setCharacterEncoding(“utf-8”);</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/01/jsp(2)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Li Miao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LiMiao's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/03/01/jsp(2)/" itemprop="url">jsp连接数据库部分</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-01T00:00:00+08:00">
-                2020-03-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/jsp/" itemprop="url" rel="index">
-                    <span itemprop="name">jsp</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>1.JDBC:  Java DataBase  Connectivity   可以为多种关系型数据库DBMS 提供统一的访问方式</p>
-<p><img src="/images/18.png" alt="18"></p>
-<p>2.JDBC API功能:</p>
-<p><img src="/images/19.png" alt="19"></p>
-<p>三件事，具体是通过以下类/接口实现:</p>
-<p><strong>DriverManager: 管理jdbc驱动</strong></p>
-<p><strong>Connection:连接</strong></p>
-<p>Connection产生操作数据库的对象:</p>
-<ul>
-<li><p>Connection产生Statement对象   createStatement()</p>
-</li>
-<li><p>Connection产生PrepareStatement()</p>
-</li>
-<li><p>Connection产生CallableStatement对象:preparCall();</p>
-</li>
-</ul>
-<p><strong>Statement(PreparedStatement):增删改查 (通过Connection产生)</strong></p>
-<p>Statement操作数据库:</p>
-<ul>
-<li><p>增删改:executeUpdate();</p>
-</li>
-<li><p>查询:executeQuery();</p>
-</li>
-</ul>
-<p><strong>PreparedStatement操作数据库:</strong></p>
-<ul>
-<li><p>public interface PreparedStatement extends Statement</p>
-</li>
-<li><p>增删改:executeUpdate();</p>
-</li>
-<li><p>查询:executeQuery();</p>
-</li>
-<li><p>赋值操作: setXxx(); 先用问号添加占位符，然后再用setXx(位置(1,2,3,4)|值)替代;</p>
-</li>
-</ul>
-<h4 id="Statement和PreparedStatement的区别"><a href="#Statement和PreparedStatement的区别" class="headerlink" title="Statement和PreparedStatement的区别:"></a>Statement和PreparedStatement的区别:</h4><p>1.Statement</p>
-<p>sql</p>
-<p>executeUpdate(sql)</p>
-<p>2.PreparedStatement</p>
-<p>sql(可能存在占位符?)</p>
-<p>在创建PreparedStatement对象时，将sql预编译 prepareStatement(sql)</p>
-<p>executeUpdate()执行</p>
-<p>setXxx():将占位符替换掉</p>
-<h5 id="推荐使用PreparedStatement原因如下"><a href="#推荐使用PreparedStatement原因如下" class="headerlink" title="推荐使用PreparedStatement原因如下:"></a>推荐使用PreparedStatement原因如下:</h5><h5 id="1-编码更加简单-避免字符串拼接"><a href="#1-编码更加简单-避免字符串拼接" class="headerlink" title="1.编码更加简单,避免字符串拼接"></a>1.编码更加简单,避免字符串拼接</h5><p>String name=”zs”;</p>
-<p>Int age=23;</p>
-<p>stmt:</p>
-<p>String sql=”insert into student(stunt,stuname) values(‘“+name+”‘, “+age+”)”;</p>
-<p>Stmt.executeUpdate(sql);</p>
-<p>pstmt:</p>
-<p>String sql=”insert into student(stunt,stuname) values(?,?)”;</p>
-<p>pstmt=connection.prepareStatement(sql); //预编译sql</p>
-<p>pstmt.setString(1,name);</p>
-<p>pstmt.setInt(2,age);</p>
-<p>pstmt.executeUpdate();</p>
-<h5 id="2-提高性能-因为有预编译操作，预编译只需要执行一次"><a href="#2-提高性能-因为有预编译操作，预编译只需要执行一次" class="headerlink" title="2.提高性能:(因为有预编译操作，预编译只需要执行一次)"></a>2.提高性能:(因为有预编译操作，预编译只需要执行一次)</h5><p>需要重复增加100条数</p>
-<p>stmt:</p>
-<p>String sql=”insert into student(stunt,stuname) values(‘“+name+”‘, “+age+”)”;</p>
-<p>Stmt.executeUpdate(sql);  需要编译100次</p>
-<p>pstmt:</p>
-<p>String sql=”insert into student(stunt,stuname) values(?,?)”;</p>
-<p>pstmt=connection.prepareStatement(sql); //预编译sql</p>
-<p>pstmt.setString(1,name);</p>
-<p>pstmt.setInt(2,age);</p>
-<p>for(100){</p>
-<p>pstmt.executeUpdate();   省略了sql预编译的操作</p>
-<p>}</p>
-<h5 id="3-安全-可以有效防止sql注入"><a href="#3-安全-可以有效防止sql注入" class="headerlink" title="3.安全(可以有效防止sql注入)"></a>3.安全(可以有效防止sql注入)</h5><p><strong>sql注入: 将客户输入的内容 和开发人员的sql语句 混为一体</strong></p>
-<ul>
-<li>stmt: 存在被sql注入的风险<ul>
-<li>(例如输入用户名:  任意值 ‘ or 1=1 –</li>
-</ul>
-</li>
-</ul>
-<p>​                                               密码:任意值)</p>
-<p><img src="/images/21.png" alt="21"></p>
-<ul>
-<li><p>分析:</p>
-<ul>
-<li>select count(<em>) from login where name=’任意值’ or 1=1 – ‘ and pwd=’任意值’</em></li>
-<li><em>select count(</em>) from login where name=’任意值’ or 1=1</li>
-<li>select count(<em>) from login</em></li>
-<li><em>select count(</em>) from login where uname=’” +name +”‘ and pwd=’ “ +pwd+”‘</li>
-</ul>
-</li>
-<li><p>pstmt:有效防止sql注入</p>
-<ul>
-<li>推荐使用pstmt</li>
-</ul>
-</li>
-</ul>
-<h4 id="Oracle数据库-CallableStatement-调用数据库中的存储过程-存储函数-通过Connection产生"><a href="#Oracle数据库-CallableStatement-调用数据库中的存储过程-存储函数-通过Connection产生" class="headerlink" title="(Oracle数据库)CallableStatement:调用数据库中的存储过程/存储函数(通过Connection产生)"></a>(Oracle数据库)CallableStatement:调用数据库中的存储过程/存储函数(通过Connection产生)</h4><p>connection.prepareCall(存储过程或存储函数名);</p>
-<p>参数格式:</p>
-<p>存储过程(无返回值):</p>
-<p>​              { call   存储过程名(参数列表)}</p>
-<p>存储函数(有返回值):</p>
-<p>​               { ? = call   存储函数名(参数列表) } </p>
-<p>Create or replace procedure addTwoNum (num1  in number,num2  in number, result out number) – 1+2  -&gt;3 </p>
-<p>as</p>
-<p>begin</p>
-<p>​           Result := num1+num2;</p>
-<p>end;</p>
-<p><img src="/images/22.png" alt="22"></p>
-<p>jdbc调用存储过程的步骤:</p>
-<p>a.产生调用存储过程的对象 (CallableStatement) cstmt = connection.prepareCall(“…..”);</p>
-<p>b.通过setXxx()处理 输出参数值  cstmt.setInt(1,30);</p>
-<p>c.通过registerOutParameter(…)处理输出参数类型</p>
-<p>d. cstmt.execute()执行</p>
-<p>e.接受 输出值(返回值)   getXxx();</p>
-<p>Result:返回的结果集(上面的Statement等产生) select * from xxx</p>
-<ul>
-<li><p>next()：光标下移，判断是否有下一条数据; true/false</p>
-</li>
-<li><p>previous():光标上移 true/false</p>
-</li>
-<li><p>getXxx(字段名|位置): 获取具体的字段值</p>
-</li>
-</ul>
-<p><img src="/images/20.png" alt="20"></p>
-<p>3.jdbc访问数据库的具体步骤:</p>
-<p>a.导入驱动,加载具体的驱动类</p>
-<p>b.与数据库建立连接</p>
-<p>c.发送sql,执行</p>
-<p>d.处理结果集(查询)</p>
-<p>4.数据库驱动</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>驱动</th>
-<th>具体驱动类</th>
-<th>连接字符串</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Oracle</td>
-<td>Ojdbc-x.jar</td>
-<td>oracle.jdbc.OracleDriver</td>
-<td>Jdbc:oracle:thin:@localhost:1521:ORCL</td>
-</tr>
-<tr>
-<td>MySQL</td>
-<td>Mysql-connector-java-x.jar</td>
-<td>com.mysql.jdbc.Driver</td>
-<td>Jdbc:mysql://localhost:3306/数据库实例名</td>
-</tr>
-<tr>
-<td>SqlServer</td>
-<td>Sqljdbc-x.jar</td>
-<td>com.microsoft.sqlserver.jdbc.SQLServerDriver</td>
-<td>Jdbc:microsoft:sqlserver:localhost:1433;databasename=数据库实例名</td>
-</tr>
-</tbody></table>
-<h4 id="jdbc总结-模板"><a href="#jdbc总结-模板" class="headerlink" title="jdbc总结(模板)"></a>jdbc总结(模板)</h4><p>a.导入驱动包，加载具体驱动类Class.forName(“具体驱动类”);</p>
-<p>b.与数据库建立连接connection =DriverManager.getConnection(…);</p>
-<p>c.通过connection，获取操作数据库的对象(Statement\PreparedStatement\CallabeStatement);</p>
-<p>d.(查询)处理结果集 re=pstmt.executeQuery();</p>
-<p>​                                  while(rs.next()){      rs.getXxx(..);   }</p>
-<p>​                                  catch(ClassNotFoundException e){</p>
-<p>​                                   }catch(SQLException e){</p>
-<p>​                                   } catch(Exception e){</p>
-<p>​                                   }finally{</p>
-<p>​                                           //打开顺序与关闭顺序相反</p>
-<p>​                                         if(rs!=null)   rs.close();</p>
-<p>​                                          If(pstmt!=null)  pstmt.close();</p>
-<p>​                                          if(connection!=null)  connection.close();</p>
-<p>​                                    } </p>
-<p>jdbc中，除了Class.forName()抛出ClassNotFoundException  其余都抛出SQLException</p>
-<hr>
-<p>jsp访问数据库</p>
-<p>jsp就是html中嵌套的java代码,因此 java代码可以写在jsp中(&lt;%%&gt;)</p>
-<p>导包操作: java项目: 1.jar复制到工程  2.右键该jar：build path –&gt; add to bulid Path</p>
-<p>​                 web项目: jar复制到WEB-INF/lib里</p>
-<p>核心:  就是将 java中的jdbc代码，复制到jsp中的&lt;%…%&gt;</p>
-<p>注意:如果jsp出现错误:xxx type is not resolved ….</p>
-<p>尝试解决步骤:</p>
-<ul>
-<li><p>a.可能是jdk,tomcat版本问题 右键项目–&gt;build path,将其中报错的library或lib删除后，重新导入</p>
-</li>
-<li><p>b.清空各种缓存  右键项目–&gt;clean tomcat… clean (project - clean 或者进tomcat目录，删除里面work的子目录)</p>
-</li>
-<li><p>c.删除之前的tomcat,重新解压缩，配置tomcat,重启计算机</p>
-</li>
-<li><p>d.如果类之前没有包，则把类加入包中</p>
-</li>
-</ul>
-<hr>
-<p>Javabean:</p>
-<p>javabean的作用:</p>
-<ul>
-<li><p>减轻了jsp的复杂度</p>
-</li>
-<li><p>提高代码复用(例如以后任何地方的登录操作，都可以通过调用LoginDao实现)</p>
-</li>
-</ul>
-<p>javabean(就是一个java类)的定义:满足以下两点</p>
-<ul>
-<li><p>public修饰的类，public无参构造</p>
-</li>
-<li><p>所有属性(如果有) 都是private,并且提供set/get(如果boolean则get可以替换成is)</p>
-</li>
-</ul>
-<p>javabean使用层面分为两大类:</p>
-<p>封装业务逻辑的javabean (LoginDao.java 封装了登录逻辑) 用于操作一个封装数据的javabean</p>
-<p>封装数据的javabean   (实体类，Student.java  Person.java) 对应于数据库中的一张表</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2325,7 +2156,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-count">49</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2336,7 +2167,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -2347,7 +2178,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
