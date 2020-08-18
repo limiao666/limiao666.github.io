@@ -258,6 +258,290 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/22/Servlet/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Li Miao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LiMiao's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/22/Servlet/" itemprop="url">Servlet</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-22T00:00:00+08:00">
+                2020-02-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Servlet/" itemprop="url" rel="index">
+                    <span itemprop="name">Servlet</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Servlet - Servlet Applet - 小服务程序</p>
+<p>用java语言编程的服务器端程序</p>
+<h2 id="如何实现自己的Servlet程序"><a href="#如何实现自己的Servlet程序" class="headerlink" title="如何实现自己的Servlet程序"></a>如何实现自己的Servlet程序</h2><ul>
+<li><p>在线API - <a href="https://docs.oracle.com/javaee/7/api/" target="_blank" rel="noopener">https://docs.oracle.com/javaee/7/api/</a></p>
+</li>
+<li><p>所在的API - java.servlet.Servlet[i]</p>
+</li>
+<li><p>javax.servlet.Servlet接口定义一些方法，让我们自己写的servlet</p>
+<p>   程序必须要实现这个接口中的所有方法</p>
+<ul>
+<li><p>jdk8.0之前，接口只能定义抽象方法,jdk8及其以后的版本接口中</p>
+<p>​    是允许定义普通的方法，采取的是@default</p>
+</li>
+</ul>
+</li>
+<li><p>servlet是用java编写的程序，运行在web服务器端</p>
+</li>
+<li><p>servlet可以用来接收和响应来自于web客户端(浏览器)的请求</p>
+<p> 采取的协议是HTTP协议(超文本传输协议)</p>
+</li>
+</ul>
+<h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2><ul>
+<li><p>写一个类去实现javax.servlet.Servlet[i]这个接口</p>
+</li>
+<li><p>写一个类去继承javax.servlet.GenericServlet[C] –支持通用协议的</p>
+</li>
+<li><h5 id="写一个类去继承javax-servlet-http-HttpServlet-C-–-仅仅支持http协议"><a href="#写一个类去继承javax-servlet-http-HttpServlet-C-–-仅仅支持http协议" class="headerlink" title="写一个类去继承javax.servlet.http.HttpServlet[C] – 仅仅支持http协议"></a>写一个类去继承javax.servlet.http.HttpServlet[C] – 仅仅支持http协议</h5><h2 id="HelloServlet讲解的过程"><a href="#HelloServlet讲解的过程" class="headerlink" title="HelloServlet讲解的过程"></a>HelloServlet讲解的过程</h2><ul>
+<li><p>编码</p>
+<p>package tech.aistar.day01;</p>
+<p>//导包<br>//除了java.lang不需要手动导入，其余包中的类或者接口，都是需要导报<br>import javax.servlet.*;<br>import java.io.IOException;</p>
+<p>/**</p>
+<ul>
+<li><p>@Description 第一个servlet程序</p>
+</li>
+<li></li>
+<li><p>@Author Miao Li</p>
+</li>
+<li></li>
+<li><p>@Date 2020/2/22</p>
+</li>
+<li></li>
+<li><p>@Version 1.0</p>
+</li>
+<li><p>/<br>public class HelloServlet implements Servlet{<br>   /**</p>
+<pre><code>* 初始化方法
+* @param servletConfig
+* @throws ServletException
+   */</code></pre><p>   @Override<br>   public void init(ServletConfig servletConfig) throws ServletException {</p>
+<pre><code>//随便在控制台输出一句话 - 主要目的是为了进行测试的
+//看这个servlet程序是否启动成功，是否能够成功被执行
+
+//快速生成输出语句的快捷键 - sout
+System.out.println(&quot;init...&quot;);</code></pre><p>   }</p>
+<p>   /**</p>
+<pre><code>* service方法 - 核心的
+* @param servletRequest
+* @param servletResponse
+* @throws ServletException
+* @throws IOException
+   */
+ @Override
+ public void service(ServletRequest servletRequest, ServletResponse servletResponse) throws ServletException, IOException {
+   System.out.println(&quot;service...&quot;);
+ }</code></pre><p>   /**</p>
+<pre><code>* 销毁方法
+   */
+ @Override
+ public void destroy() {
+   System.out.println(&quot;destory...&quot;);
+ }</code></pre><p>   /**</p>
+<pre><code>* ServletConfig对象
+* @return
+   */
+ @Override
+ public ServletConfig getServletConfig() {
+   return null;
+ }</code></pre></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getServletInfo</span><span class="params">()</span> </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+
+}</code></pre><ul>
+<li><p>编辑web.xml</p>
+<p> web3.0之前只有xml配置方法，学完xml配置方式才能更好理解</p>
+<p>注解开发的方式</p>
+<?xml version="1.0" encoding="UTF-8"?>
+<p>&lt;web-app xmlns=”<a href="http://xmlns.jcp.org/xml/ns/javaee&quot;" target="_blank" rel="noopener">http://xmlns.jcp.org/xml/ns/javaee&quot;</a></p>
+<pre><code>xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+xsi:schemaLocation=&quot;http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd&quot;
+version=&quot;3.1&quot;&gt;</code></pre>  <!--传统的web3.0之前的配置方法，采用的是xml-->
+
+<!-- 每个servlet程序都是需要在xml中进行对应的配置-->
+
+<servlet>
+
+<p>​        <!--每个servlet标签都对应一个servlet程序，并且每个servlet程序在配置文件中--></p>
+<p>​       <!--都会拥有一个servlet-name,但是需要注意的是这个servlet-name在这个xml--></p>
+<p>​     <!--配置文件中必须要是唯一的，推荐采用servlet程序命名的小驼峰的命名方式，为了提高程序的可读性--></p>
+<p>​       <servlet-name>helloServlet</servlet-name></p>
+<p>​     &lt;!–对应的servlet的类的全限定名   =  包名+类名</p>
+<p>​           检测  =  ctrl按着不松+鼠标单击–&gt;</p>
+<p>​    <servlet-class>tech.aistar.day01.HelloServlet</servlet-class></p>
+   </servlet>
+
+<!--每个servlet都有对应的一个映射路径-->
+
+<!--配置servlet的映射路径-->
+
+<servlet-mapping>
+
+<p>​     <!--此处的servlet-name一定是和某个servlet标签中的servlet-name是匹配的--></p>
+<p>​     <servlet-name>helloServlet</servlet-name></p>
+<p>​    <!-- url -统一资源定位器 -我们的servlet程序 -HelloServlet程序 -服务器中的--></p>
+   <!--资源-->
+
+  <!---->
+
+  <!--url必须是唯一的，它是这个资源在服务器中的一定标志-->
+
+<p>​        <url-pattern>/day01/hello</url-pattern></p>
+   </servlet-mapping>
+
+
+
+<ul>
+<li><p>打开浏览器 - 来访问servlet程序</p>
+<p><code>http://localhost:8080/servlet-demos/day01/hello</code></p>
+<p>http - 超文本传输协议</p>
+<p>Localhost - 服务器所在主机的ip地址，服务器是在本地(也可以写成127.0.0.1)</p>
+<p>8080 - tomcat配置的端口号，应用程序和端口号之间是1:1的关系。</p>
+<p>/servlet-demos - 项目的上下文路径 -暂时理解成某个servlet项目的项目名称</p>
+<p>/day01/hello - 某个servlet程序的资源路径，某个servlet的唯一标志。</p>
+<ul>
+<li>具体的客户端访问 - 最终执行这个流程</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>  ​       </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/22/tomcat%E4%B8%BB%E8%A6%81%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1719,171 +2003,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/12/java%20Comparable%E6%8E%A5%E5%8F%A3%E4%B8%8D%E4%B8%A5%E8%B0%A8%E5%AF%BC%E8%87%B4Comparison%20method%20violates%20its%20general%20contract/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Li Miao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LiMiao's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/12/12/java%20Comparable%E6%8E%A5%E5%8F%A3%E4%B8%8D%E4%B8%A5%E8%B0%A8%E5%AF%BC%E8%87%B4Comparison%20method%20violates%20its%20general%20contract/" itemprop="url">java Comparable接口不严谨导致Comparison method violates its general contract</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-12T10:54:41+08:00">
-                2019-12-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index">
-                    <span itemprop="name">java</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java/Comparable/" itemprop="url" rel="index">
-                    <span itemprop="name">Comparable</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>java默认排序算法问题</p>
-<p>在对数据进行排序时，出现一个问题，如图所示:</p>
-<p><img src="/images/comparable.png" alt="comparable"></p>
-<p>经过搜索得知，在JDK7以后，实现Comparable接口后，要满足一下三个特性：</p>
-<p>1） 自反性：x，y 的比较结果和 y，x 的比较结果相反。</p>
-<p>2） 传递性：x&gt;y,y&gt;z,则 x&gt;z。</p>
-<p>3） 对称性：x=y,则 x,z 比较结果和 y，z 比较结果相同。</p>
-<p>可以通过在代码中，System.setProperty(“java.util.Arrays.useLegacyMergeSort”, “true”);  </p>
-<p><img src="/images/comparable_success.png" alt="comparable_success"></p>
-<p>或者设置JVM参数-Djava.util.Arrays.useLegacyMergeSort=true来兼容JDK6的代码。</p>
-<p>这是因为JDK在函数Arrays.sort中，使用了一个if判断来决定使用什么排序算法来对数组进行排序。</p>
-<p><img src="/images/array.sort.png" alt="array.sort"></p>
-<p>不设置就使用ComparableTimSort实现的TimSort算法来进行排序。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1936,7 +2055,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1947,7 +2066,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">42</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -1958,7 +2077,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">42</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
