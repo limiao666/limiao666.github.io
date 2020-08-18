@@ -258,6 +258,690 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/01/jdbc(1)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Li Miao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LiMiao's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/01/jdbc(1)/" itemprop="url">JDBC连接mysql问题合集</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-01T00:00:00+08:00">
+                2020-03-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/jdbc/" itemprop="url" rel="index">
+                    <span itemprop="name">jdbc</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>问题1:</p>
+<p>JDBC连接MySQL：Unknown initial character set index ‘255’ received from server.Initial client character</p>
+<p>报错信息:</p>
+<p>Unknown initial character set index ‘255’ received from server. Initial client character set can be forced via the ‘characterEncoding’ property.</p>
+<p>解决方法:在url前面添加上字符集的编码格式</p>
+<p>“Jdbc:mysql://xxx.xxx.xxx.xxx:3306/student?useUnicode=true&amp;characterEncoding=utf-8”;</p>
+<p>问题2:</p>
+<p>java.lang.ClassNotFoundException: com.mysql.jdbc.Driver</p>
+<p>这种报错是因为tomcat找不到mysql jar包，只需要把mysql-connector-java-5.1.7-bin.jar导入到tomcat的lib目录下面就ok了,然后重启tomcat就行啦！</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/01/jsp(3)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Li Miao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LiMiao's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/01/jsp(3)/" itemprop="url">MVC</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-01T00:00:00+08:00">
+                2020-03-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MVC/" itemprop="url" rel="index">
+                    <span itemprop="name">MVC</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>MVC设计模式:</p>
+<p>M:model 模型:一个功能。用javabean实现</p>
+<p>V:view视图 :用于展示，以及与用户交互。使用html,js,css,jsp,jquery等前端技术实现</p>
+<p>C:controller控制器 :接受请求，将请求跳转到模型进行处理;模型处理完毕后，再将处理的返回给请求处. 可以用jsp实现，但是一般建议使用servlet实现控制器。</p>
+<p>Jsp–&gt;java(servlet)–&gt;jsp</p>
+<p><img src="/images/34.png" alt="34"></p>
+<p><img src="/images/35.png" alt="35"></p>
+<p>Servlet:</p>
+<p>java类必须符合一定的规范:</p>
+<p>必须继承 javax.servlet.http.HttpServlet</p>
+<p>重写其中的doGet()或doPost()方法</p>
+<ul>
+<li><p>doGet():接收并处理所有get提交方式的请求</p>
+</li>
+<li><p>doPost():接收并处理所有post提交方式的请求</p>
+</li>
+</ul>
+<p>Servlet要想使用，必须配置web.xml或者@WebServlet</p>
+<p>项目的根目录: web content ,src</p>
+<p>servlet流程:</p>
+<p>请求–&gt;url-pattern–&gt;根据servlet-mapping中的servlet-name去匹配servlet中的servlet-name,然后寻找到servlet-class，然后将请求交给class</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/28/idea%E6%89%93%E5%8C%85war/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Li Miao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LiMiao's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/28/idea%E6%89%93%E5%8C%85war/" itemprop="url">IntelliJ IDEA打包war并部署运行</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-28T00:00:00+08:00">
+                2020-02-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/" itemprop="url" rel="index">
+                    <span itemprop="name">服务器</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/war/" itemprop="url" rel="index">
+                    <span itemprop="name">war</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h2><p>打开idea–&gt;File —&gt; Project Structure —&gt; Artifacts —&gt; Add —&gt; Web Application:Exploded–&gt;From Modules—&gt;选择项目–&gt;ok—&gt;然后再add–&gt;Web Application:Archive–&gt;选择上一步生成的war—&gt;ok—&gt;ok–&gt;apply–&gt;ok–&gt;然后再到file一列，找到build—&gt;build Artifacts–&gt;选择:war–&gt;build–&gt;然后下面会显示正在生成war—-&gt;看到：build completer successfully—&gt;打包成功！</p>
+<p><img src="/images/6.png" alt="6"></p>
+<h2 id="部署运行"><a href="#部署运行" class="headerlink" title="部署运行:"></a>部署运行:</h2><ul>
+<li><p>将war包复制到tomcat安装目录:/usr/local/apache-tomcat-8.5.51/webapps/下</p>
+<p><img src="/images/7.png" alt="7"></p>
+</li>
+<li><p>终端操作: cd /usr/local/apache-tomcat-8.5.51/bin/</p>
+</li>
+<li><p>进入bin以后: ./startup.sh</p>
+</li>
+<li><p>打开浏览器:<a href="http://ip:8080/xxx/xx.jsp" target="_blank" rel="noopener">http://ip:8080/xxx/xx.jsp</a> </p>
+</li>
+<li><p>部署以后  ./shutdown.sh关闭tomcat</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/28/%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AEtomcat/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Li Miao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LiMiao's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/28/%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AEtomcat/" itemprop="url">服务器配置Tomcat</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-28T00:00:00+08:00">
+                2020-02-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/" itemprop="url" rel="index">
+                    <span itemprop="name">服务器</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/tomcat/" itemprop="url" rel="index">
+                    <span itemprop="name">tomcat</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><p>jdk1.8</p>
+<p>finalshell</p>
+<p>阿里云服务器</p>
+<h2 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h2><ul>
+<li><p>下载安装包</p>
+<p>官网下载地址：<a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="noopener">http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html</a></p>
+<p>我下载的是jdk-8u161-linux-x64.tar.gz</p>
+</li>
+<li><p>解压安装包</p>
+</li>
+<li><p>将我们下载好的JDK安装包上传到服务器，进行解压。进入目标文件夹中，我是放在/usr/local/java文件下，点击上传。</p>
+</li>
+<li><p>解压: tar -zxvf jdk-8u161-linux-64.tar.gz</p>
+</li>
+<li><p>移动jdk：mv jdk1.8.0_161 /usr/local/java/</p>
+</li>
+<li><p>修改配置文件(配置环境变量): vim /etc/profile</p>
+</li>
+<li><p>用vim编辑器来编辑profile文件，在文件末尾添加一下内容👇</p>
+<p><img src="/images/3.png" alt="3"></p>
+<p>：wq回车保存退出。</p>
+<p>保存之后通过source /etc/profile命令使其修改的配置生效</p>
+<p>测试jdk安装是否成功</p>
+<p>java -version</p>
+<p><img src="/images/1.png" alt="1"></p>
+<h2 id="下面开始安装tomcat"><a href="#下面开始安装tomcat" class="headerlink" title="下面开始安装tomcat"></a>下面开始安装tomcat</h2><ul>
+<li><p>安装地址:<a href="http://tomcat.apache.org/" target="_blank" rel="noopener">http://tomcat.apache.org/</a></p>
+</li>
+<li><p>我下载的是apache-tomcat-8.5.51.tar.gz</p>
+</li>
+<li><p>解压: tar -zxvf apache-tomcat-8.5.51.tar.gz</p>
+</li>
+<li><p>我是放在了usr/local/tomcat下所以要创建tomcat文件夹并将解压文件移动到tomcat下</p>
+</li>
+<li><p>移动tomcat: mv apache-tomcat-8.5.51 /usr/local/tomcat</p>
+</li>
+<li><p>进入tomcat安装bin目录并启动:cd usr/local/tomcat/apache-tomcat-8.5.51/bin/</p>
+</li>
+<li><p>进入bin目录以后：./startup.sh  会看到tomcat启动成功👇<img src="/images/2.png" alt="2"></p>
+</li>
+<li><p>到浏览器输入: <a href="http://ip:8080" target="_blank" rel="noopener">http://ip:8080</a></p>
+</li>
+<li><p>如果无法连接，查看阿里云控制台，进入网络与安全–&gt;安全组–&gt;管理规则—&gt;添加安全组规则—&gt;将8080端口写进去，开放8080端口。</p>
+</li>
+<li><p>之后再到浏览器输入: <a href="http://ip:8080" target="_blank" rel="noopener">http://ip:8080</a>  出现👇</p>
+<p><img src="/images/5.png" alt="5"></p>
+</li>
+<li><p>这样就安装成功啦！✌️</p>
+<p><img src="/images/4.png" alt="4"></p>
+</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/26/oracle%E9%85%8D%E7%BD%AE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -417,6 +1101,159 @@
 <p><img src="/images/%E6%95%88%E6%9E%9C%E5%9B%BE1.png" alt="效果图1"></p>
 <p><img src="/images/%E6%95%88%E6%9E%9C%E5%9B%BE2.png" alt="效果图2"></p>
 <h4 id="安装docker地址"><a href="#安装docker地址" class="headerlink" title="安装docker地址:"></a>安装docker地址:</h4><p><a href="https://www.cnblogs.com/yufeng218/p/8370670.html" target="_blank" rel="noopener">https://www.cnblogs.com/yufeng218/p/8370670.html</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/26/%E7%94%B5%E8%84%91%E5%B0%8F%E7%9F%A5%E8%AF%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Li Miao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LiMiao's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/26/%E7%94%B5%E8%84%91%E5%B0%8F%E7%9F%A5%E8%AF%86/" itemprop="url">电脑小知识</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-26T00:00:00+08:00">
+                2020-02-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%94%B5%E8%84%91%E5%B0%8F%E7%9F%A5%E8%AF%86/" itemprop="url" rel="index">
+                    <span itemprop="name">电脑小知识</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>当你的windows系统的电脑所有软件不能打开了，这该怎么办呢？</p>
+<ul>
+<li><p>一个命令就ok👇</p>
+</li>
+<li><p>管理员命令行:  netsh windsock reset catalog </p>
+</li>
+</ul>
+<p>电脑连接不到自己手机的热点</p>
+<ul>
+<li>尝试将热点名字改成中文</li>
+<li>将热点AP频段改成2.4GHz频段</li>
+</ul>
 
           
         
@@ -1262,842 +2099,11 @@ version=&quot;3.1&quot;&gt;</code></pre>  <!--传统的web3.0之前的配置方�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/22/tomcat%E4%B8%BB%E8%A6%81%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Li Miao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LiMiao's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/02/22/tomcat%E4%B8%BB%E8%A6%81%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/" itemprop="url">tomcat主要目录结构</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-22T00:00:00+08:00">
-                2020-02-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Tomcat/" itemprop="url" rel="index">
-                    <span itemprop="name">Tomcat</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li><p>lib - 存放jar包</p>
-<p> servlet-api.jar<br>  jsp-api.jar</p>
-</li>
-<li><p>logs -日志 - 定位问题</p>
-</li>
-<li><p>webapps -应用程序部署的目录</p>
-</li>
-<li><p>conf -tomcat配置文件所在的目录</p>
-<ul>
-<li><p>server.xml</p>
-<p> &lt;Connector port=”8080” protocol=”HTTP/1.1”</p>
-<pre><code>connectionTimeout=&quot;20000&quot;
-           redirectPort=&quot;8443&quot; /&gt;</code></pre></li>
-<li><p>Tomcat-users.xml</p>
-</li>
-</ul>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/22/%E6%9C%8D%E5%8A%A1%E5%99%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Li Miao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LiMiao's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/02/22/%E6%9C%8D%E5%8A%A1%E5%99%A8/" itemprop="url">服务器介绍</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-22T00:00:00+08:00">
-                2020-02-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/" itemprop="url" rel="index">
-                    <span itemprop="name">服务器</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h2><ul>
-<li>Tomcat服务器<ul>
-<li>属于Apache</li>
-<li>识别Servlet,jsp(动态网页),也能够解析静态资源</li>
-<li>php,asp</li>
-<li>是Apache服务器的拓展</li>
-<li>面试–优化操作</li>
-<li>中小型公司，并发要求不是特别高                                    </li>
-</ul>
-</li>
-<li>apache服务器–只能解析静态网页(html)–静态资源</li>
-<li>一般都是apache+tomcat配合一起使用</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/20/Cookies%E5%92%8CSession/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Li Miao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LiMiao's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/02/20/Cookies%E5%92%8CSession/" itemprop="url">Cookies和Session的区别和理解</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-20T00:00:00+08:00">
-                2020-02-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Cookies/" itemprop="url" rel="index">
-                    <span itemprop="name">Cookies</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Cookies/Session/" itemprop="url" rel="index">
-                    <span itemprop="name">Session</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="cookie机制"><a href="#cookie机制" class="headerlink" title="cookie机制"></a>cookie机制</h2><p>Cookies是服务器在本地机器上存储的小段文本并随每一个请求发送至同一个服务器。IETF RFC 2965 HTTP State Management Mechanism 是通用cookie规范。网络服务器用HTTP头向客户端发送cookies，在客户终端，浏览器解析这些cookies并将它们保存为一个本地文件，它会自动将同一服务器的任何请求缚上这些cookies 。</p>
-<p>具体来说cookie机制采用的是在客户端保持状态的方案。它是在用户端的会话状态的存贮机制，他需要用户打开客户端的cookie支持。cookie的作用就是为了解决HTTP协议无状态的缺陷所作的努力。</p>
-<p>正统的cookie分发是通过扩展HTTP协议来实现的，服务器通过在HTTP的响应头中加上一行特殊的指示以提示浏览器按照指示生成相应的cookie。然而纯粹的客户端脚本如JavaScript也可以生成cookie。而cookie的使用是由浏览器按照一定的原则在后台自动发送给服务器的。浏览器检查所有存储的cookie，如果某个cookie所声明的作用范围大于等于将要请求的资源所在的位置，则把该cookie附在请求资源的HTTP请求头上发送给服务器。</p>
-<p>cookie的内容主要包括：名字，值，过期时间，路径和域。路径与域一起构成cookie的作用范围。若不设置过期时间，则表示这个cookie的生命期为浏览器会话期间，关闭浏览器窗口，cookie就消失。这种生命期为浏览器会话期的cookie被称为会话cookie。会话cookie一般不存储在硬盘上而是保存在内存里，当然这种行为并不是规范规定的。若设置了过期时间，浏览器就会把cookie保存到硬盘上，关闭后再次打开浏览器，这些cookie仍然有效直到超过设定的过期时间。存储在硬盘上的cookie可以在不同的浏览器进程间共享，比如两个IE窗口。而对于保存在内存里的cookie，不同的浏览器有不同的处理方式。</p>
-<p>而session机制采用的是一种在服务器端保持状态的解决方案。同时我们也看到，由于采用服务器端保持状态的方案在客户端也需要保存一个标识，所以session机制可能需要借助于cookie机制来达到保存标识的目的。而session提供了方便管理全局变量的方式 。</p>
-<p>session是针对每一个用户的，变量的值保存在服务器上，用一个sessionID来区分是哪个用户session变量,这个值是通过用户的浏览器在访问的时候返回给服务器，当客户禁用cookie时，这个值也可能设置为由get来返回给服务器。</p>
-<p>就安全性来说：当你访问一个使用session 的站点，同时在自己机子上建立一个cookie，建议在服务器端的session机制更安全些，因为它不会任意读取客户存储的信息。</p>
-<h2 id="Session机制"><a href="#Session机制" class="headerlink" title="Session机制"></a>Session机制</h2><p>session机制是一种服务器端的机制，服务器使用一种类似于散列表的结构（也可能就是使用散列表）来保存信息。</p>
-<p>当程序需要为某个客户端的请求创建一个session时，服务器首先检查这个客户端的请求里是否已包含了一个session标识（称为session id），如果已包含则说明以前已经为此客户端创建过session，服务器就按照session id把这个session检索出来使用（检索不到，会新建一个），如果客户端请求不包含session id，则为此客户端创建一个session并且生成一个与此session相关联的session id，session id的值应该是一个既不会重复，又不容易被找到规律以仿造的字符串，这个session id将被在本次响应中返回给客户端保存。</p>
-<p>保存这个session id的方式可以采用cookie，这样在交互过程中浏览器可以自动的按照规则把这个标识发挥给服务器。一般这个cookie的名字都是类似于SEEESIONID。但cookie可以被人为的禁止，则必须有其他机制以便在cookie被禁止时仍然能够把session id传递回服务器。</p>
-<p>经常被使用的一种技术叫做URL重写，就是把session id直接附加在URL路径的后面。还有一种技术叫做表单隐藏字段。就是服务器会自动修改表单，添加一个隐藏字段，以便在表单提交时能够把session id传递回服务器。</p>
-<h2 id="Cookie和Session的不同"><a href="#Cookie和Session的不同" class="headerlink" title="Cookie和Session的不同"></a>Cookie和Session的不同</h2><h3 id="1-存取方式不同"><a href="#1-存取方式不同" class="headerlink" title="1.存取方式不同"></a>1.存取方式不同</h3><p>Cookie中只能保管ASCII字符串，假如需求存取Unicode字符或者二进制数据，需求先进行编码。Cookie中也不能直接存取Java对象。若要存储略微复杂的信息，运用Cookie是比拟艰难的。</p>
-<p>而Session中能够存取任何类型的数据，包括而不限于String、Integer、List、Map等。Session中也能够直接保管Java Bean乃至任何Java类，对象等，运用起来十分便当。能够把Session看做是一个Java容器类。</p>
-<h3 id="2-隐私策略不同"><a href="#2-隐私策略不同" class="headerlink" title="2.隐私策略不同"></a>2.隐私策略不同</h3><p>Cookie存储在客户端阅读器中，对客户端是可见的，客户端的一些程序可能会窥探、复制以至修正Cookie中的内容。而Session存储在服务器上，对客户端是透明的，不存在敏感信息泄露的风险。</p>
-<p>假如选用Cookie，比较好的方法是，敏感的信息如账号密码等尽量不要写到Cookie中。最好是像Google、Baidu那样将Cookie信息加密，提交到服务器后再进行解密，保证Cookie中的信息只要本人能读得懂。而假如选择Session就省事多了，反正是放在服务器上，Session里任何隐私都能够有效的保护。</p>
-<h3 id="3-有效期不同"><a href="#3-有效期不同" class="headerlink" title="3.有效期不同"></a>3.有效期不同</h3><p>使用过Google的人都晓得，假如登录过Google，则Google的登录信息长期有效。用户不用每次访问都重新登录，Google会持久地记载该用户的登录信息。要到达这种效果，运用Cookie会是比较好的选择。只需要设置Cookie的过期时间属性为一个很大很大的数字。</p>
-<p>由于Session依赖于名为JSESSIONID的Cookie，而Cookie JSESSIONID的过期时间默许为–1，只需关闭了阅读器该Session就会失效，因而Session不能完成信息永世有效的效果。运用URL地址重写也不能完成。而且假如设置Session的超时时间过长，服务器累计的Session就会越多，越容易招致内存溢出。</p>
-<h3 id="4-服务器压力的不同"><a href="#4-服务器压力的不同" class="headerlink" title="4.服务器压力的不同"></a>4.服务器压力的不同</h3><p>Session是保管在服务器端的，每个用户都会产生一个Session。假如并发访问的用户十分多，会产生十分多的Session，耗费大量的内存。因而像Google、Baidu、Sina这样并发访问量极高的网站，是不太可能运用Session来追踪客户会话的。</p>
-<p>而Cookie保管在客户端，不占用服务器资源。假如并发阅读的用户十分多，Cookie是很好的选择。关于Google、Baidu、Sina来说，Cookie或许是唯一的选择。</p>
-<h3 id="5-浏览器支持的不同"><a href="#5-浏览器支持的不同" class="headerlink" title="5 .浏览器支持的不同"></a>5 .浏览器支持的不同</h3><p>Cookie是需要客户端浏览器支持的。假如客户端禁用了Cookie，或者不支持Cookie，则会话跟踪会失效。关于WAP上的应用，常规的Cookie就派不上用场了。</p>
-<p>假如客户端浏览器不支持Cookie，需要运用Session以及URL地址重写。需要注意的是一切的用到Session程序的URL都要进行URL地址重写，否则Session会话跟踪还会失效。关于WAP应用来说，Session+URL地址重写或许是它唯一的选择。</p>
-<p>假如客户端支持Cookie，则Cookie既能够设为本浏览器窗口以及子窗口内有效（把过期时间设为–1），也能够设为一切阅读器窗口内有效（把过期时间设为某个大于0的整数）。但Session只能在本阅读器窗口以及其子窗口内有效。假如两个浏览器窗口互不相干，它们将运用两个不同的Session。（IE8下不同窗口Session相干）</p>
-<h3 id="6-跨域支持上的不同"><a href="#6-跨域支持上的不同" class="headerlink" title="6.跨域支持上的不同"></a>6.跨域支持上的不同</h3><p>Cookie支持跨域名访问，例如将domain属性设置为“.biaodianfu.com”，则以“.biaodianfu.com”为后缀的一切域名均能够访问该Cookie。跨域名Cookie如今被普遍用在网络中，例如Google、Baidu、Sina等。而Session则不会支持跨域名访问。Session仅在他所在的域名内有效。</p>
-<p>仅运用Cookie或者仅运用Session可能完成不了理想的效果。这时应该尝试一下同时运用Cookie与Session。Cookie与Session的搭配运用在实践项目中会完成很多意想不到的效果。</p>
-<h2 id="最终的理解："><a href="#最终的理解：" class="headerlink" title="最终的理解："></a>最终的理解：</h2><ul>
-<li><p>由于HTTP协议是无状态的协议，所以服务端需要记录用户的状态时，就需要用某种机制来识具体的用户，这个机制就是Session.典型的场景比如购物车，当你点击下单按钮时，由于HTTP协议无状态，所以并不知道是哪个用户操作的，所以服务端要为特定的用户创建了特定的Session，用用于标识这个用户，并且跟踪用户，这样才知道购物车里面有几本书。这个Session是保存在服务端的，有一个唯一标识。在服务端保存Session的方法很多，内存、数据库、文件都有。集群的时候也要考虑Session的转移，在大型的网站，一般会有专门的Session服务器集群，用来保存用户会话，这个时候 Session 信息都是放在内存的，使用一些缓存服务比如Memcached之类的来放 Session。</p>
-</li>
-<li><p>思考一下服务端如何识别特定的客户？这个时候Cookie就登场了。每次HTTP请求的时候，客户端都会发送相应的Cookie信息到服务端。实际上大多数的应用都是用 Cookie 来实现Session跟踪的，第一次创建Session的时候，服务端会在HTTP协议中告诉客户端，需要在 Cookie 里面记录一个Session ID，以后每次请求把这个会话ID发送到服务器，我就知道你是谁了。有人问，如果客户端的浏览器禁用了 Cookie 怎么办？一般这种情况下，会使用一种叫做URL重写的技术来进行会话跟踪，即每次HTTP交互，URL后面都会被附加上一个诸如 sid=xxxxx 这样的参数，服务端据此来识别用户。</p>
-</li>
-<li><p>Cookie其实还可以用在一些方便用户的场景下，设想你某次登陆过一个网站，下次登录的时候不想再次输入账号了，怎么办？这个信息可以写到Cookie里面，访问网站的时候，网站页面的脚本可以读取这个信息，就自动帮你把用户名给填了，能够方便一下用户。这也是Cookie名称的由来，给用户的一点甜头。</p>
-</li>
-<li><p>Session是在服务端保存的一个数据结构，用来跟踪用户的状态，这个数据可以保存在集群、数据库、文件中；</p>
-<p>Cookie是客户端保存用户信息的一种机制，用来记录用户的一些信息，也是实现Session的一种方式。</p>
-</li>
-</ul>
-<h2 id="总结一下"><a href="#总结一下" class="headerlink" title="总结一下:"></a>总结一下:</h2><h3 id="1-状态保持"><a href="#1-状态保持" class="headerlink" title="1.状态保持"></a>1.状态保持</h3><ul>
-<li>http协议是无状态的：每次请求都是一次新的请求，不会记得之前通信的状态</li>
-<li>客户端与服务器端的一次通信，就是一次会话</li>
-<li>实现状态保持的方式：在客户端或服务器端存储与会话有关的数据</li>
-<li>存储方式包括cookie、session，会话一般指session对象</li>
-<li>使用cookie，所有数据存储在客户端，注意不要存储敏感信息</li>
-<li>推荐使用sesison方式，所有数据存储在服务器端，在客户端cookie中存储session_id</li>
-<li>状态保持的目的是在一段时间内跟踪请求者的状态，可以实现跨页面访问当前请求者的数据</li>
-<li>注意：不同的请求者之间不会共享这个数据，与请求者一一对应</li>
-</ul>
-<h3 id="2-启用session-举例Django"><a href="#2-启用session-举例Django" class="headerlink" title="2.启用session(举例Django)"></a>2.启用session(举例Django)</h3><ul>
-<li>使用django-admin startproject创建的项目默认启用</li>
-<li>在settings.py文件中</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">项INSTALLED_APPS列表中添加：</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="string">'django.contrib.sessions'</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">项MIDDLEWARE_CLASSES列表中添加：</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"><span class="string">'django.contrib.sessions.middleware.SessionMiddleware'</span>,</span></pre></td></tr></table></figure>
-
-<ul>
-<li>禁用会话：删除上面指定的两个值，禁用会话将节省一些性能消耗</li>
-</ul>
-<h3 id="3-使用session"><a href="#3-使用session" class="headerlink" title="3.使用session"></a>3.使用session</h3><ul>
-<li>启用会话后，每个HttpRequest对象将具有一个session属性，它是一个类字典对象</li>
-<li>get(key, default=None)：根据键获取会话的值</li>
-<li>request.session.get(‘uname’,’’)</li>
-<li>clear()：清除所有会话</li>
-<li>flush()：删除当前的会话数据并删除会话的Cookie</li>
-<li>del request.session[‘uname’]：删除会话</li>
-</ul>
-<h3 id="4-会话过期时间"><a href="#4-会话过期时间" class="headerlink" title="4.会话过期时间"></a>4.会话过期时间</h3><ul>
-<li>set_expiry(value)：设置会话的超时时间</li>
-<li>如果没有指定，则两个星期后过期</li>
-<li>如果value是一个整数，会话将在values秒没有活动后过期</li>
-<li>若果value是一个timedelta对象，会话将在当前时间加上这个指定的日期/时间过期</li>
-<li>如果value为0，那么用户会话的Cookie将在用户的浏览器关闭时过期</li>
-<li>如果value为None，那么会话永不过期</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/19/servlet_day01/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Li Miao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LiMiao's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/02/19/servlet_day01/" itemprop="url">关于tomcat端口占用问题</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-19T21:02:07+08:00">
-                2020-02-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AB%AF%E5%8F%A3/" itemprop="url" rel="index">
-                    <span itemprop="name">端口</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">Caused by: java.io.IOException: Thread signal failed</span></pre></td></tr></table></figure>
-<p>遇到这种问题就是端口被占用了,将端口kill掉就ok了！</p>
-<p><img src="/images/duankou.png" alt="duankou"></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/15/mybatis%E5%B0%8F%E7%9F%A5%E8%AF%86(1)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Li Miao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LiMiao's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/02/15/mybatis%E5%B0%8F%E7%9F%A5%E8%AF%86(1)/" itemprop="url">对于mapper/mapper标签</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-15T22:29:29+08:00">
-                2020-02-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/mybatis/" itemprop="url" rel="index">
-                    <span itemprop="name">mybatis</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>在SqlMapConfig.xml文件中</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">&lt;mappers&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    &lt;mapper resource=<span class="string">"com/it/dao/IUserDao.xml"</span>/&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">&lt;/mappers&gt;</span></pre></td></tr></table></figure>
-
-<p>resource可以写成class,如果是resource则使用的是xml的配置，如果没有则是注解形式。</p>
-<p>在自定义mybatis中，取出mappers中的所有mapper标签时,底层类Configuration中，</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> Map&lt;String, Mapper&gt; mappers;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Map&lt;String, Mapper&gt; <span class="title">getMappers</span><span class="params">()</span> </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">return</span> mappers;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setMappers</span><span class="params">(Map&lt;String, Mapper&gt; mappers)</span> </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">this</span>.mappers = mappers;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
-
-<p>setMappers方法不能用=因为这样在取出mappers中的mapper标签时，会覆盖前面的数据,不能使用直接赋值的方式。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setMappers</span><span class="params">(Map&lt;String, Mapper&gt; mappers)</span> </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">this</span>.mappers.putAll(mappers);<span class="comment">//此处应用追加的方式</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
-
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/">&lt;i class&#x3D;&quot;fa fa-angle-left&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">&lt;i class&#x3D;&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
+    <a class="extend prev" rel="prev" href="/page/2/">&lt;i class&#x3D;&quot;fa fa-angle-left&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">&lt;i class&#x3D;&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
   </nav>
 
 
@@ -2145,7 +2151,7 @@ version=&quot;3.1&quot;&gt;</code></pre>  <!--传统的web3.0之前的配置方�
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-count">46</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2156,7 +2162,7 @@ version=&quot;3.1&quot;&gt;</code></pre>  <!--传统的web3.0之前的配置方�
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">40</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -2167,7 +2173,7 @@ version=&quot;3.1&quot;&gt;</code></pre>  <!--传统的web3.0之前的配置方�
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">40</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>

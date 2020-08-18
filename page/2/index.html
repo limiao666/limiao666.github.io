@@ -258,6 +258,904 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/24/%E6%95%B0%E7%BB%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Li Miao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LiMiao's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/24/%E6%95%B0%E7%BB%84/" itemprop="url">数组算法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-24T08:46:01+08:00">
+                2020-03-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E7%BB%84/" itemprop="url" rel="index">
+                    <span itemprop="name">数组</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>Demo1:</strong></p>
+<p>给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。</p>
+<p>你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。</p>
+<p>示例:</p>
+<p>给定 nums = [2, 7, 11, 15], target = 9</p>
+<p>因为 nums[0] + nums[1] = 2 + 7 = 9<br>所以返回 [0, 1]</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">if</span>(nums == <span class="keyword">null</span>)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">        &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">        <span class="comment">//类似与于哈希，将数映射到0-2047；但可能存在错误，如&#123;-1,2047,6,2,-2&#125;，5</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">int</span> max = <span class="number">2047</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">int</span>[] res = <span class="keyword">new</span> <span class="keyword">int</span>[max+<span class="number">1</span>];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">int</span> diff = (target - nums[i]) &amp; max;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">if</span>(res[diff] != <span class="number">0</span>)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;res[diff] - <span class="number">1</span>, i&#125;;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">            &#125; <span class="keyword">else</span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">                res[nums[i] &amp; max] = i + <span class="number">1</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">            &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">        &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/19/c#%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7rider/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Li Miao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LiMiao's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/19/c#%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7rider/" itemprop="url">c#开发工具rider环境配置</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-19T11:03:08+08:00">
+                2020-03-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/c/" itemprop="url" rel="index">
+                    <span itemprop="name">c#</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/c/rider/" itemprop="url" rel="index">
+                    <span itemprop="name">rider</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Rider是Jetbrains公司推出的跨平台c#开发工具</p>
+<p><strong>优点:</strong></p>
+<ul>
+<li><p>轻量级</p>
+</li>
+<li><p>跨平台</p>
+</li>
+<li><p>界面美观</p>
+</li>
+</ul>
+<p>值得一提的是，Rider和VS使用了同样的.sln后缀项目文件，也就是说VS的C#项目和Rider的C#项目可以相互正常的打开。</p>
+<p><strong>环境配置:</strong></p>
+<p>对于mac用户，jetbrans这次并没有像其他产品一样自动配置好环境。当你安装好Rider打算新建一个项目的时候会发现Rider提示你没有.NET框架可以用,这时就需要我们自己动手配置.NET框架了。</p>
+<p>那么既然不是windows，我们需要一个跨平台的、开源的.NET框架。这件事并不难实现，mono为我们提供了跨平台的开源.NET框架。官网原话是这么说的：“<strong>Mono</strong> is a software platform designed to allow developers to easily create cross platform applications part of the .NET Foundation.”（官网地址：<a href="http://www.mono-project.com/）" target="_blank" rel="noopener">http://www.mono-project.com/）</a></p>
+<p>安装mono也有两种选择</p>
+<p>一种是从官网直接下载最新版的mono并安装,不过感觉下载太慢了，我选择另一种；</p>
+<p>下载地址：<a href="http://www.mono-project.com/download/stable/#download-mac" target="_blank" rel="noopener">http://www.mono-project.com/download/stable/#download-mac</a></p>
+<p>选择自己系统的版本下载安装就好了。</p>
+<p>另一种是通过homebrew进行安装，也是我个人采用的方法。</p>
+<p>直接在终端输入</p>
+<p><code>brew install mono</code></p>
+<p>然后等待下载配置完成就好了。不得不说下载的网络问题让人头疼。下午安装的时候下载速度几十k，等了一个多小时下载完结果安装过程还error了（应该是服务器的问题），半夜再下载的时候十几秒就下完了也顺利安装了。这个故事告诉我们，一遍装不上，那就再来一遍。</p>
+<p>安装完成之后可以使用</p>
+<p><code>brew list</code></p>
+<p>命令来检查mono是否安装成功，如果成功了你可以在命令执行后弹出的程序列表中看到mono。</p>
+<p>安装好以后重新打开Rider并新建项目，会发现已经自动识别了mono的.NET框架，在framework一栏默认选择了最新的.NET framework。然后就可以进行c#开发啦。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/12/%E5%BB%BA%E6%A8%A1(1)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Li Miao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LiMiao's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/12/%E5%BB%BA%E6%A8%A1(1)/" itemprop="url">建模uml</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-12T13:56:29+08:00">
+                2020-03-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BB%BA%E6%A8%A1/" itemprop="url" rel="index">
+                    <span itemprop="name">建模</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>建模方法:</strong></p>
+<p>1.结构化方法：</p>
+<p>层次化(特点)</p>
+<p>顺序结构，选择结构，循环结构(特点)</p>
+<p>2.面向对象方法:</p>
+<p>对象化(特点)</p>
+<p>更多地是和客观世界的对象事物紧密结合起来，一种映射关系</p>
+<p><strong>建模过程:</strong></p>
+<p>数据字典(以其为中心)数据模型，功能模型，行为模型</p>
+<p>面向对象建模过程与uml:</p>
+<table>
+<thead>
+<tr>
+<th>对象(核心)</th>
+<th>数据建模</th>
+<th>功能建模</th>
+<th>行为建模</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>用例图use-case</td>
+<td>类图class</td>
+<td>顺序图sequence</td>
+<td>状态转移图std</td>
+</tr>
+</tbody></table>
+<p>类由属性和方法组成</p>
+<p>属性=静态结构</p>
+<p>方法=动态行为</p>
+<p>太极建模口诀:由外向内，层次分明，动静结合，逐步求精</p>
+<p>由外向内：(系统边界)对于系统而言，用户就是系统的外部，由外部用户出发向内开发。</p>
+<p>层次分明：(用户目标，真正的用例)可以把同一层面的问题，分解成不同层面的问题，从数量上降下来。</p>
+<p>动静结合:(fr(用例)/uc + nfr)多种方面。程序执行是动，程序的属性就是静</p>
+<p>逐步求精:(先图形，后文本)前期实现一个核心原型，然后逐步优化，不断去得到一个最优化的系统。</p>
+<p>采用动宾结构</p>
+<hr>
+<p>需求用例分析</p>
+<p>用例是功能性需求</p>
+<p>uml(需求)模型=静态图+动态图</p>
+<hr>
+<p>uml静态建模</p>
+<p>1.理解用例模型</p>
+<p>2.3.4为core</p>
+<p>2.识别分析类: 识别实体类，识别边界类，识别控制类</p>
+<p>实体类: 表示系统存储和管理的永久信息(数据)</p>
+<p>边界类: 表示参与者与系统之间的交互(界面)</p>
+<p>控制类: 表示系统在运行过程中的业务控制逻辑</p>
+<p>3.定义交互行为</p>
+<p>4.建立分析类图: 定义属性，定义行为，定义关系</p>
+<p>5.评审分析模型</p>
+<p>一般来说，一个用例对应一个控制类</p>
+<hr>
+<p>面向对象模型更接近于问题域，以问题域中的对象为基础建模</p>
+<p>面向对象分析(object oriented analysis ooa)</p>
+<p>面向对象设计(object oriented design food)</p>
+<p>面向对象编程(object oriented programming pop)</p>
+<p>面向对象测试(object oriented testing oot)</p>
+<p>uml(unified modeling language):</p>
+<p>统一建模语言是一种直观化，明确化，构建和文档化软件系统产物的通用可视化建模语言。</p>
+<p>uml代替了传统的“边想边写”开发方式</p>
+<p>uml可以描述开发所需要的各种视图:</p>
+<p>概念的: 业务过程和系统功能</p>
+<p>具体的:程序中的类，数据库模式，可重用的软件构件</p>
+<p><img src="/images/uml1-5313214.png" alt="uml1"></p>
+<p>uml基本构造块:</p>
+<p>事物:表示系统中的元素，包括:结构事物，行为事物，分组事物，注释事物</p>
+<p>关系:表示系统中的元素如何进行连接；包括:依赖，关联，泛化，实现</p>
+<p>图:系统模型中每一个视图的内容是由一些图来描述的；对整个系统而言，其功能由用例图描述，静态结构由类图和对象图描述，动态行为由状态图，时序图，协作图和活动图描述，而物理架构则是由组件图和部署图描述。</p>
+<p><img src="/images/uml2.png" alt="uml2"></p>
+<p>用例图:</p>
+<p>用例是从用户角度描述系统的行为</p>
+<p>用例之间的关系:</p>
+<p>关联(association):参与者与用例间的关系;</p>
+<p>【箭头指向】：指向消息接收方</p>
+<p>包含关系(include):用例之间的关系</p>
+<p>【箭头指向】：指向分解出来的功能用例</p>
+<p>扩展关系(extend):用例之间的关系</p>
+<p>【箭头指向】：指向基础用例</p>
+<p>泛化关系(generalization):参与者之间或用例之间的关系</p>
+<p>【箭头指向】：指向父用例</p>
+<p><img src="/images/uml3.png" alt="uml3"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86(1)%20/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Li Miao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LiMiao's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86(1)%20/" itemprop="url">计算机组成原理(1)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-10T00:00:00+08:00">
+                2020-03-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机组成原理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>课程内容:</p>
+<ul>
+<li><p>基本部件的结构和组织方式</p>
+</li>
+<li><p>基本运算的操作原理</p>
+</li>
+<li><p>基本部件和单元的设计思想</p>
+</li>
+</ul>
+<p>特色：</p>
+<ul>
+<li><p>计算机组成的一般原理，不以具体机型为依托</p>
+</li>
+<li><p>采用自顶向下的方式，层层细化</p>
+</li>
+</ul>
+<p>整体结构:</p>
+<p><img src="/images/26.png" alt="26"></p>
+<p><img src="/images/27.png" alt="27"></p>
+<hr>
+<p>计算机系统：由硬件+软件</p>
+<p>计算机体系结构:程序员所见到的计算机系统的属性，概念性的结构和功能特性</p>
+<p>​            （指令系统，数据类型，寻址技术,I/O机理)</p>
+<p>计算机组成: 实现计算机体系结构所体现的属性</p>
+<p>​               (具体指令的实现)</p>
+<p>计算机的基本组成</p>
+<p>一 冯.诺依曼计算机的特点</p>
+<p>1.计算机油五大部件组成</p>
+<p>2.指令和数据以同等地位存于存储器，可按地址寻访</p>
+<p>3.指令和数据用二进制表示</p>
+<p>4.指令由操作码和地址码组成</p>
+<p><strong>5.存储程序</strong></p>
+<p>6.以运算器为中心</p>
+<p>计算机硬件框图:</p>
+<p><img src="/images/28.png" alt="28"></p>
+<ul>
+<li><p>运算器:算数运算和逻辑运算</p>
+</li>
+<li><p>存储器:存放数据和程序</p>
+</li>
+<li><p>控制器:指挥控制程序的运行</p>
+</li>
+<li><p>输入设备:将信息转换成机器能识别的形式</p>
+</li>
+<li><p>输出设备:将结果转换成人们熟悉的形式</p>
+</li>
+</ul>
+<p>改进图:</p>
+<p><img src="/images/29.png" alt="29"></p>
+<p><img src="/images/31.png" alt="31"></p>
+<p>系统复杂性管理的方法(3y)</p>
+<ul>
+<li><p>层次化(hierarchy):将被设计的系统划分为多个模块或子模块。</p>
+</li>
+<li><p>模块化(modularity)：有明确定义的功能和接口</p>
+</li>
+<li><p>规则化(regularity):模块更容易被重用</p>
+</li>
+</ul>
+<p><img src="/images/32.png" alt="32"></p>
+<p>ACC：累加寄存器</p>
+<p>操作数+地址码</p>
+<p><img src="/images/33.png" alt="33"></p>
+<p>此例子存在数据溢出问题</p>
+<p>指令和数据都是保存在存储器中的</p>
+<p>start from–&gt;p7 </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/03/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F(1)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Li Miao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LiMiao's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/03/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F(1)/" itemprop="url">操作系统(1)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-03T08:11:39+08:00">
+                2020-03-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>运行该程序，操作系统要为我们做什么？</p>
+<p>首先在磁盘找命令</p>
+<p>如果找不到文件，会报告</p>
+<p>如果找到文件，检查程序的类型，文件的首部，开头的部分，表明是个可执行文件，程序。然后找文件的代码+数据。</p>
+<p>如何找文件:根本目录，首簇号(盘换号)</p>
+<p>磁盘(Disk)—&gt;内存(RAM)</p>
+<p>创建进程：process(申请内存及其他所需资源)</p>
+<p>假设所需空间很大 扇区-512b  100mb 100kb</p>
+<p>Cpu:上下文切换:   寄存器信息切换，程序地址，pc(ip)获得程序运行的机会</p>
+<p>开始运行hello的第一条指令  </p>
+<p>失败–缺页中断(没有包含所需的指令，或缺少一部分)</p>
+<p>通过输出设备，终端进程完成显示</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/02/%E8%BD%AF%E4%BB%B6%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%88%86%E6%9E%90(1)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -379,6 +1277,177 @@
 <p>观察者模式</p>
 <p>jdk中使用最多的模式之一</p>
 <p>解决一对多关系 ,松耦合设计</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/01/iterm2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Li Miao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LiMiao's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/01/iterm2/" itemprop="url">Mac配置iterm2+oh-my-zsh+go2shell使用</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-01T00:00:00+08:00">
+                2020-03-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iterm2/" itemprop="url" rel="index">
+                    <span itemprop="name">iterm2</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iterm2/go2shell/" itemprop="url" rel="index">
+                    <span itemprop="name">go2shell</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>工具:</strong></p>
+<p>Mac </p>
+<p>Iterm2</p>
+<p>Go2Shell</p>
+<p>参照博客:<a href="https://blog.csdn.net/gangyin5071/article/details/79601132" target="_blank" rel="noopener">https://blog.csdn.net/gangyin5071/article/details/79601132</a></p>
+<p>最终效果图:</p>
+<p><img src="/images/iterm2.png" alt="iterm2"></p>
+<p>⚠️<strong>需要注意的是环境变量问题</strong></p>
+<p>只要把<code>~/.bash_profile</code>里面我们配置的环境变量全部copy到<code>~/.zshrc</code>文件的最后面就好</p>
+<hr>
+<p>配置好iterm2以后，就可以对go2shell进行配置啦</p>
+<p>go2shell是一个可以快速在当前目录打开Shell的工具</p>
+<p>Go2shell默认没有设置界面,需要用命令行打开</p>
+<p>在Shell中输入:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">open -a Go2Shell --args config</span></pre></td></tr></table></figure>
+
+<p><img src="/images/go2shell.png" alt="go2shell"></p>
+<p>配置好以后，可以打开一个文件夹进行测试，如果iterm2显示cd(null);则表示没有配置环境变量;那么就按照上面的配置就好啦！</p>
+<p>然后就愉快地玩耍吧！🌟</p>
 
           
         
@@ -772,469 +1841,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/01/jdbc(1)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Li Miao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LiMiao's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/03/01/jdbc(1)/" itemprop="url">JDBC连接mysql问题合集</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-01T00:00:00+08:00">
-                2020-03-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/jdbc/" itemprop="url" rel="index">
-                    <span itemprop="name">jdbc</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>问题1:</p>
-<p>JDBC连接MySQL：Unknown initial character set index ‘255’ received from server.Initial client character</p>
-<p>报错信息:</p>
-<p>Unknown initial character set index ‘255’ received from server. Initial client character set can be forced via the ‘characterEncoding’ property.</p>
-<p>解决方法:在url前面添加上字符集的编码格式</p>
-<p>“Jdbc:mysql://xxx.xxx.xxx.xxx:3306/student?useUnicode=true&amp;characterEncoding=utf-8”;</p>
-<p>问题2:</p>
-<p>java.lang.ClassNotFoundException: com.mysql.jdbc.Driver</p>
-<p>这种报错是因为tomcat找不到mysql jar包，只需要把mysql-connector-java-5.1.7-bin.jar导入到tomcat的lib目录下面就ok了,然后重启tomcat就行啦！</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/01/jsp(3)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Li Miao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LiMiao's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/03/01/jsp(3)/" itemprop="url">MVC</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-01T00:00:00+08:00">
-                2020-03-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MVC/" itemprop="url" rel="index">
-                    <span itemprop="name">MVC</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>MVC设计模式:</p>
-<p>M:model 模型:一个功能。用javabean实现</p>
-<p>V:view视图 :用于展示，以及与用户交互。使用html,js,css,jsp,jquery等前端技术实现</p>
-<p>C:controller控制器 :接受请求，将请求跳转到模型进行处理;模型处理完毕后，再将处理的返回给请求处. 可以用jsp实现，但是一般建议使用servlet实现控制器。</p>
-<p>Jsp–&gt;java(servlet)–&gt;jsp</p>
-<p><img src="/images/34.png" alt="34"></p>
-<p><img src="/images/35.png" alt="35"></p>
-<p>Servlet:</p>
-<p>java类必须符合一定的规范:</p>
-<p>必须继承 javax.servlet.http.HttpServlet</p>
-<p>重写其中的doGet()或doPost()方法</p>
-<ul>
-<li><p>doGet():接收并处理所有get提交方式的请求</p>
-</li>
-<li><p>doPost():接收并处理所有post提交方式的请求</p>
-</li>
-</ul>
-<p>Servlet要想使用，必须配置web.xml或者@WebServlet</p>
-<p>项目的根目录: web content ,src</p>
-<p>servlet流程:</p>
-<p>请求–&gt;url-pattern–&gt;根据servlet-mapping中的servlet-name去匹配servlet中的servlet-name,然后寻找到servlet-class，然后将请求交给class</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/01/jsp%E9%A1%B5%E9%9D%A2%E4%B8%8D%E6%9B%B4%E6%96%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Li Miao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LiMiao's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/03/01/jsp%E9%A1%B5%E9%9D%A2%E4%B8%8D%E6%9B%B4%E6%96%B0/" itemprop="url">idea下修改jsp页面不自动更新</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-01T00:00:00+08:00">
-                2020-03-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/jsp/" itemprop="url" rel="index">
-                    <span itemprop="name">jsp</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="解决idea下修改jsp页面不自动更新"><a href="#解决idea下修改jsp页面不自动更新" class="headerlink" title="解决idea下修改jsp页面不自动更新"></a>解决idea下修改jsp页面不自动更新</h2><p>可能存在的原因:</p>
-<ul>
-<li><p>在tomcat配置的时候，On frame deactivation：被设置成了Do nothing,解决方法:改为Update resources（更新资源）或者Update classes and resource（更新class文件和资源）</p>
-<p><img src="/images/8.png" alt="8"></p>
-</li>
-<li><p>开发时禁用浏览器缓存</p>
-<p><img src="/images/9.png" alt="9"></p>
-</li>
-</ul>
-<p>我试用第一种解决了。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/01/jsp(1)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1530,7 +2136,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/01/iterm2/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/01/jsp%E9%A1%B5%E9%9D%A2%E4%B8%8D%E6%9B%B4%E6%96%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Li Miao">
@@ -1549,7 +2155,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/03/01/iterm2/" itemprop="url">Mac配置iterm2+oh-my-zsh+go2shell使用</a></h1>
+                <a class="post-title-link" href="/2020/03/01/jsp%E9%A1%B5%E9%9D%A2%E4%B8%8D%E6%9B%B4%E6%96%B0/" itemprop="url">idea下修改jsp页面不自动更新</a></h1>
         
 
         <div class="post-meta">
@@ -1584,19 +2190,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iterm2/" itemprop="url" rel="index">
-                    <span itemprop="name">iterm2</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iterm2/go2shell/" itemprop="url" rel="index">
-                    <span itemprop="name">go2shell</span>
+                  <a href="/categories/jsp/" itemprop="url" rel="index">
+                    <span itemprop="name">jsp</span>
                   </a>
                 </span>
 
@@ -1634,550 +2229,16 @@
       
         
           
-            <p><strong>工具:</strong></p>
-<p>Mac </p>
-<p>Iterm2</p>
-<p>Go2Shell</p>
-<p>参照博客:<a href="https://blog.csdn.net/gangyin5071/article/details/79601132" target="_blank" rel="noopener">https://blog.csdn.net/gangyin5071/article/details/79601132</a></p>
-<p>最终效果图:</p>
-<p><img src="/images/iterm2.png" alt="iterm2"></p>
-<p>⚠️<strong>需要注意的是环境变量问题</strong></p>
-<p>只要把<code>~/.bash_profile</code>里面我们配置的环境变量全部copy到<code>~/.zshrc</code>文件的最后面就好</p>
-<hr>
-<p>配置好iterm2以后，就可以对go2shell进行配置啦</p>
-<p>go2shell是一个可以快速在当前目录打开Shell的工具</p>
-<p>Go2shell默认没有设置界面,需要用命令行打开</p>
-<p>在Shell中输入:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">open -a Go2Shell --args config</span></pre></td></tr></table></figure>
-
-<p><img src="/images/go2shell.png" alt="go2shell"></p>
-<p>配置好以后，可以打开一个文件夹进行测试，如果iterm2显示cd(null);则表示没有配置环境变量;那么就按照上面的配置就好啦！</p>
-<p>然后就愉快地玩耍吧！🌟</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/28/idea%E6%89%93%E5%8C%85war/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Li Miao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LiMiao's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/02/28/idea%E6%89%93%E5%8C%85war/" itemprop="url">IntelliJ IDEA打包war并部署运行</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-28T00:00:00+08:00">
-                2020-02-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/" itemprop="url" rel="index">
-                    <span itemprop="name">服务器</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/war/" itemprop="url" rel="index">
-                    <span itemprop="name">war</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h2><p>打开idea–&gt;File —&gt; Project Structure —&gt; Artifacts —&gt; Add —&gt; Web Application:Exploded–&gt;From Modules—&gt;选择项目–&gt;ok—&gt;然后再add–&gt;Web Application:Archive–&gt;选择上一步生成的war—&gt;ok—&gt;ok–&gt;apply–&gt;ok–&gt;然后再到file一列，找到build—&gt;build Artifacts–&gt;选择:war–&gt;build–&gt;然后下面会显示正在生成war—-&gt;看到：build completer successfully—&gt;打包成功！</p>
-<p><img src="/images/6.png" alt="6"></p>
-<h2 id="部署运行"><a href="#部署运行" class="headerlink" title="部署运行:"></a>部署运行:</h2><ul>
-<li><p>将war包复制到tomcat安装目录:/usr/local/apache-tomcat-8.5.51/webapps/下</p>
-<p><img src="/images/7.png" alt="7"></p>
-</li>
-<li><p>终端操作: cd /usr/local/apache-tomcat-8.5.51/bin/</p>
-</li>
-<li><p>进入bin以后: ./startup.sh</p>
-</li>
-<li><p>打开浏览器:<a href="http://ip:8080/xxx/xx.jsp" target="_blank" rel="noopener">http://ip:8080/xxx/xx.jsp</a> </p>
-</li>
-<li><p>部署以后  ./shutdown.sh关闭tomcat</p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/28/%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AEtomcat/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Li Miao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LiMiao's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/02/28/%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AEtomcat/" itemprop="url">服务器配置Tomcat</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-28T00:00:00+08:00">
-                2020-02-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/" itemprop="url" rel="index">
-                    <span itemprop="name">服务器</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/tomcat/" itemprop="url" rel="index">
-                    <span itemprop="name">tomcat</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><p>jdk1.8</p>
-<p>finalshell</p>
-<p>阿里云服务器</p>
-<h2 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h2><ul>
-<li><p>下载安装包</p>
-<p>官网下载地址：<a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="noopener">http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html</a></p>
-<p>我下载的是jdk-8u161-linux-x64.tar.gz</p>
-</li>
-<li><p>解压安装包</p>
-</li>
-<li><p>将我们下载好的JDK安装包上传到服务器，进行解压。进入目标文件夹中，我是放在/usr/local/java文件下，点击上传。</p>
-</li>
-<li><p>解压: tar -zxvf jdk-8u161-linux-64.tar.gz</p>
-</li>
-<li><p>移动jdk：mv jdk1.8.0_161 /usr/local/java/</p>
-</li>
-<li><p>修改配置文件(配置环境变量): vim /etc/profile</p>
-</li>
-<li><p>用vim编辑器来编辑profile文件，在文件末尾添加一下内容👇</p>
-<p><img src="/images/3.png" alt="3"></p>
-<p>：wq回车保存退出。</p>
-<p>保存之后通过source /etc/profile命令使其修改的配置生效</p>
-<p>测试jdk安装是否成功</p>
-<p>java -version</p>
-<p><img src="/images/1.png" alt="1"></p>
-<h2 id="下面开始安装tomcat"><a href="#下面开始安装tomcat" class="headerlink" title="下面开始安装tomcat"></a>下面开始安装tomcat</h2><ul>
-<li><p>安装地址:<a href="http://tomcat.apache.org/" target="_blank" rel="noopener">http://tomcat.apache.org/</a></p>
-</li>
-<li><p>我下载的是apache-tomcat-8.5.51.tar.gz</p>
-</li>
-<li><p>解压: tar -zxvf apache-tomcat-8.5.51.tar.gz</p>
-</li>
-<li><p>我是放在了usr/local/tomcat下所以要创建tomcat文件夹并将解压文件移动到tomcat下</p>
-</li>
-<li><p>移动tomcat: mv apache-tomcat-8.5.51 /usr/local/tomcat</p>
-</li>
-<li><p>进入tomcat安装bin目录并启动:cd usr/local/tomcat/apache-tomcat-8.5.51/bin/</p>
-</li>
-<li><p>进入bin目录以后：./startup.sh  会看到tomcat启动成功👇<img src="/images/2.png" alt="2"></p>
-</li>
-<li><p>到浏览器输入: <a href="http://ip:8080" target="_blank" rel="noopener">http://ip:8080</a></p>
-</li>
-<li><p>如果无法连接，查看阿里云控制台，进入网络与安全–&gt;安全组–&gt;管理规则—&gt;添加安全组规则—&gt;将8080端口写进去，开放8080端口。</p>
-</li>
-<li><p>之后再到浏览器输入: <a href="http://ip:8080" target="_blank" rel="noopener">http://ip:8080</a>  出现👇</p>
-<p><img src="/images/5.png" alt="5"></p>
-</li>
-<li><p>这样就安装成功啦！✌️</p>
-<p><img src="/images/4.png" alt="4"></p>
-</li>
-</ul>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/26/%E7%94%B5%E8%84%91%E5%B0%8F%E7%9F%A5%E8%AF%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Li Miao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LiMiao's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/02/26/%E7%94%B5%E8%84%91%E5%B0%8F%E7%9F%A5%E8%AF%86/" itemprop="url">电脑小知识</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-26T00:00:00+08:00">
-                2020-02-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%94%B5%E8%84%91%E5%B0%8F%E7%9F%A5%E8%AF%86/" itemprop="url" rel="index">
-                    <span itemprop="name">电脑小知识</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>当你的windows系统的电脑所有软件不能打开了，这该怎么办呢？</p>
+            <h2 id="解决idea下修改jsp页面不自动更新"><a href="#解决idea下修改jsp页面不自动更新" class="headerlink" title="解决idea下修改jsp页面不自动更新"></a>解决idea下修改jsp页面不自动更新</h2><p>可能存在的原因:</p>
 <ul>
-<li><p>一个命令就ok👇</p>
+<li><p>在tomcat配置的时候，On frame deactivation：被设置成了Do nothing,解决方法:改为Update resources（更新资源）或者Update classes and resource（更新class文件和资源）</p>
+<p><img src="/images/8.png" alt="8"></p>
 </li>
-<li><p>管理员命令行:  netsh windsock reset catalog </p>
+<li><p>开发时禁用浏览器缓存</p>
+<p><img src="/images/9.png" alt="9"></p>
 </li>
 </ul>
-<p>电脑连接不到自己手机的热点</p>
-<ul>
-<li>尝试将热点名字改成中文</li>
-<li>将热点AP频段改成2.4GHz频段</li>
-</ul>
+<p>我试用第一种解决了。</p>
 
           
         
@@ -2217,7 +2278,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/">&lt;i class&#x3D;&quot;fa fa-angle-left&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">&lt;i class&#x3D;&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
+    <a class="extend prev" rel="prev" href="/">&lt;i class&#x3D;&quot;fa fa-angle-left&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">&lt;i class&#x3D;&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
   </nav>
 
 
@@ -2265,7 +2326,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-count">46</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2276,7 +2337,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">40</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -2287,7 +2348,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">40</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
