@@ -258,6 +258,209 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/31/struts2(1)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Li Miao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LiMiao's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/31/struts2(1)/" itemprop="url">学习struts2</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-31T21:53:38+08:00">
+                2020-03-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/struts2/" itemprop="url" rel="index">
+                    <span itemprop="name">struts2</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>1.struts2框架应用于javaee三层结构中web层框架。</strong></p>
+<p><strong>2.struts2框架在struts1和webwork基础之上发展<u>全新的框架</u>。</strong></p>
+<p>3.struts2解决的问题:</p>
+<p><img src="/images/struts2(1)-5663453.png" alt="struts2"></p>
+<p>4.struts2版本: 目前最稳定的版本是:struts2-2.3.24-all.zip</p>
+<p>5.web层常见框架:</p>
+<ul>
+<li><p>struts2</p>
+</li>
+<li><p>spingMVC</p>
+</li>
+</ul>
+<hr>
+<p>struts2步骤:(我直接用的maven)</p>
+<p>1.导入jar包</p>
+<ul>
+<li><p>在lib中有jar包，不能把这些jar都导入到项目中。</p>
+</li>
+<li><p>到apps目录里面，找到示例程序，从示例程序复制jar包。</p>
+</li>
+</ul>
+<p>2.创建action</p>
+<p><img src="/images/strut2(2).png" alt="strut2"></p>
+<p>3.配置action类的访问路径</p>
+<ul>
+<li>创建struts2核心配置文件</li>
+</ul>
+<p>​        核心配置文件名称和位置是固定的</p>
+<p>​        位置必须在src下，名称为struts.xml</p>
+<ul>
+<li>引入dtd约束(maven项目下,自动引入)</li>
+</ul>
+<p><img src="/images/struts3.png" alt="struts3"></p>
+<ul>
+<li>action的配置</li>
+</ul>
+<p><img src="/images/struts4.png" alt="struts4"></p>
+<p>访问路径:</p>
+<p><a href="http://localhost:8080/MavenProject/hello" target="_blank" rel="noopener">http://localhost:8080/MavenProject/hello</a></p>
+<p>or</p>
+<p><a href="http://localhost:8080/MavenProject/hello.action" target="_blank" rel="noopener">http://localhost:8080/MavenProject/hello.action</a></p>
+<p><img src="/images/struts5.png" alt="struts5"></p>
+<p>出现问题原因:</p>
+<ul>
+<li><p>服务器没有正常启动；</p>
+</li>
+<li><p>没有配置过滤器</p>
+</li>
+</ul>
+<p>4.配置struts2过滤器 在web.xml里</p>
+<p><img src="/images/struts7.png" alt="struts7"></p>
+<p><img src="/images/struts6.png" alt="struts6"></p>
+<p>Struts2使用IntellijIDEA和maven管理：搭建开发环境</p>
+<p>参考博客地址:<a href="https://blog.csdn.net/pinebud55/article/details/53037937" target="_blank" rel="noopener">https://blog.csdn.net/pinebud55/article/details/53037937</a></p>
+<p>maven工程需要的东西<a href="http://mvnrepository.com/artifact/org.apache.struts/struts2-core/2.5.5" target="_blank" rel="noopener">http://mvnrepository.com/artifact/org.apache.struts/struts2-core/2.5.5</a></p>
+<p>项目截图:</p>
+<p><img src="/images/struts8.png" alt="struts8"></p>
+<p>解释一下：</p>
+<p>Java目录下放action（类似于javabean 但是多了判断方法）</p>
+<p>Resource目录下方struts.properties很重要一定要记住（不然跑不起来）</p>
+<p>struts.xml里面，还有actions的配置+对传过来的action的值进行</p>
+<p>web.xml里面主要写了欢迎页（默认index.jsp），然后就是一些struts的过滤配置。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/31/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F_%E8%BF%9B%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1933,177 +2136,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/01/iterm2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Li Miao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LiMiao's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/03/01/iterm2/" itemprop="url">Mac配置iterm2+oh-my-zsh+go2shell使用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-01T00:00:00+08:00">
-                2020-03-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iterm2/" itemprop="url" rel="index">
-                    <span itemprop="name">iterm2</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iterm2/go2shell/" itemprop="url" rel="index">
-                    <span itemprop="name">go2shell</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><strong>工具:</strong></p>
-<p>Mac </p>
-<p>Iterm2</p>
-<p>Go2Shell</p>
-<p>参照博客:<a href="https://blog.csdn.net/gangyin5071/article/details/79601132" target="_blank" rel="noopener">https://blog.csdn.net/gangyin5071/article/details/79601132</a></p>
-<p>最终效果图:</p>
-<p><img src="/images/iterm2.png" alt="iterm2"></p>
-<p>⚠️<strong>需要注意的是环境变量问题</strong></p>
-<p>只要把<code>~/.bash_profile</code>里面我们配置的环境变量全部copy到<code>~/.zshrc</code>文件的最后面就好</p>
-<hr>
-<p>配置好iterm2以后，就可以对go2shell进行配置啦</p>
-<p>go2shell是一个可以快速在当前目录打开Shell的工具</p>
-<p>Go2shell默认没有设置界面,需要用命令行打开</p>
-<p>在Shell中输入:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">open -a Go2Shell --args config</span></pre></td></tr></table></figure>
-
-<p><img src="/images/go2shell.png" alt="go2shell"></p>
-<p>配置好以后，可以打开一个文件夹进行测试，如果iterm2显示cd(null);则表示没有配置环境变量;那么就按照上面的配置就好啦！</p>
-<p>然后就愉快地玩耍吧！🌟</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2156,7 +2188,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">49</span>
+                  <span class="site-state-item-count">50</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2167,7 +2199,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-count">46</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -2178,7 +2210,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-count">45</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
